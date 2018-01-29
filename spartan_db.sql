@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 29, 2018 at 08:43 PM
+-- Generation Time: Jan 29, 2018 at 10:14 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -86,16 +86,18 @@ CREATE TABLE `stores` (
   `store_id` int(4) NOT NULL,
   `owner_id` int(4) NOT NULL,
   `store_name` varchar(250) NOT NULL,
-  `category_id` int(4) NOT NULL
+  `category_id` int(4) NOT NULL,
+  `store_active` char(1) NOT NULL DEFAULT 'Y'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `stores`
 --
 
-INSERT INTO `stores` (`store_id`, `owner_id`, `store_name`, `category_id`) VALUES
-(4, 5, 'UltraStore', 2),
-(5, 2, 'MagicTech', 3);
+INSERT INTO `stores` (`store_id`, `owner_id`, `store_name`, `category_id`, `store_active`) VALUES
+(4, 5, 'UltraStore', 2, 'Y'),
+(5, 2, 'MagicTech', 3, 'Y'),
+(6, 7, 'SportyMan', 5, 'Y');
 
 -- --------------------------------------------------------
 
@@ -120,17 +122,19 @@ CREATE TABLE `users` (
   `user_name` varchar(250) NOT NULL,
   `username` varchar(8) NOT NULL,
   `password` varchar(8) NOT NULL,
-  `accesslevel` int(1) NOT NULL
+  `accesslevel` int(1) DEFAULT '0',
+  `user_active` varchar(1) NOT NULL DEFAULT 'Y'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `user_name`, `username`, `password`, `accesslevel`) VALUES
-(2, 'Mike  Cobra', 'Mcobra', '123456', 0),
-(5, 'Elia Bakker', 'ebak', '1254863', 0),
-(6, 'Baas', 'admin', '0123456', 1);
+INSERT INTO `users` (`user_id`, `user_name`, `username`, `password`, `accesslevel`, `user_active`) VALUES
+(2, 'Mike  Cobra', 'Mcobra', '123456', 0, 'N'),
+(5, 'Elia Bakker', 'ebak', '1254863', 0, 'Y'),
+(6, 'Baas', 'admin', '0123456', 1, 'Y'),
+(7, 'Edward Mission', 'emission', '0258963', 0, 'Y');
 
 -- --------------------------------------------------------
 
@@ -224,7 +228,7 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT for table `stores`
 --
 ALTER TABLE `stores`
-  MODIFY `store_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `store_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `text`
 --
@@ -234,7 +238,7 @@ ALTER TABLE `text`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `zone`
 --

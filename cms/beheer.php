@@ -17,9 +17,6 @@
 
     }
 
-    $sql_query = "SELECT * FROM users WHERE accesslevel = '0'";
-    $result = $conn->query($sql_query);
-
  ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -27,6 +24,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>SpartanCMS | Webstores</title>
+  <link rel="stylesheet" href="../vendor/sweetalert2/sweetalert2.css">
   <link rel="stylesheet" href="../css/bootstrap.css">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -139,7 +137,7 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-body">
-                  <table id="example2" class="table table-bordered table-hover">
+                  <table id="users" class="table table-bordered table-hover">
                     <thead>
                         <tr>
                           <th>ID</th>
@@ -151,6 +149,9 @@
                     </thead>
                     <tbody>
                         <?php
+                        $sql_query = "SELECT * FROM users WHERE accesslevel = '0' AND user_active = 'Y'";
+                        $result = $conn->query($sql_query);
+                        
                             while ($row = mysqli_fetch_assoc($result)) {
                                 $id =$row['user_id'];
                                 $name = $row['user_name'];
@@ -163,8 +164,8 @@
                             <td><?php echo $username; ?></td>
                             <td><?php echo $password; ?></td>
                             <td>
-                                <a href="" style="color: blue; margin-right: 20px;"> <i class="fa fa-pencil"></i></a>
-                                <a href="" style="color: red;"> <i class="fa fa-trash"></i></a>
+                                <button type="button" name="edit" title="Bewerken" onclick="" style="color: blue; margin-right: 20px; background-color:transparent; border: 0px;"><i class="fa fa-pencil"></i></button>
+                                <button type="button" name="delete" title="Verwijderen"  onclick="userdelete('<?php echo $id;?>')" style="color: red; background-color:transparent; border: 0px;"> <i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                         <?php } ?>
@@ -202,7 +203,7 @@
                           <div class="col-md-6">
                               <div class="form-group">
                                 <label >Achternaam</label>
-                                <input type="text" class="form-control" name="surname"  placeholder="Enter ahcternaam">
+                                <input type="text" class="form-control" name="surname"  placeholder="Enter achternaam">
                               </div>
                           </div>
                       </div>
@@ -237,7 +238,7 @@
   <script src="../js/jquery.slimscroll.min.js"></script>
   <script src="../js/fastclick.js"></script>
   <script src="../js/cmsMain.js"></script>
-    <script type="text/javascript" src="../vendor/sweetalert/sweetalert.min.js">
+  <script type="text/javascript" src="../vendor/sweetalert2/sweetalert2.js"></script>
 
 </body>
 </html>

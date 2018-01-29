@@ -15,10 +15,6 @@
      header("Location: winkels.php");
 
     }
-
-    $sql_query = "SELECT store_id,user_name, store_name, cat_name FROM stores INNER JOIN users ON stores.owner_id = users.user_id INNER JOIN category ON stores.category_id = category.category_id WHERE users.accesslevel ='0'";
-    $result1 = $conn->query($sql_query);
-
  ?>
 <!DOCTYPE html>
 <html>
@@ -26,6 +22,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>SpartanCMS | Webstores</title>
+    <link rel="stylesheet" href="../vendor/sweetalert2/sweetalert2.css">
   <link rel="stylesheet" href="../css/bootstrap.css">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -136,6 +133,9 @@
         </div>
         <div class="row">
             <?php
+            $sql_query = "SELECT store_id,user_name, store_name, cat_name, user_active FROM stores INNER JOIN users ON stores.owner_id = users.user_id INNER JOIN category ON stores.category_id = category.category_id WHERE users.user_active ='Y' AND stores.store_active ='Y'";
+            $result1 = $conn->query($sql_query);
+            
                 while ($row = mysqli_fetch_assoc($result1)) {
                     $id =$row['store_id'];
                     $owner = $row['user_name'];
@@ -149,6 +149,7 @@
                             <h1><?php echo $store_name; ?></h1>
                             <h4>Owner: <?php echo $owner; ?></h4>
                             <p>Category: <?php echo $category; ?></p>
+                            <button type="button" name="button" class="btn btn-danger" onclick="storedelete('<?php echo $id;?>')">Verwijderen</button>
                         </div>
                     </div>
                 </div>
@@ -182,7 +183,7 @@
 
                                 <select class="form-control" name="owner_id">
                                     <?php
-                                        $sql1_query = "SELECT * FROM users WHERE accesslevel='0'";
+                                        $sql1_query = "SELECT * FROM users WHERE accesslevel='0' AND user_active='Y'";
 
                                         $result2 = $conn->query($sql1_query);
 
@@ -243,7 +244,7 @@
   <script src="../js/jquery.slimscroll.min.js"></script>
   <script src="../js/fastclick.js"></script>
   <script src="../js/cmsMain.js"></script>
-  <script type="text/javascript" src="../vendor/sweetalert/sweetalert.min.js"></script>
+  <script type="text/javascript" src="../vendor/sweetalert2/sweetalert2.js"></script>
 
 </body>
 </html>

@@ -1125,3 +1125,77 @@ throw new Error('AdminLTE requires jQuery')
   })
 
 }(jQuery)
+
+//SweetAlert
+
+function userdelete(id){
+swal({
+  title: 'Ben je zeker dat je dit wilt verwijderen?',
+  type: 'warning',
+  allowOutsideClick: false,
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Verwijderen',
+  cancelButtonText: 'Annuleren',
+  confirmButtonClass: 'btn btn-primary',
+  cancelButtonClass: 'btn btn-danger',
+  buttonsStyling: false
+}).then(function () {
+
+  swal(
+    'Verwijderd!',
+    'Deze informatie word verwijderd',
+    'success',
+  )
+  setTimeout(function () {window.location.href = '../cms/delete.php?userdeleted=1&id='+id}, 2000);
+
+}, function (dismiss) {
+  // dismiss can be 'cancel', 'overlay',
+  // 'close', and 'timer'
+  if (dismiss === 'cancel') {
+    swal(
+      'Geannuleerd',
+      'Jouw record is niet verwijdert!',
+      'error'
+
+    )
+  }
+})
+}
+
+function storedelete(id){
+swal({
+  title: 'Ben je zeker dat je dit wilt verwijderen?',
+  type: 'warning',
+  allowOutsideClick: false,
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Verwijderen',
+  cancelButtonText: 'Annuleren',
+  confirmButtonClass: 'btn btn-primary',
+  cancelButtonClass: 'btn btn-danger',
+  buttonsStyling: false
+}).then(function () {
+
+  swal(
+    'Verwijderd!',
+    'Deze informatie word verwijderd',
+    'success',
+  )
+  setTimeout(function () {window.location.href = '../cms/delete.php?storedeleted=1&id='+id}, 2000);
+
+}, function (dismiss) {
+  // dismiss can be 'cancel', 'overlay',
+  // 'close', and 'timer'
+  if (dismiss === 'cancel') {
+    swal(
+      'Geannuleerd',
+      'Jouw record is niet verwijdert!',
+      'error'
+
+    )
+  }
+})
+}
