@@ -37,7 +37,7 @@
 				<div class="wrap_menu">
 					<nav class="menu">
 						<ul class="main_menu">
-							<li>
+							<li class="active">
 								<a href="index.php">Home</a>
 							</li>
 
@@ -48,7 +48,6 @@
 							<li>
 								<a href="contact.php">Over ons</a>
 							</li>
-
 						</ul>
 					</nav>
 				</div>
@@ -61,44 +60,6 @@
 			</div>
 		</div>
 
-		<div class="wrap_header_mobile">
-			<a href="index.html" class="logo-mobile">
-				<span> <a href="login.php" class="fa fa-sign-in"></a> </span>
-			</a>
-
-			<div class="btn-show-menu">
-				<div class="header-icons-mobile">
-					<a href="#" class="header-wrapicon1 dis-block">
-						<img src="../img/logo.png" class="header-icon1" alt="ICON">
-					</a>
-				</div>
-
-				<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
-					<span class="hamburger-box">
-						<span class="hamburger-inner"></span>
-					</span>
-				</div>
-			</div>
-		</div>
-
-		<!-- Menu Mobile -->
-		<div class="wrap-side-menu">
-			<nav class="side-menu">
-				<ul class="main-menu">
-					<li class="item-menu-mobile">
-						<a href="index.php">Home</a>
-					</li>
-
-					<li class="item-menu-mobile">
-						<a href="winkels.php">Alle Winkels</a>
-					</li>
-
-					<li class="item-menu-mobile">
-						<a href="contact.php">Over ons</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
 	</header>
 
 	<section>
@@ -131,7 +92,7 @@
 					<div class="item-slick2 p-l-15 p-r-15">
 						<div class="block2">
 							<div class="block2-img wrap-pic-w of-hidden pos-relative">
-								<img src="images/item-02.jpg" alt="IMG-PRODUCT">
+								<img src="../img/item-02.jpg" alt="IMG-PRODUCT">
 
 								<div class="block2-overlay trans-0-4">
 
@@ -146,7 +107,7 @@
 					<div class="item-slick2 p-l-15 p-r-15">
 						<div class="block2">
 							<div class="block2-img wrap-pic-w of-hidden pos-relative">
-								<img src="images/item-02.jpg" alt="IMG-PRODUCT">
+								<img src="../img/item-02.jpg" alt="IMG-PRODUCT">
 
 								<div class="block2-overlay trans-0-4">
 
@@ -161,7 +122,7 @@
 					<div class="item-slick2 p-l-15 p-r-15">
 						<div class="block2">
 							<div class="block2-img wrap-pic-w of-hidden pos-relative">
-								<img src="images/item-02.jpg" alt="IMG-PRODUCT">
+								<img src="../img/item-02.jpg" alt="IMG-PRODUCT">
 
 								<div class="block2-overlay trans-0-4">
 
@@ -176,7 +137,7 @@
 					<div class="item-slick2 p-l-15 p-r-15">
 						<div class="block2">
 							<div class="block2-img wrap-pic-w of-hidden pos-relative">
-								<img src="images/item-02.jpg" alt="IMG-PRODUCT">
+								<img src="../img/item-02.jpg" alt="IMG-PRODUCT">
 
 								<div class="block2-overlay trans-0-4">
 
@@ -203,7 +164,7 @@
 
 		<div class="flex-w">
 			<div class="block4 wrap-pic-w">
-				<img src="images/gallery-03.jpg" alt="IMG-INSTAGRAM">
+				<img src="../img/gallery-03.jpg" alt="IMG-INSTAGRAM">
 
 				<a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
 					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
@@ -225,7 +186,7 @@
 
 			<!-- Block4 -->
 			<div class="block4 wrap-pic-w">
-				<img src="images/gallery-03.jpg" alt="IMG-INSTAGRAM">
+				<img src="../img/gallery-03.jpg" alt="IMG-INSTAGRAM">
 
 				<a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
 					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
@@ -247,7 +208,7 @@
 
 			<!-- Block4 -->
 			<div class="block4 wrap-pic-w">
-				<img src="images/gallery-03.jpg" alt="IMG-INSTAGRAM">
+				<img src="../img/gallery-03.jpg" alt="IMG-INSTAGRAM">
 
 				<a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
 					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
@@ -269,7 +230,7 @@
 
 			<!-- Block4 -->
 			<div class="block4 wrap-pic-w">
-				<img src="images/gallery-03.jpg" alt="IMG-INSTAGRAM">
+				<img src="../img/gallery-03.jpg" alt="IMG-INSTAGRAM">
 
 				<a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
 					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
@@ -291,7 +252,7 @@
 
 			<!-- Block4 -->
 			<div class="block4 wrap-pic-w">
-				<img src="images/gallery-03.jpg" alt="IMG-INSTAGRAM">
+				<img src="../img/gallery-03.jpg" alt="IMG-INSTAGRAM">
 
 				<a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
 					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
@@ -313,7 +274,7 @@
 
 			<!-- Block4 -->
 			<div class="block4 wrap-pic-w">
-				<img src="images/gallery-03.jpg" alt="IMG-INSTAGRAM">
+				<img src="../img/gallery-03.jpg" alt="IMG-INSTAGRAM">
 
 				<a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
 					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
@@ -335,7 +296,7 @@
 
 			<!-- Block4 -->
 			<div class="block4 wrap-pic-w">
-				<img src="images/gallery-07.jpg" alt="IMG-INSTAGRAM">
+				<img src="../img/gallery-07.jpg" alt="IMG-INSTAGRAM">
 
 				<a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
 					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
@@ -357,7 +318,7 @@
 
 			<!-- Block4 -->
 			<div class="block4 wrap-pic-w">
-				<img src="images/gallery-09.jpg" alt="IMG-INSTAGRAM">
+				<img src="../img/gallery-09.jpg" alt="IMG-INSTAGRAM">
 
 				<a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
 					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
@@ -379,7 +340,7 @@
 
 			<!-- Block4 -->
 			<div class="block4 wrap-pic-w">
-				<img src="images/gallery-13.jpg" alt="IMG-INSTAGRAM">
+				<img src="../img/gallery-13.jpg" alt="IMG-INSTAGRAM">
 
 				<a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
 					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
@@ -401,7 +362,7 @@
 
 			<!-- Block4 -->
 			<div class="block4 wrap-pic-w">
-				<img src="images/gallery-15.jpg" alt="IMG-INSTAGRAM">
+				<img src="../img/gallery-15.jpg" alt="IMG-INSTAGRAM">
 
 				<a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
 					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
@@ -434,7 +395,7 @@
 				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
 					<!-- block1 -->
 					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="images/banner-02.jpg" alt="IMG-BENNER">
+						<img src="../img/banner-02.jpg" alt="IMG-BENNER">
 
 						<div class="block1-wrapbtn w-size2">
 							<!-- Button -->
@@ -446,7 +407,7 @@
 
 					<!-- block1 -->
 					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="images/banner-05.jpg" alt="IMG-BENNER">
+						<img src="../img/banner-05.jpg" alt="IMG-BENNER">
 
 						<div class="block1-wrapbtn w-size2">
 							<!-- Button -->
@@ -460,7 +421,7 @@
 				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
 					<!-- block1 -->
 					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="images/banner-03.jpg" alt="IMG-BENNER">
+						<img src="../img/banner-03.jpg" alt="IMG-BENNER">
 
 						<div class="block1-wrapbtn w-size2">
 							<!-- Button -->
@@ -472,7 +433,7 @@
 
 					<!-- block1 -->
 					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="images/banner-07.jpg" alt="IMG-BENNER">
+						<img src="../img/banner-07.jpg" alt="IMG-BENNER">
 
 						<div class="block1-wrapbtn w-size2">
 							<!-- Button -->
@@ -486,7 +447,7 @@
 				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
 					<!-- block1 -->
 					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="images/banner-04.jpg" alt="IMG-BENNER">
+						<img src="../img/banner-04.jpg" alt="IMG-BENNER">
 
 						<div class="block1-wrapbtn w-size2">
 							<!-- Button -->
@@ -497,7 +458,7 @@
 					</div>
 					<!-- block1 -->
 					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="images/banner-05.jpg" alt="IMG-BENNER">
+						<img src="../img/banner-05.jpg" alt="IMG-BENNER">
 
 						<div class="block1-wrapbtn w-size2">
 							<!-- Button -->
@@ -580,18 +541,18 @@
 		</div>
 	</footer>
 
-	<script type="text/javascript" src="vendor/jquery/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="vendor/animsition/js/animsition.min.js"></script>
-	<script type="text/javascript" src="vendor/bootstrap/js/popper.js"></script>
-	<script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="vendor/select2/select2.min.js"></script>
+	<script type="text/javascript" src="../vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="../vendor/animsition/js/animsition.min.js"></script>
+	<script type="text/javascript" src="../vendor/bootstrap/js/popper.js"></script>
+	<script type="text/javascript" src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../vendor/select2/select2.min.js"></script>
 
-	<script type="text/javascript" src="vendor/slick/slick.min.js"></script>
-	<script type="text/javascript" src="js/slick-custom.js"></script>
-	<script type="text/javascript" src="vendor/countdowntime/countdowntime.js"></script>
-	<script type="text/javascript" src="vendor/lightbox2/js/lightbox.min.js"></script>
-	<script type="text/javascript" src="vendor/sweetalert/sweetalert.min.js"></script>
-	<script src="js/main.js"></script>
+	<script type="text/javascript" src="../vendor/slick/slick.min.js"></script>
+	<script type="text/javascript" src="../js/slick-custom.js"></script>
+	<script type="text/javascript" src="../vendor/countdowntime/countdowntime.js"></script>
+	<script type="text/javascript" src="../vendor/lightbox2/js/lightbox.min.js"></script>
+	<script type="text/javascript" src="../vendor/sweetalert/sweetalert.min.js"></script>
+	<script src="../js/storeMain.js"></script>
 
 </body>
 
