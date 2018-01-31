@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 31, 2018 at 11:20 AM
+-- Generation Time: Jan 31, 2018 at 10:36 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -28,19 +28,30 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `category` (
   `category_id` int(4) NOT NULL,
-  `cat_name` varchar(250) NOT NULL
+  `cat_name` varchar(250) NOT NULL,
+  `img_path` varchar(250) NOT NULL,
+  `cat_show` set('Yes','No') NOT NULL DEFAULT 'No'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`category_id`, `cat_name`) VALUES
-(2, 'Clothes'),
-(3, 'Technology'),
-(4, 'Food'),
-(5, 'Shoes'),
-(7, 'Outdoor');
+INSERT INTO `category` (`category_id`, `cat_name`, `img_path`, `cat_show`) VALUES
+(17, 'Kleren', '../img/cat/163.png', 'Yes'),
+(18, 'Schoenen', '../img/cat/137.png', 'Yes'),
+(19, 'Cosmetica', '../img/cat/386.png', 'Yes'),
+(20, 'Juwelen', '../img/cat/217.png', 'Yes'),
+(21, 'Boeken', '../img/cat/345.png', 'Yes'),
+(22, 'Films', '../img/cat/228.png', 'No'),
+(23, 'Muziek', '../img/cat/128.png', 'No'),
+(24, 'Speelgoed', '../img/cat/379.png', 'Yes'),
+(25, 'Video Games', '../img/cat/239.png', 'No'),
+(26, 'Elektronica', '../img/cat/206.png', 'Yes'),
+(27, 'Interieur', '../img/cat/236.png', 'No'),
+(28, 'Eten', '../img/cat/172.png', 'No'),
+(29, 'Autos', '../img/cat/118.png', 'No'),
+(30, 'Buitenhuis', '../img/cat/153.png', 'No');
 
 -- --------------------------------------------------------
 
@@ -95,7 +106,11 @@ CREATE TABLE `logfile` (
 --
 
 INSERT INTO `logfile` (`attempt_id`, `attempt`, `username`, `timestamp`, `success`) VALUES
-(1, 'login', 'admin', '2018-01-31 10:17:43', 'Yes');
+(9, 'login', 'admin', '2018-01-31 11:20:42', 'Yes'),
+(10, 'logout', 'admin', '2018-01-31 11:20:53', 'Yes'),
+(11, 'login', 'admin', '2018-01-31 11:21:25', 'Yes'),
+(12, 'login', 'admin', '2018-01-31 20:44:15', 'Yes'),
+(13, 'logout', 'admin', '2018-01-31 21:33:58', 'Yes');
 
 -- --------------------------------------------------------
 
@@ -108,18 +123,21 @@ CREATE TABLE `stores` (
   `owner_id` int(4) NOT NULL,
   `store_name` varchar(250) NOT NULL,
   `category_id` int(4) NOT NULL,
-  `store_active` char(1) NOT NULL DEFAULT 'Y'
+  `store_active` set('Yes','No') NOT NULL DEFAULT 'Yes',
+  `store_show` set('Yes','No') NOT NULL DEFAULT 'No'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `stores`
 --
 
-INSERT INTO `stores` (`store_id`, `owner_id`, `store_name`, `category_id`, `store_active`) VALUES
-(4, 5, 'UltraStore', 2, 'Y'),
-(5, 2, 'MagicTech', 3, 'N'),
-(6, 7, 'SportyMan', 5, 'Y'),
-(7, 8, 'Mrs Rabbit', 4, 'Y');
+INSERT INTO `stores` (`store_id`, `owner_id`, `store_name`, `category_id`, `store_active`, `store_show`) VALUES
+(8, 8, 'MegaTech', 26, 'Yes', 'Yes'),
+(9, 7, 'SolarMovies', 22, 'Yes', 'Yes'),
+(10, 9, 'SpaceShip', 25, 'Yes', 'Yes'),
+(11, 10, 'Fashun-y', 19, 'Yes', 'Yes'),
+(12, 7, 'Koala Express', 28, 'Yes', 'Yes'),
+(13, 2, 'Animal Print', 17, 'Yes', 'Yes');
 
 -- --------------------------------------------------------
 
@@ -145,7 +163,7 @@ CREATE TABLE `users` (
   `username` varchar(8) NOT NULL,
   `password` varchar(8) NOT NULL,
   `accesslevel` int(1) DEFAULT '0',
-  `user_active` varchar(1) NOT NULL DEFAULT 'Y'
+  `user_active` set('Yes','No') NOT NULL DEFAULT 'Yes'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -153,11 +171,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_name`, `username`, `password`, `accesslevel`, `user_active`) VALUES
-(2, 'Mike  Cobra', 'Mcobra', '123456', 0, 'Y'),
-(5, 'Elia Bakker', 'ebak', '1254863', 0, 'Y'),
-(6, 'Baas', 'admin', '0123456', 1, 'Y'),
-(7, 'Edward Mission', 'emission', '0258963', 0, 'Y'),
-(8, 'Jessica Rabbit', 'jrabbit', '789456', 0, 'Y');
+(2, 'Mike  Cobra', 'Mcobra', '123456', 0, 'Yes'),
+(5, 'Elia Bakker', 'ebak', '1254863', 0, 'Yes'),
+(6, 'Baas', 'admin', '0123456', 1, 'Yes'),
+(7, 'Edward Mission', 'emission', '0258963', 0, 'Yes'),
+(8, 'Jessica Rabbit', 'jrabbit', '789456', 0, 'Yes'),
+(9, 'Mo Albert', 'malber', '4567895', 0, 'Yes'),
+(10, 'Samantha Hust', 'shust', '78995565', 0, 'Yes');
 
 -- --------------------------------------------------------
 
@@ -242,7 +262,7 @@ ALTER TABLE `zone`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `category_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `color`
 --
@@ -257,12 +277,12 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT for table `logfile`
 --
 ALTER TABLE `logfile`
-  MODIFY `attempt_id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `attempt_id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `stores`
 --
 ALTER TABLE `stores`
-  MODIFY `store_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `store_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `text`
 --
@@ -272,7 +292,7 @@ ALTER TABLE `text`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `user_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `zone`
 --
