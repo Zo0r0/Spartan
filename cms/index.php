@@ -40,7 +40,7 @@ session_start();
                 <a href="" data-toggle="dropdown"><i class="fa fa-gears"></i></a>
                 <ul class="dropdown-menu">
                     <li><a class="" href="">Instellingen</a></li>
-                    <li><a class="" href="">Uitloggen</a></li>
+                    <li><a class="" onclick="logout();">Uitloggen</a></li>
                 </ul>
               </li>
           </ul>

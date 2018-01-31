@@ -31,6 +31,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <link rel="stylesheet" href="../css/cmsMain.css">
   <link rel="stylesheet" href="../css/_all-skins.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
 </head>
 
 <body class="hold-transition skin-red sidebar-mini">
@@ -56,7 +57,7 @@
                 <a href="" data-toggle="dropdown"><i class="fa fa-gears"></i></a>
                 <ul class="dropdown-menu">
                     <li><a class="" href="">Instellingen</a></li>
-                    <li><a class="" href="">Uitloggen</a></li>
+                    <li><a class="" onclick="">Uitloggen</a></li>
                 </ul>
               </li>
           </ul>
@@ -72,7 +73,7 @@
 
           <li><a href="index.php"><i class="ion ion-clipboard"></i> <span>Dashboard</span></a></li>
 
-          <li class="treeview">
+          <li class="treeview active">
             <a href="">
               <i class="fa fa-shopping-cart active"></i> <span>Webstores</span>
               <span class="pull-right-container">
@@ -80,7 +81,7 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="beheer.php"><i class="active fa fa-circle-o "></i>Beheerders</a></li>
+              <li class="active"><a href="beheer.php"><i class="fa fa-circle-o "></i>Beheerders</a></li>
               <li><a href="winkels.php"><i class="fa fa-circle-o"></i>Winkels</a></li>
               <li><a href="cat.php"><i class="fa fa-circle-o"></i>Categorieën</a></li>
             </ul>
@@ -137,6 +138,7 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-body">
+                    <h3>Geactiveerde Beheerders</h3>
                   <table id="users" class="table table-bordered table-hover">
                     <thead>
                         <tr>
@@ -151,7 +153,7 @@
                         <?php
                         $sql_query = "SELECT * FROM users WHERE accesslevel = '0' AND user_active = 'Y'";
                         $result = $conn->query($sql_query);
-                        
+
                             while ($row = mysqli_fetch_assoc($result)) {
                                 $id =$row['user_id'];
                                 $name = $row['user_name'];
@@ -164,8 +166,53 @@
                             <td><?php echo $username; ?></td>
                             <td><?php echo $password; ?></td>
                             <td>
+                                <button type="button" name="view" title="Bezichtigen"  onclick="location.href='api/klantwinkels.php?id=<?php echo $id;?>'" style="color:orange ; margin-right: 20px; background-color:transparent; border: 0px;"> <i class="fa fa-book"></i></button>
                                 <button type="button" name="edit" title="Bewerken" onclick="" style="color: blue; margin-right: 20px; background-color:transparent; border: 0px;"><i class="fa fa-pencil"></i></button>
-                                <button type="button" name="delete" title="Verwijderen"  onclick="userdelete('<?php echo $id;?>')" style="color: red; background-color:transparent; border: 0px;"> <i class="fa fa-trash"></i></button>
+                                <button type="button" name="delete" title="Verwijderen"  onclick="userdeactivate('<?php echo $id;?>')" style="color: red; background-color:transparent; border: 0px;"> <i class="fa fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+              <div class="box">
+                <div class="box-body">
+                    <h3>Gedeactiveerde Beheerders</h3>
+                  <table id="users_inactive" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Naam</th>
+                          <th>Usernaam</th>
+                          <th>Wachtwoord</th>
+                          <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $sql_query = "SELECT * FROM users WHERE accesslevel = '0' AND user_active = 'N'";
+                        $result = $conn->query($sql_query);
+
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $id =$row['user_id'];
+                                $name = $row['user_name'];
+                                $username= $row['username'];
+                                $password = $row['password'];
+                        ?>
+                        <tr>
+                            <td><?php echo $id; ?></td>
+                            <td><?php echo $name; ?></td>
+                            <td><?php echo $username; ?></td>
+                            <td><?php echo $password; ?></td>
+                            <td>
+                                <button type="button" name="view" title="Bezichtigen"  onclick="location.href='api/klantwinkels.php?id=<?php echo $id;?>';" style="color:orange ; margin-right: 20px; background-color:transparent; border: 0px;"> <i class="fa fa-book"></i></button>
+                                <button type="button" name="edit" title="Bewerken" onclick="" style="color: blue; margin-right: 20px; background-color:transparent; border: 0px;"><i class="fa fa-pencil"></i></button>
+                                <button type="button" name="activate" title="Activeren"  onclick="useractivate('<?php echo $id;?>')" style="color: green; background-color:transparent; border: 0px;"> <i class="fa fa-check"></i></button>
                             </td>
                         </tr>
                         <?php } ?>
@@ -234,11 +281,20 @@
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="crossorigin="anonymous"></script>
   <script src="../js/jquery-ui.js"></script>
   <script src="../js/bootstrap.js"></script>
-  <script src="../js/bootstrap-datepicker.min.js"></script>
   <script src="../js/jquery.slimscroll.min.js"></script>
   <script src="../js/fastclick.js"></script>
   <script src="../js/cmsMain.js"></script>
   <script type="text/javascript" src="../vendor/sweetalert2/sweetalert2.js"></script>
-
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+      $('#users, #users_inactive').DataTable({
+          "paging":   true,
+          "pagingType": "numbers",
+          "ordering": false,
+          "info":     false
+      });
+  } );
+  </script>
 </body>
 </html>

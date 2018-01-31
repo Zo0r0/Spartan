@@ -1127,28 +1127,27 @@ throw new Error('AdminLTE requires jQuery')
 }(jQuery)
 
 //SweetAlert
-
-function userdelete(id){
+function logout(){
 swal({
-  title: 'Ben je zeker dat je dit wilt verwijderen?',
+  title: 'Ben je zeker dat je dit wilt uitloggen?',
   type: 'warning',
   allowOutsideClick: false,
   showCancelButton: true,
   confirmButtonColor: '#3085d6',
   cancelButtonColor: '#d33',
-  confirmButtonText: 'Verwijderen',
-  cancelButtonText: 'Annuleren',
+  confirmButtonText: 'Ja',
+  cancelButtonText: 'Nee',
   confirmButtonClass: 'btn btn-primary',
   cancelButtonClass: 'btn btn-danger',
-  buttonsStyling: false
+  buttonsStyling: true
 }).then(function () {
 
   swal(
-    'Verwijderd!',
-    'Deze informatie word verwijderd',
-    'success',
+      'uitloggen!',
+      'U word uitgelogt.',
+      'success',
   )
-  setTimeout(function () {window.location.href = '../cms/delete.php?userdeleted=1&id='+id}, 2000);
+  setTimeout(function () {window.location.href = '../cms/api/api.php?logout=1'}, 2000);
 
 }, function (dismiss) {
   // dismiss can be 'cancel', 'overlay',
@@ -1156,7 +1155,7 @@ swal({
   if (dismiss === 'cancel') {
     swal(
       'Geannuleerd',
-      'Jouw record is niet verwijdert!',
+      'U blijft ingelogt',
       'error'
 
     )
@@ -1164,27 +1163,27 @@ swal({
 })
 }
 
-function storedelete(id){
+function userdeactivate(id){
 swal({
-  title: 'Ben je zeker dat je dit wilt verwijderen?',
+  title: 'Ben je zeker dat je dit wilt deactiveren?',
   type: 'warning',
   allowOutsideClick: false,
   showCancelButton: true,
   confirmButtonColor: '#3085d6',
   cancelButtonColor: '#d33',
-  confirmButtonText: 'Verwijderen',
-  cancelButtonText: 'Annuleren',
+  confirmButtonText: 'Ja',
+  cancelButtonText: 'Nee',
   confirmButtonClass: 'btn btn-primary',
   cancelButtonClass: 'btn btn-danger',
-  buttonsStyling: false
+  buttonsStyling: true
 }).then(function () {
 
   swal(
-    'Verwijderd!',
-    'Deze informatie word verwijderd',
+    'Deactivatie!',
+    'Deze beheerder word gedeactiveerd',
     'success',
   )
-  setTimeout(function () {window.location.href = '../cms/delete.php?storedeleted=1&id='+id}, 2000);
+  setTimeout(function () {window.location.href = '../cms/api/api.php?userdeactivate=1&id='+id}, 2000);
 
 }, function (dismiss) {
   // dismiss can be 'cancel', 'overlay',
@@ -1192,7 +1191,78 @@ swal({
   if (dismiss === 'cancel') {
     swal(
       'Geannuleerd',
-      'Jouw record is niet verwijdert!',
+      'Deze beheerder is niet gedeactiveerd!',
+      'error'
+
+    )
+  }
+})
+}
+
+function storedeactivate(id){
+swal({
+  title: 'Ben je zeker dat je dit wilt deactiveren?',
+  type: 'warning',
+  allowOutsideClick: false,
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Ja',
+  cancelButtonText: 'Nee',
+  confirmButtonClass: 'btn btn-primary',
+  cancelButtonClass: 'btn btn-danger',
+  buttonsStyling: true
+}).then(function () {
+
+  swal(
+      'Deactivatie!',
+      'Deze winkel word gedeactiveerd',
+      'success',
+  )
+  setTimeout(function () {window.location.href = '../cms/api/api.php?storedeactivate=1&id='+id}, 2000);
+
+}, function (dismiss) {
+  // dismiss can be 'cancel', 'overlay',
+  // 'close', and 'timer'
+  if (dismiss === 'cancel') {
+    swal(
+      'Geannuleerd',
+      'Deze winkel is niet gedeactiveerd!',
+      'error'
+
+    )
+  }
+})
+}
+function useractivate(id){
+swal({
+  title: 'Ben je zeker dat je dit wilt activeren?',
+  type: 'warning',
+  allowOutsideClick: false,
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Ja',
+  cancelButtonText: 'Nee',
+  confirmButtonClass: 'btn btn-primary',
+  cancelButtonClass: 'btn btn-danger',
+  buttonsStyling: true
+}).then(function () {
+
+  swal(
+      'Activatie!',
+      'Deze beheerder word geactiveerd',
+      'success',
+  )
+  setTimeout(function () {window.location.href = '../cms/api/api.php?restoreuser=1&id='+id}, 2000);
+
+}, function (dismiss) {
+  // dismiss can be 'cancel', 'overlay',
+  // 'close', and 'timer'
+  if (dismiss === 'cancel') {
+    swal(
+      'Geannuleerd',
+      'Deze winkel is niet geactiveerd!',
       'error'
 
     )

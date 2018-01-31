@@ -12,16 +12,29 @@
       $result = $conn->query($sql);
 
 	  if (!$row = mysqli_fetch_assoc($result)){
+		  $username = $_POST['username'];
+		  $sql1 = "INSERT INTO log(attempt,username,success) VALUES ('login','$username','No')";
+
+		  $result1 = $conn->query($sql1);
+
   		echo 'Let Op!';
   	} else{
 		  if($row['accesslevel'] == "0") {
 	 		 $_SESSION['id']= $row['user_id'];
 	 		 $_SESSION['user_name']= $row['user_name'];
+
+			$sql2 = "INSERT INTO log(attempt,username,success) VALUES ('login','$_SESSION['user_name']','Yes')";
+   		  	$result2 = $conn->query($sql2);
+
 	 			 header('Location:../cms/index1.php');
 	 	 }
 	 	 else if($row['accesslevel'] == "1"){
 			$_SESSION['id']= $row['user_id'];
 			$_SESSION['user_name']= $row['user_name'];
+
+			$sql3 = "INSERT INTO log(attempt,username,success) VALUES ('login','$_SESSION['user_name']','Yes')";
+   		  	$result3 = $conn->query($sql3);
+
 				header('Location:../cms/index.php');
 		}else{
 			echo "Iets is niet goed";

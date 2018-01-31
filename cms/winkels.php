@@ -71,7 +71,7 @@
 
           <li><a href="index.php"><i class="ion ion-clipboard"></i> <span>Dashboard</span></a></li>
 
-          <li class="treeview">
+          <li class="treeview active">
             <a href="">
               <i class="fa fa-shopping-cart active"></i> <span>Webstores</span>
               <span class="pull-right-container">
@@ -80,7 +80,7 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="beheer.php"><i class=" fa fa-circle-o "></i>Beheerders</a></li>
-              <li><a href="winkels.php"><i class="active fa fa-circle-o"></i>Winkels</a></li>
+              <li class="active"><a href="winkels.php"><i class="fa fa-circle-o"></i>Winkels</a></li>
               <li><a href="cat.php"><i class="fa fa-circle-o"></i>Categorieën</a></li>
             </ul>
           </li>
@@ -135,7 +135,7 @@
             <?php
             $sql_query = "SELECT store_id,user_name, store_name, cat_name, user_active FROM stores INNER JOIN users ON stores.owner_id = users.user_id INNER JOIN category ON stores.category_id = category.category_id WHERE users.user_active ='Y' AND stores.store_active ='Y'";
             $result1 = $conn->query($sql_query);
-            
+
                 while ($row = mysqli_fetch_assoc($result1)) {
                     $id =$row['store_id'];
                     $owner = $row['user_name'];
@@ -149,7 +149,32 @@
                             <h1><?php echo $store_name; ?></h1>
                             <h4>Owner: <?php echo $owner; ?></h4>
                             <p>Category: <?php echo $category; ?></p>
-                            <button type="button" name="button" class="btn btn-danger" onclick="storedelete('<?php echo $id;?>')">Verwijderen</button>
+                            <button type="button" name="button" class="btn btn-danger" onclick="storedeactivate('<?php echo $id;?>')">Deactiveren</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php } ?>
+        </div>
+        <div class="row">
+            <?php
+            $sql_query = "SELECT store_id,user_name, store_name, cat_name, user_active FROM stores INNER JOIN users ON stores.owner_id = users.user_id INNER JOIN category ON stores.category_id = category.category_id WHERE users.user_active ='Y' AND stores.store_active ='N'";
+            $result1 = $conn->query($sql_query);
+
+                while ($row = mysqli_fetch_assoc($result1)) {
+                    $id =$row['store_id'];
+                    $owner = $row['user_name'];
+                    $store_name= $row['store_name'];
+                    $category = $row['cat_name'];
+            ?>
+            <div class="col-xs-3">
+                <div class="store_frame_deactive">
+                    <div class="store_content">
+                        <div value="<?php echo $id; ?>" class="col-md-12">
+                            <h1><?php echo $store_name; ?></h1>
+                            <h4>Owner: <?php echo $owner; ?></h4>
+                            <p>Category: <?php echo $category; ?></p>
+                            <button type="button" name="button" class="btn btn-success" onclick="storeactivate('<?php echo $id;?>')">Activeren</button>
                         </div>
                     </div>
                 </div>

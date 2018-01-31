@@ -71,7 +71,7 @@
 
           <li><a href="index.php"><i class="ion ion-clipboard"></i> <span>Dashboard</span></a></li>
 
-          <li class="treeview">
+          <li class="treeview active">
             <a href="">
               <i class="fa fa-shopping-cart active"></i> <span>Webstores</span>
               <span class="pull-right-container">
@@ -81,7 +81,7 @@
             <ul class="treeview-menu">
               <li><a href="beheer.php"><i class=" fa fa-circle-o "></i>Beheerders</a></li>
               <li><a href="winkels.php"><i class=" fa fa-circle-o"></i>Winkels</a></li>
-              <li><a href="cat.php"><i class="active fa fa-circle-o"></i>Categorieën</a></li>
+              <li class="active"><a href="cat.php"><i class="fa fa-circle-o"></i>Categorieën</a></li>
             </ul>
           </li>
 
