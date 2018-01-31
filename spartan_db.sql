@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 29, 2018 at 10:14 PM
+-- Generation Time: Jan 31, 2018 at 11:20 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -79,6 +79,27 @@ INSERT INTO `images` (`image_id`, `image_name`, `image_size`, `image_type`, `ima
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `logfile`
+--
+
+CREATE TABLE `logfile` (
+  `attempt_id` int(250) NOT NULL,
+  `attempt` set('login','logout') NOT NULL,
+  `username` varchar(40) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `success` set('Yes','No') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `logfile`
+--
+
+INSERT INTO `logfile` (`attempt_id`, `attempt`, `username`, `timestamp`, `success`) VALUES
+(1, 'login', 'admin', '2018-01-31 10:17:43', 'Yes');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `stores`
 --
 
@@ -96,8 +117,9 @@ CREATE TABLE `stores` (
 
 INSERT INTO `stores` (`store_id`, `owner_id`, `store_name`, `category_id`, `store_active`) VALUES
 (4, 5, 'UltraStore', 2, 'Y'),
-(5, 2, 'MagicTech', 3, 'Y'),
-(6, 7, 'SportyMan', 5, 'Y');
+(5, 2, 'MagicTech', 3, 'N'),
+(6, 7, 'SportyMan', 5, 'Y'),
+(7, 8, 'Mrs Rabbit', 4, 'Y');
 
 -- --------------------------------------------------------
 
@@ -131,10 +153,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_name`, `username`, `password`, `accesslevel`, `user_active`) VALUES
-(2, 'Mike  Cobra', 'Mcobra', '123456', 0, 'N'),
+(2, 'Mike  Cobra', 'Mcobra', '123456', 0, 'Y'),
 (5, 'Elia Bakker', 'ebak', '1254863', 0, 'Y'),
 (6, 'Baas', 'admin', '0123456', 1, 'Y'),
-(7, 'Edward Mission', 'emission', '0258963', 0, 'Y');
+(7, 'Edward Mission', 'emission', '0258963', 0, 'Y'),
+(8, 'Jessica Rabbit', 'jrabbit', '789456', 0, 'Y');
 
 -- --------------------------------------------------------
 
@@ -177,6 +200,12 @@ ALTER TABLE `color`
 ALTER TABLE `images`
   ADD PRIMARY KEY (`image_id`),
   ADD KEY `zone_id` (`zone_id`);
+
+--
+-- Indexes for table `logfile`
+--
+ALTER TABLE `logfile`
+  ADD PRIMARY KEY (`attempt_id`);
 
 --
 -- Indexes for table `stores`
@@ -225,10 +254,15 @@ ALTER TABLE `color`
 ALTER TABLE `images`
   MODIFY `image_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
+-- AUTO_INCREMENT for table `logfile`
+--
+ALTER TABLE `logfile`
+  MODIFY `attempt_id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `stores`
 --
 ALTER TABLE `stores`
-  MODIFY `store_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `store_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `text`
 --
@@ -238,7 +272,7 @@ ALTER TABLE `text`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `user_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `zone`
 --
