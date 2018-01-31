@@ -2,19 +2,44 @@
     include '../config.php';
     session_start();
 
-    if (isset($_POST['submit'])){
+    if (isset($_POST['submit']) ){
 
       $cat_name = $_POST['cat_name'];
-      $sql = "INSERT INTO category(cat_name) VALUES ('$cat_name')";
+      $file = $_FILES['img'];
+      // print_r($file);
+      $fileName = $_FILES['img']['name'];
+      $fileTmp = $_FILES['img']['tmp_name'];
+      $fileSize = $_FILES['img']['size'];
+      $fileError = $_FILES['img']['error'];
+      $fileType = $_FILES['img']['type'];
 
-      $result = $conn->query($sql);
+      $fileExt = explode('.', $fileName);
+      $fileActualExt = strtolower(end($fileExt));
 
-     header("Location: cat.php");
+      $allowed = array('jpg', 'jpeg', 'png');
+
+      if (in_array($fileActualExt, $allowed)) {
+        if ($fileError === 0) {
+          if ($fileSize < 1000000) {
+              $fileNameNew = rand(100,400).".".$fileActualExt;
+              $fileDestention = '../img/cat/'.$fileNameNew;
+
+              move_uploaded_file($fileTmp, $fileDestention);
+
+              $sql = "INSERT INTO category(cat_name, img_path) VALUES ('$cat_name', '$fileDestention')";
+
+              $result = $conn->query($sql);
+
+             header("Location: cat.php");
+          }
+      }
+  }
+
+
+
+
 
     }
-
-    $sql_query = "SELECT * FROM category";
-    $result = $conn->query($sql_query);
 
  ?>
 <!DOCTYPE html>
@@ -55,7 +80,7 @@
                 <a href="" data-toggle="dropdown"><i class="fa fa-gears"></i></a>
                 <ul class="dropdown-menu">
                     <li><a class="" href="">Instellingen</a></li>
-                    <li><a class="" href="">Uitloggen</a></li>
+                    <li> <button type="button" onclick="logout();" name="button" style="background-color:transparent; border: 0px;">Uitloggen</button> </li>
                 </ul>
               </li>
           </ul>
@@ -105,7 +130,9 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href=""><i class="fa fa-circle-o"></i>Beheren</a></li>
+                <li><a href="cat_content.php"><i class="fa fa-circle-o"></i>Categorieën</a></li>
+                <li><a href=""><i class="fa fa-circle-o"></i>Populaire Winkels Vandaag</a></li>
+                <li><a href=""><i class="fa fa-circle-o"></i>Deals</a></li>
             </ul>
           </li>
 
@@ -133,24 +160,27 @@
         </div>
         <div class="row">
             <?php
+            $sql_query = "SELECT * FROM category  ORDER BY category.cat_name ASC";
+            $result = $conn->query($sql_query);
+
                 while ($row = mysqli_fetch_assoc($result)) {
                     $id = $row['category_id'];
                     $cat =$row['cat_name'];
             ?>
-            <div class="col-xs-3">
+            <div class="col-xs-2">
                 <div value="<?php echo $id; ?>" class="cat_frame">
                     <div class="cat_content">
-                        <div class="col-md-9">
-                            <h1><?php echo $cat; ?></h1>
-                        </div>
-                        <div class="col-md-3">
-                            <button type="button" name="delete" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                        </div>
+                        <center>
+                            <div class="col-md-12">
+                                <h3><?php echo $cat; ?></h3>
+                            </div>
+                        </center>
                     </div>
                 </div>
             </div>
             <?php } ?>
         </div>
+
     </section>
     <!-- /.Content -->
   </div>
@@ -169,13 +199,20 @@
                   <h2 class="modal-title">Category Toevoegen</h2>
               </div>
               <div class="modal-body">
-                  <form class="" method="post">
+                  <form class="" action="<?=$_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
                       <div class="row">
-                          <div class="col-md-12">
+                          <div class="col-md-6">
                               <div class="form-group">
                                 <label >Category</label>
                                 <input type="text" class="form-control" name="cat_name"  placeholder="">
                               </div>
+                              <div class="form-group">
+                                <label >Category Image</label>
+                                <input type="file" class="form-control" name="img"  placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-md-6">
+
                           </div>
                       </div>
                       <input type="submit" name="submit" class="btn btn-primary" value="Voeg Toe">

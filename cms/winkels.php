@@ -55,7 +55,7 @@
                 <a href="" data-toggle="dropdown"><i class="fa fa-gears"></i></a>
                 <ul class="dropdown-menu">
                     <li><a class="" href="">Instellingen</a></li>
-                    <li><a class="" href="">Uitloggen</a></li>
+                    <li> <button type="button" onclick="logout();" name="button" style="background-color:transparent; border: 0px;">Uitloggen</button> </li>
                 </ul>
               </li>
           </ul>
@@ -105,7 +105,9 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href=""><i class="fa fa-circle-o"></i>Beheren</a></li>
+                <li><a href="cat_content.php"><i class="fa fa-circle-o"></i>Categorieën</a></li>
+                <li><a href=""><i class="fa fa-circle-o"></i>Populaire Winkels Vandaag</a></li>
+                <li><a href=""><i class="fa fa-circle-o"></i>Deals</a></li>
             </ul>
           </li>
 
@@ -133,7 +135,7 @@
         </div>
         <div class="row">
             <?php
-            $sql_query = "SELECT store_id,user_name, store_name, cat_name, user_active FROM stores INNER JOIN users ON stores.owner_id = users.user_id INNER JOIN category ON stores.category_id = category.category_id WHERE users.user_active ='Y' AND stores.store_active ='Y'";
+            $sql_query = "SELECT store_id,user_name, store_name, cat_name, user_active FROM stores INNER JOIN users ON stores.owner_id = users.user_id INNER JOIN category ON stores.category_id = category.category_id WHERE users.user_active ='Yes' AND stores.store_active ='Yes'";
             $result1 = $conn->query($sql_query);
 
                 while ($row = mysqli_fetch_assoc($result1)) {
@@ -158,7 +160,7 @@
         </div>
         <div class="row">
             <?php
-            $sql_query = "SELECT store_id,user_name, store_name, cat_name, user_active FROM stores INNER JOIN users ON stores.owner_id = users.user_id INNER JOIN category ON stores.category_id = category.category_id WHERE users.user_active ='Y' AND stores.store_active ='N'";
+            $sql_query = "SELECT store_id,user_name, store_name, cat_name, user_active FROM stores INNER JOIN users ON stores.owner_id = users.user_id INNER JOIN category ON stores.category_id = category.category_id WHERE users.user_active ='Yes' AND stores.store_active ='No'";
             $result1 = $conn->query($sql_query);
 
                 while ($row = mysqli_fetch_assoc($result1)) {
@@ -208,7 +210,7 @@
 
                                 <select class="form-control" name="owner_id">
                                     <?php
-                                        $sql1_query = "SELECT * FROM users WHERE accesslevel='0' AND user_active='Y'";
+                                        $sql1_query = "SELECT * FROM users WHERE accesslevel='0' AND user_active='Yes'";
 
                                         $result2 = $conn->query($sql1_query);
 

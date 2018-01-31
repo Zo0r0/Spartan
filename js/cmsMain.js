@@ -1143,7 +1143,7 @@ swal({
 }).then(function () {
 
   swal(
-      'uitloggen!',
+      'Uitloggen!',
       'U word uitgelogt.',
       'success',
   )

@@ -1,6 +1,6 @@
 <?php
-include '../config.php';
-session_start();
+    include '../config.php';
+    session_start();
 
  ?>
 <!DOCTYPE html>
@@ -8,9 +8,9 @@ session_start();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SpartanCMS | Dashboard</title>
-    <link rel="stylesheet" href="../vendor/datatables/datatables.css">
-    <link rel="stylesheet" href="../vendor/sweetalert2/sweetalert2.css">
+  <title>SpartanCMS | Content</title>
+  <link rel="stylesheet" href="../vendor/datatables/datatables.css">
+  <link rel="stylesheet" href="../vendor/sweetalert2/sweetalert2.css">
   <link rel="stylesheet" href="../css/bootstrap.css">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -56,11 +56,11 @@ session_start();
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">NAVIGATIE</li>
 
-          <li><a href="index.php"><i class="active ion ion-clipboard"></i> <span>Dashboard</span></a></li>
+          <li><a href="index.php"><i class="ion ion-clipboard"></i> <span>Dashboard</span></a></li>
 
-          <li class="treeview">
+          <li class="treeview ">
             <a href="">
-              <i class="fa fa-shopping-cart"></i> <span>Webstores</span>
+              <i class="fa fa-shopping-cart active"></i> <span>Webstores</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -84,7 +84,7 @@ session_start();
             </ul>
           </li>
 
-          <li class="treeview">
+          <li class="treeview active">
             <a href="">
               <i class="fa fa-comments"></i> <span>Content</span>
               <span class="pull-right-container">
@@ -92,9 +92,9 @@ session_start();
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="cat_content.php"><i class="fa fa-circle-o"></i>Categorieën</a></li>
-              <li><a href=""><i class="fa fa-circle-o"></i>Populaire Winkels Vandaag</a></li>
-              <li><a href=""><i class="fa fa-circle-o"></i>Deals</a></li>
+                <li class="active"><a href="cat_content.php"><i class="fa fa-circle-o"></i>Categorieën</a></li>
+                <li><a href="pwv.php"><i class="fa fa-circle-o"></i>Populaire Winkels Vandaag</a></li>
+                <li><a href="deals.php"><i class="fa fa-circle-o"></i>Deals</a></li>
             </ul>
           </li>
 
@@ -106,98 +106,99 @@ session_start();
   <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        Dashboard
-        <small>Controlepaneel</small>
+        Content
+        <small>Categorieën paneel</small>
       </h1>
     </section>
 
     <!-- Main content -->
     <section class="content">
         <div class="row">
-          <div class="col-lg-4 col-xs-6">
-            <div class="small-box bg-aqua">
-              <div class="inner">
-                <h3>Webstores</h3>
-              </div>
-              <div class="icon">
-                <i class="fa fa-shopping-cart"></i>
-              </div>
-              <a href="beheer.php" class="small-box-footer">Gaan <i class="fa fa-arrow-circle-right"></i></a>
+          <div class="col-lg-2 col-xs-3">
+            <div class="box-nb">
+                <button type="button" name="button" class="add btn btn-danger" data-toggle="modal" data-target="#addUser"><i class="fa fa-plus"></i></button>
             </div>
           </div>
-          <!-- ./col -->
-          <div class="col-lg-4 col-xs-6">
-            <div class="small-box bg-green">
-              <div class="inner">
-                <h3>Lay-out</h3>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-xs-12">
+              <div class="box">
+                <div class="box-body">
+                    <h3>Geselecteerde Categorieën</h3>
+                  <table id="cat_content_active" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Category</th>
+                          <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $sql_query = "SELECT * FROM category WHERE show_cat='Yes'";
+                        $result = $conn->query($sql_query);
+
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $cat_id =$row['category_id'];
+                                $cat_name = $row['cat_name'];
+                        ?>
+                        <tr>
+                            <td><?php echo $cat_id; ?></td>
+                            <td><?php echo $cat_name; ?></td>
+                            <td>
+                                <button type="button" name="deselect" title="Deselecteren"  onclick="catdeselect('<?php echo $cat_id;?>')" style="color: red; background-color:transparent; border: 0px;"> <i class="fa fa-times"></i></button>
+                            </td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                  </table>
+                </div>
               </div>
-              <div class="icon">
-                <i class="ion ion-crop"></i>
-              </div>
-              <a href="" class="small-box-footer">Gaan <i class="fa fa-arrow-circle-right"></i></a>
             </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-4 col-xs-6">
-            <div class="small-box bg-yellow">
-              <div class="inner">
-                <h3>Content</h3>
-              </div>
-              <div class="icon">
-                <i class="fa fa-comments"></i>
-              </div>
-              <a href="" class="small-box-footer">Gaan <i class="fa fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
         </div>
         <div class="row">
-            <div class="col-lg-4 col-xs-6">
-                <div class="box">
-                  <div class="box-body">
-                      <h3>Log</h3>
-                    <table id="log" class="table table-bordered table-hover">
-                      <thead>
-                          <tr>
-                            <th>#</th>
-                            <th>Type</th>
-                            <th>Usernaam</th>
-                            <th>Timestamp</th>
-                            <th>Success</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <?php
-                          $sql_query = "SELECT * FROM logfile";
-                          $result = $conn->query($sql_query);
+            <div class="col-xs-12">
+              <div class="box">
+                <div class="box-body">
+                    <h3>Gedeselecteerde Categorieën</h3>
+                  <table id="cat_content_active" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Category</th>
+                          <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $sql_query = "SELECT * FROM category WHERE show_cat='No'";
+                        $result = $conn->query($sql_query);
 
-                              while ($row = mysqli_fetch_assoc($result)) {
-                                  $log_id =$row['attempt_id'];
-                                  $log_type = $row['attempt'];
-                                  $username= $row['username'];
-                                  $timestamp = $row['timestamp'];
-                                  $success = $row['success'];
-                          ?>
-                          <tr>
-                              <td><?php echo $log_id; ?></td>
-                              <td><?php echo $log_type; ?></td>
-                              <td><?php echo $username; ?></td>
-                              <td><?php echo $timestamp; ?></td>
-                              <td><?php echo $success; ?></td>
-                          </tr>
-                          <?php } ?>
-                      </tbody>
-                    </table>
-                  </div>
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $cat_id =$row['category_id'];
+                                $cat_name = $row['cat_name'];
+                        ?>
+                        <tr>
+                            <td><?php echo $cat_id; ?></td>
+                            <td><?php echo $cat_name; ?></td>
+                            <td>
+                                <button type="button" name="select" title="Selecteren"  onclick="catselect('<?php echo $cat_id;?>')" style="color: orange; background-color:transparent; border: 0px;"> <i class="fa fa-check"></i></button>
+                            </td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                  </table>
                 </div>
+              </div>
             </div>
         </div>
+
     </section>
     <!-- /.Content -->
   </div>
 
-
-  <footer class="main-footer">
+   <footer class="main-footer">
     <div class="pull-right hidden-xs">
     </div>
   </footer>
@@ -205,20 +206,11 @@ session_start();
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="crossorigin="anonymous"></script>
   <script src="../js/jquery-ui.js"></script>
   <script src="../js/bootstrap.js"></script>
+  <script src="../js/jquery.slimscroll.min.js"></script>
   <script src="../js/fastclick.js"></script>
   <script src="../js/cmsMain.js"></script>
   <script type="text/javascript" src="../vendor/sweetalert2/sweetalert2.js"></script>
   <script type="text/javascript" src="../vendor/dataTables/datatables.js"></script>
-  <script type="text/javascript">
-  $(document).ready(function() {
-      $('#users, #log').DataTable({
-          "paging":   true,
-          "pagingType": "numbers",
-          "ordering": false,
-          "info":     false
-      });
-  } );
-  </script>
 
 </body>
 </html>
