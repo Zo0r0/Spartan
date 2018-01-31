@@ -1,3 +1,6 @@
+<?php
+include '../config.php';
+ ?>
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -73,81 +76,29 @@
 
 			<div class="wrap-slick2">
 				<div class="slick2">
+					<?php
+		            $sql_query = "SELECT * FROM category WHERE cat_show='Yes'";
+		            $result = $conn->query($sql_query);
 
-					<div class="item-slick2 p-l-15 p-r-15">
+		                while ($row = mysqli_fetch_assoc($result)) {
+		                    $cat_id = $row['category_id'];
+		                    $cat_name =$row['cat_name'];
+							$img_path=$row['img_path'];
+		            ?>
+					<div id="<?php echo $cat_id; ?>" class="item-slick2 p-l-15 p-r-15">
 						<div class="block2">
 							<div class="block2-img wrap-pic-w of-hidden pos-relative">
-								<img src="../img/item-02.jpg" alt="IMG-PRODUCT">
+								<img src="<?php echo $img_path; ?>" alt="<?php echo $cat_name; ?>">
 
-								<div class="block2-overlay trans-0-4">
-
-									<div class="block2-btn-addcart w-size1 trans-0-4">
-
-									</div>
+								<div class="block1-wrapbtn w-size2">
+									<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+										<?php echo $cat_name; ?>
+									</a>
 								</div>
 							</div>
 						</div>
 					</div>
-
-					<div class="item-slick2 p-l-15 p-r-15">
-						<div class="block2">
-							<div class="block2-img wrap-pic-w of-hidden pos-relative">
-								<img src="../img/item-02.jpg" alt="IMG-PRODUCT">
-
-								<div class="block2-overlay trans-0-4">
-
-									<div class="block2-btn-addcart w-size1 trans-0-4">
-
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="item-slick2 p-l-15 p-r-15">
-						<div class="block2">
-							<div class="block2-img wrap-pic-w of-hidden pos-relative">
-								<img src="../img/item-02.jpg" alt="IMG-PRODUCT">
-
-								<div class="block2-overlay trans-0-4">
-
-									<div class="block2-btn-addcart w-size1 trans-0-4">
-
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="item-slick2 p-l-15 p-r-15">
-						<div class="block2">
-							<div class="block2-img wrap-pic-w of-hidden pos-relative">
-								<img src="../img/item-02.jpg" alt="IMG-PRODUCT">
-
-								<div class="block2-overlay trans-0-4">
-
-									<div class="block2-btn-addcart w-size1 trans-0-4">
-
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="item-slick2 p-l-15 p-r-15">
-						<div class="block2">
-							<div class="block2-img wrap-pic-w of-hidden pos-relative">
-								<img src="../img/item-02.jpg" alt="IMG-PRODUCT">
-
-								<div class="block2-overlay trans-0-4">
-
-									<div class="block2-btn-addcart w-size1 trans-0-4">
-
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+				<?php } ?>
 				</div>
 			</div>
 		</div>

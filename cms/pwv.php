@@ -137,7 +137,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        $sql_query = "SELECT store_id,user_name, store_name, cat_name FROM stores INNER JOIN users ON stores.owner_id = users.user_id INNER JOIN category ON stores.category_id = category.category_id WHERE users.user_active ='Yes' AND stores.store_active ='Yes' AND stores.store_show='No'";
+                        $sql_query = "SELECT store_id,user_name, store_name, cat_name FROM stores INNER JOIN users ON stores.owner_id = users.user_id INNER JOIN category ON stores.category_id = category.category_id WHERE users.user_active ='Yes' AND stores.store_active ='Yes' AND stores.store_show='Yes'";
                         $result = $conn->query($sql_query);
 
                             while ($row = mysqli_fetch_assoc($result)) {
@@ -193,7 +193,7 @@
                               <td><?php echo $owner; ?></td>
                               <td><?php echo $category; ?></td>
                               <td>
-                                  <button type="button" name="select" title="Selecteren"  onclick="storeselect('<?php echo $store_id;?>')" style="color: red; background-color:transparent; border: 0px;"> <i class="fa fa-times"></i></button>
+                                  <button type="button" name="select" title="Selecteren"  onclick="storeselect('<?php echo $store_id;?>')" style="color: orange; background-color:transparent; border: 0px;"> <i class="fa fa-check"></i></button>
                               </td>
                           </tr>
                           <?php } ?>

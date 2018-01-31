@@ -106,7 +106,7 @@
             </a>
             <ul class="treeview-menu">
                 <li><a href="cat_content.php"><i class="fa fa-circle-o"></i>Categorieën</a></li>
-                <li><a href=""><i class="fa fa-circle-o"></i>Populaire Winkels Vandaag</a></li>
+                <li><a href="pwv.php"><i class="fa fa-circle-o"></i>Populaire Winkels Vandaag</a></li>
                 <li><a href=""><i class="fa fa-circle-o"></i>Deals</a></li>
             </ul>
           </li>

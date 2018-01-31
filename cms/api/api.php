@@ -1,4 +1,4 @@
-'No'<?php
+<?php
     include '../../config.php';
     session_start();
 // Logout
@@ -42,4 +42,37 @@ if (mysqli_query($conn,$sql)) {
     }
     }
 
+// Selecteren
+if (isset($_GET['catselect'])) {
+    $sql = "UPDATE category SET cat_show = 'Yes' WHERE category_id = '{$_GET['id']}'";
+
+if (mysqli_query($conn,$sql)) {
+  header("Location:../cat_content.php");
+}
+}
+
+if (isset($_GET['storeselect'])) {
+    $sql = "UPDATE stores SET store_show = 'Yes' WHERE store_id = '{$_GET['id']}'";
+
+if (mysqli_query($conn,$sql)) {
+  header("Location:../pwv.php");
+}
+}
+
+// Deselecteren
+if (isset($_GET['catdeselect'])) {
+    $sql = "UPDATE category SET cat_show = 'No' WHERE category_id = '{$_GET['id']}'";
+
+if (mysqli_query($conn,$sql)) {
+  header("Location:../cat_content.php");
+}
+}
+
+if (isset($_GET['storedeselect'])) {
+    $sql = "UPDATE stores SET store_show = 'No' WHERE store_id = '{$_GET['id']}'";
+
+if (mysqli_query($conn,$sql)) {
+  header("Location:../pwv.php");
+}
+}
  ?>

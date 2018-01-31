@@ -114,14 +114,6 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
-          <div class="col-lg-2 col-xs-3">
-            <div class="box-nb">
-                <button type="button" name="button" class="add btn btn-danger" data-toggle="modal" data-target="#addUser"><i class="fa fa-plus"></i></button>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row">
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-body">
@@ -136,7 +128,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        $sql_query = "SELECT * FROM category WHERE show_cat='Yes'";
+                        $sql_query = "SELECT * FROM category WHERE cat_show='Yes'";
                         $result = $conn->query($sql_query);
 
                             while ($row = mysqli_fetch_assoc($result)) {
@@ -172,7 +164,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        $sql_query = "SELECT * FROM category WHERE show_cat='No'";
+                        $sql_query = "SELECT * FROM category WHERE cat_show='No'";
                         $result = $conn->query($sql_query);
 
                             while ($row = mysqli_fetch_assoc($result)) {

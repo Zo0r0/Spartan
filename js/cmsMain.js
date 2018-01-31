@@ -1269,3 +1269,144 @@ swal({
   }
 })
 }
+
+function catdeselect(id){
+swal({
+  title: 'Ben je zeker dat je dit wilt deselecteren?',
+  type: 'warning',
+  allowOutsideClick: false,
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Ja',
+  cancelButtonText: 'Nee',
+  confirmButtonClass: 'btn btn-primary',
+  cancelButtonClass: 'btn btn-danger',
+  buttonsStyling: true
+}).then(function () {
+
+  swal(
+      'Gedeselecteerd!',
+      'Deze categorie word deselecteren',
+      'success',
+  )
+  setTimeout(function () {window.location.href = '../cms/api/api.php?catdeselect=1&id='+id}, 2000);
+
+}, function (dismiss) {
+  // dismiss can be 'cancel', 'overlay',
+  // 'close', and 'timer'
+  if (dismiss === 'cancel') {
+    swal(
+      'Geannuleerd',
+      'Deze categorie is niet gedeselecteren!',
+      'error'
+
+    )
+  }
+})
+}
+function catselect(id){
+swal({
+  title: 'Ben je zeker dat je dit wilt selecteren?',
+  type: 'warning',
+  allowOutsideClick: false,
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Ja',
+  cancelButtonText: 'Nee',
+  confirmButtonClass: 'btn btn-primary',
+  cancelButtonClass: 'btn btn-danger',
+  buttonsStyling: true
+}).then(function () {
+
+  swal(
+      'Geselecteerd!',
+      'Deze categorie word selecteren',
+      'success',
+  )
+  setTimeout(function () {window.location.href = '../cms/api/api.php?catselect=1&id='+id}, 2000);
+
+}, function (dismiss) {
+  // dismiss can be 'cancel', 'overlay',
+  // 'close', and 'timer'
+  if (dismiss === 'cancel') {
+    swal(
+      'Geannuleerd',
+      'Deze categorie is niet geselecteren!',
+      'error'
+
+    )
+  }
+})
+}
+function storedeselect(id){
+swal({
+  title: 'Ben je zeker dat je dit wilt deselecteren?',
+  type: 'warning',
+  allowOutsideClick: false,
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Ja',
+  cancelButtonText: 'Nee',
+  confirmButtonClass: 'btn btn-primary',
+  cancelButtonClass: 'btn btn-danger',
+  buttonsStyling: true
+}).then(function () {
+
+  swal(
+      'Gedeselecteerd!',
+      'Deze winkel word deselecteren',
+      'success',
+  )
+  setTimeout(function () {window.location.href = '../cms/api/api.php?storedeselect=1&id='+id}, 2000);
+
+}, function (dismiss) {
+  // dismiss can be 'cancel', 'overlay',
+  // 'close', and 'timer'
+  if (dismiss === 'cancel') {
+    swal(
+      'Geannuleerd',
+      'Deze winkel is niet gedeselecteren!',
+      'error'
+
+    )
+  }
+})
+}
+function storeselect(id){
+swal({
+  title: 'Ben je zeker dat je dit wilt selecteren?',
+  type: 'warning',
+  allowOutsideClick: false,
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Ja',
+  cancelButtonText: 'Nee',
+  confirmButtonClass: 'btn btn-primary',
+  cancelButtonClass: 'btn btn-danger',
+  buttonsStyling: true
+}).then(function () {
+
+  swal(
+      'Geselecteerd!',
+      'Deze winkel word selecteren',
+      'success',
+  )
+  setTimeout(function () {window.location.href = '../cms/api/api.php?storeselect=1&id='+id}, 2000);
+
+}, function (dismiss) {
+  // dismiss can be 'cancel', 'overlay',
+  // 'close', and 'timer'
+  if (dismiss === 'cancel') {
+    swal(
+      'Geannuleerd',
+      'Deze winkel is niet geselecteren!',
+      'error'
+
+    )
+  }
+})
+}
