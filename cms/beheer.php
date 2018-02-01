@@ -24,6 +24,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>SpartanCMS | Webstores</title>
+  <link rel="stylesheet" href="../vendor/datatables/datatables.css">
   <link rel="stylesheet" href="../vendor/sweetalert2/sweetalert2.css">
   <link rel="stylesheet" href="../css/bootstrap.css">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -31,7 +32,6 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <link rel="stylesheet" href="../css/cmsMain.css">
   <link rel="stylesheet" href="../css/_all-skins.min.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
 </head>
 
 <body class="hold-transition skin-red sidebar-mini">
@@ -57,7 +57,7 @@
                 <a href="" data-toggle="dropdown"><i class="fa fa-gears"></i></a>
                 <ul class="dropdown-menu">
                     <li><a class="" href="">Instellingen</a></li>
-                    <li><a class="" onclick="">Uitloggen</a></li>
+                    <li> <button type="button" onclick="logout();" name="button" style="background-color:transparent; border: 0px;">Uitloggen</button> </li>
                 </ul>
               </li>
           </ul>
@@ -107,7 +107,9 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href=""><i class="fa fa-circle-o"></i>Beheren</a></li>
+                <li><a href="cat_content.php"><i class="fa fa-circle-o"></i>Categorieën</a></li>
+                <li><a href=""><i class="fa fa-circle-o"></i>Populaire Winkels Vandaag</a></li>
+                <li><a href=""><i class="fa fa-circle-o"></i>Deals</a></li>
             </ul>
           </li>
 
@@ -151,7 +153,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        $sql_query = "SELECT * FROM users WHERE accesslevel = '0' AND user_active = 'Y'";
+                        $sql_query = "SELECT * FROM users WHERE accesslevel = '0' AND user_active = 'Yes'";
                         $result = $conn->query($sql_query);
 
                             while ($row = mysqli_fetch_assoc($result)) {
@@ -168,7 +170,7 @@
                             <td>
                                 <button type="button" name="view" title="Bezichtigen"  onclick="location.href='api/klantwinkels.php?id=<?php echo $id;?>'" style="color:orange ; margin-right: 20px; background-color:transparent; border: 0px;"> <i class="fa fa-book"></i></button>
                                 <button type="button" name="edit" title="Bewerken" onclick="" style="color: blue; margin-right: 20px; background-color:transparent; border: 0px;"><i class="fa fa-pencil"></i></button>
-                                <button type="button" name="delete" title="Verwijderen"  onclick="userdeactivate('<?php echo $id;?>')" style="color: red; background-color:transparent; border: 0px;"> <i class="fa fa-trash"></i></button>
+                                <button type="button" name="delete" title="Deactiveren"  onclick="userdeactivate('<?php echo $id;?>')" style="color: red; background-color:transparent; border: 0px;"> <i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                         <?php } ?>
@@ -195,7 +197,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        $sql_query = "SELECT * FROM users WHERE accesslevel = '0' AND user_active = 'N'";
+                        $sql_query = "SELECT * FROM users WHERE accesslevel = '0' AND user_active = 'No'";
                         $result = $conn->query($sql_query);
 
                             while ($row = mysqli_fetch_assoc($result)) {
@@ -285,7 +287,7 @@
   <script src="../js/fastclick.js"></script>
   <script src="../js/cmsMain.js"></script>
   <script type="text/javascript" src="../vendor/sweetalert2/sweetalert2.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="../vendor/dataTables/datatables.js"></script>
   <script type="text/javascript">
   $(document).ready(function() {
       $('#users, #users_inactive').DataTable({

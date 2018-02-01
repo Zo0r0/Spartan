@@ -126,17 +126,17 @@
             <div class="col-md-2">
                 <div class="form-group">
                   <label >Beheerder ID</label>
-                  <input type="text" class="form-control" name="user_id"  value="<?php echo $user_id;?>">
+                  <input type="text" class="form-control" name="user_id"  value="<?php echo $user_id;?>" readonly>
                 </div>
                 <div class="form-group">
                   <label >Beheerder Actief</label>
-                  <input type="text" class="form-control" name="user_active"  value="<?php echo $user_active;?>">
+                  <input type="text" class="form-control" name="user_active"  value="<?php echo $user_active;?>" readonly>
                 </div>
           </div>
           <div class="col-md-2">
               <div class="form-group">
                 <label >Beheerder Naam</label>
-                <input type="text" class="form-control" name="user_name"  value="<?php echo $owner;?>">
+                <input type="text" class="form-control" name="user_name"  value="<?php echo $owner;?>" readonly>
               </div>
           </div>
         </div>
