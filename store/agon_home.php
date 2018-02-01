@@ -21,6 +21,7 @@
 	<link rel="stylesheet" type="text/css" href="../vendor/lightbox2/css/lightbox.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/util.css">
 	<link rel="stylesheet" type="text/css" href="../css/storeMain.css">
+    <link rel="stylesheet" type="text/css" href="../css/my-css.css">
 </head>
 
 <body class="animsition">
@@ -42,7 +43,7 @@
 							</li>
 
 							<li>
-								<a href="winkels.php">Alle Winkels</a>
+								<a href="alle_winkels.php">Alle Winkels</a>
 							</li>
 
 							<li>
@@ -78,7 +79,7 @@
                             <!-- Block2 -->
                             <div class="block2">
                                 <div class="block2-img wrap-pic-w of-hidden pos-relative border_style">
-                                    <img src="images/item-02.jpg" alt="IMG-PRODUCT">
+                                    <img src="../img/item-02.jpg" alt="IMG-PRODUCT">
 
                                     <!--<div class="block2-overlay trans-0-4">-->
                                     <!--<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
@@ -111,7 +112,7 @@
                             <!-- Block2 -->
                             <div class="block2">
                                 <div class="block2-img wrap-pic-w of-hidden pos-relative border_style">
-                                    <img src="images/item-03.jpg" alt="IMG-PRODUCT">
+                                    <img src="../img/item-03.jpg" alt="IMG-PRODUCT">
 
                                     <div class="">
                                         <!--<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
@@ -144,7 +145,7 @@
                             <!-- Block2 -->
                             <div class="block2">
                                 <div class="block2-img wrap-pic-w of-hidden pos-relative border_style">
-                                    <img src="images/item-05.jpg" alt="IMG-PRODUCT">
+                                    <img src="../img/item-05.jpg" alt="IMG-PRODUCT">
 
                                     <div class="">
                                         <!--<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
@@ -177,7 +178,7 @@
                             <!-- Block2 -->
                             <div class="block2">
                                 <div class="block2-img wrap-pic-w of-hidden pos-relative border_style">
-                                    <img src="images/item-07.jpg" alt="IMG-PRODUCT">
+                                    <img src="../img/item-07.jpg" alt="IMG-PRODUCT">
 
                                     <div class="">
                                         <!--<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
@@ -247,7 +248,7 @@
                             <!-- Block2 -->
                             <div class="block2">
                                 <div class="block2-img wrap-pic-w of-hidden pos-relative border_style">
-                                    <img src="images/item-03.jpg" alt="IMG-PRODUCT">
+                                    <img src="../img/item-03.jpg" alt="IMG-PRODUCT">
 
                                     <div class="block2-overlay trans-0-4">
                                         <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
@@ -280,7 +281,7 @@
                             <!-- Block2 -->
                             <div class="block2">
                                 <div class="block2-img wrap-pic-w of-hidden pos-relative border_style">
-                                    <img src="images/item-05.jpg" alt="IMG-PRODUCT">
+                                    <img src="../img/item-05.jpg" alt="IMG-PRODUCT">
 
                                     <div class="block2-overlay trans-0-4">
                                         <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
@@ -313,7 +314,7 @@
                             <!-- Block2 -->
                             <div class="block2">
                                 <div class="block2-img wrap-pic-w of-hidden pos-relative border_style">
-                                    <img src="images/item-07.jpg" alt="IMG-PRODUCT">
+                                    <img src="../img/item-07.jpg" alt="IMG-PRODUCT">
 
                                     <div class="block2-overlay trans-0-4">
                                         <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
@@ -361,12 +362,12 @@
                 </div>
 
                 <div class="row ">
-                    <div class="col-sm-10 col-md-3 p-b-30 m-l-r-auto">
+                    <div class="col-sm-10 col-md-3 p-b-30 m-l-r-auto mar_right">
                         <h3 class="webstore_header">WebStore</h3>
                         <!-- Block3 -->
                         <div class="block3 ">
                             <a href="blog-detail.html " class="block3-img dis-block hov-img-zoom border_style">
-                                <img src="images/blog-01.jpg " alt="IMG-BLOG ">
+                                <img src="../img/blog-01.jpg " alt="IMG-BLOG ">
                             </a>
 
                             <div class="block3-txt p-t-14 ">
@@ -386,12 +387,12 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-10 col-md-3 p-b-30 m-l-r-auto">
+                    <div class="col-sm-10 col-md-3 p-b-30 m-l-r-auto margin_left_right">
                         <h3 class="webstore_header">WebStore</h3>
                         <!-- Block3 -->
                         <div class="block3 ">
                             <a href="blog-detail.html " class="block3-img dis-block hov-img-zoom border_style">
-                                <img src="images/blog-02.jpg " alt="IMG-BLOG ">
+                                <img src="../img/blog-02.jpg " alt="IMG-BLOG ">
                             </a>
 
                             <div class="block3-txt p-t-14 ">
@@ -411,12 +412,12 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-10 col-md-3 p-b-30 m-l-r-auto">
+                    <div class="col-sm-10 col-md-3 p-b-30 m-l-r-auto margin_left_right">
                         <h3 class="webstore_header">WebStore</h3>
                         <!-- Block3 -->
                         <div class="block3 ">
                             <a href="blog-detail.html " class="block3-img dis-block hov-img-zoom border_style">
-                                <img src="images/blog-03.jpg " alt="IMG-BLOG ">
+                                <img src="../img/blog-03.jpg " alt="IMG-BLOG ">
                             </a>
 
                             <div class="block3-txt p-t-14 ">
@@ -453,7 +454,7 @@
                         <!-- Block3 -->
                         <div class="block3 ">
                             <a href="blog-detail.html " class="block3-img dis-block hov-img-zoom border_style">
-                                <img src="images/blog-01.jpg " alt="IMG-BLOG ">
+                                <img src="../img/blog-01.jpg " alt="IMG-BLOG ">
                             </a>
                         </div>
                     </div>
@@ -463,7 +464,7 @@
                             <!-- Block3 -->
                             <div class="block3 ">
                                 <a href="blog-detail.html " class="block3-img dis-block hov-img-zoom deal_style_home border_style">
-                                    <img src="images/blog-02.jpg " alt="IMG-BLOG ">
+                                    <img src="../img/blog-02.jpg " alt="IMG-BLOG ">
                                 </a>
                             </div>
                         </div>
@@ -472,7 +473,7 @@
                             <!-- Block3 -->
                             <div class="block3 ">
                                 <a href="blog-detail.html " class="block3-img dis-block hov-img-zoom deal_style_home border_style">
-                                    <img src="images/blog-03.jpg " alt="IMG-BLOG ">
+                                    <img src="../img/blog-03.jpg " alt="IMG-BLOG ">
                                 </a>
                             </div>
                         </div>
