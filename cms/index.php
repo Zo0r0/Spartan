@@ -41,7 +41,7 @@ session_start();
               <li>
                 <a href="" data-toggle="dropdown"><i class="fa fa-gears"></i></a>
                 <ul class="dropdown-menu">
-                    <li><a class="" href="">Instellingen</a></li>
+                    <li> <button type="button" onclick="location.href='instellingen.php';" name="button" style="background-color:transparent; border: 0px;">Instellingen</button> </li>
                     <li> <button type="button" onclick="logout();" name="button" style="background-color:transparent; border: 0px;">Uitloggen</button> </li>
                 </ul>
               </li>
@@ -93,8 +93,8 @@ session_start();
             </a>
             <ul class="treeview-menu">
               <li><a href="cat_content.php"><i class="fa fa-circle-o"></i>Categorieën</a></li>
-              <li><a href=""><i class="fa fa-circle-o"></i>Populaire Winkels Vandaag</a></li>
-              <li><a href=""><i class="fa fa-circle-o"></i>Deals</a></li>
+              <li><a href="pwv.php"><i class="fa fa-circle-o"></i>Populaire Winkels Vandaag</a></li>
+              <li><a href="deals.php"><i class="fa fa-circle-o"></i>Deals</a></li>
             </ul>
           </li>
 
@@ -146,7 +146,7 @@ session_start();
               <div class="icon">
                 <i class="fa fa-comments"></i>
               </div>
-              <a href="" class="small-box-footer">Gaan <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="cat_content.php" class="small-box-footer">Gaan <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

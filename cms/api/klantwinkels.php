@@ -52,8 +52,8 @@
               <li>
                 <a href="" data-toggle="dropdown"><i class="fa fa-gears"></i></a>
                 <ul class="dropdown-menu">
-                    <li><a class="" href="">Instellingen</a></li>
-                    <li><a class="" href="">Uitloggen</a></li>
+                    <li> <button type="button" onclick="location.href='../instellingen.php';" name="button" style="background-color:transparent; border: 0px;">Instellingen</button> </li>
+                    <li> <button type="button" onclick="logout();" name="button" style="background-color:transparent; border: 0px;">Uitloggen</button> </li>
                 </ul>
               </li>
           </ul>
@@ -103,7 +103,9 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href=""><i class="fa fa-circle-o"></i>Beheren</a></li>
+                <li><a href="../cat_content.php"><i class="fa fa-circle-o"></i>Categorieën</a></li>
+                <li><a href="../pwv.php"><i class="fa fa-circle-o"></i>Populaire Winkels Vandaag</a></li>
+                <li><a href="../deals.php"><i class="fa fa-circle-o"></i>Deals</a></li>
             </ul>
           </li>
 

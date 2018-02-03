@@ -1199,6 +1199,42 @@ swal({
 })
 }
 
+function admindeactivate(id){
+swal({
+  title: 'Ben je zeker dat je dit wilt deactiveren?',
+  type: 'warning',
+  allowOutsideClick: false,
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Ja',
+  cancelButtonText: 'Nee',
+  confirmButtonClass: 'btn btn-primary',
+  cancelButtonClass: 'btn btn-danger',
+  buttonsStyling: true
+}).then(function () {
+
+  swal(
+    'Deactivatie!',
+    'Deze beheerder word gedeactiveerd',
+    'success',
+  )
+  setTimeout(function () {window.location.href = '../cms/api/api.php?admindeactivate=1&id='+id}, 2000);
+
+}, function (dismiss) {
+  // dismiss can be 'cancel', 'overlay',
+  // 'close', and 'timer'
+  if (dismiss === 'cancel') {
+    swal(
+      'Geannuleerd',
+      'Deze beheerder is niet gedeactiveerd!',
+      'error'
+
+    )
+  }
+})
+}
+
 function storedeactivate(id){
 swal({
   title: 'Ben je zeker dat je dit wilt deactiveren?',
@@ -1255,6 +1291,42 @@ swal({
       'success',
   )
   setTimeout(function () {window.location.href = '../cms/api/api.php?restoreuser=1&id='+id}, 2000);
+
+}, function (dismiss) {
+  // dismiss can be 'cancel', 'overlay',
+  // 'close', and 'timer'
+  if (dismiss === 'cancel') {
+    swal(
+      'Geannuleerd',
+      'Deze winkel is niet geactiveerd!',
+      'error'
+
+    )
+  }
+})
+}
+
+function adminactivate(id){
+swal({
+  title: 'Ben je zeker dat je dit wilt activeren?',
+  type: 'warning',
+  allowOutsideClick: false,
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Ja',
+  cancelButtonText: 'Nee',
+  confirmButtonClass: 'btn btn-primary',
+  cancelButtonClass: 'btn btn-danger',
+  buttonsStyling: true
+}).then(function () {
+
+  swal(
+      'Activatie!',
+      'Deze beheerder word geactiveerd',
+      'success',
+  )
+  setTimeout(function () {window.location.href = '../cms/api/api.php?restoreadmin=1&id='+id}, 2000);
 
 }, function (dismiss) {
   // dismiss can be 'cancel', 'overlay',

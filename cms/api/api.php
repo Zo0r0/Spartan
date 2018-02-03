@@ -24,18 +24,33 @@ if (mysqli_query($conn,$sql)) {
 }
 }
 
+if (isset($_GET['restoreadmin'])) {
+    $sql = "UPDATE users SET user_active = 'Yes' WHERE user_id = '{$_GET['id']}'";
+
+if (mysqli_query($conn,$sql)) {
+  header("Location:../instellingen.php");
+}
+}
 
 // Deactivate
     if (isset($_GET['userdeactivate'])) {
-    	$sql = "UPDATE users, stores SET users.user_active = 'No', stores.store_active ='No' WHERE user_id = '{$_GET['id']}' AND owner_id ='{$_GET['id']}'";
+    	$sql = "UPDATE users, stores SET users.user_active = 'No', stores.store_active ='No', stores.store_show ='No' WHERE user_id = '{$_GET['id']}' AND owner_id ='{$_GET['id']}'";
 
     if (mysqli_query($conn,$sql)) {
       header("Location:../beheer.php");
     }
     }
 
+    if (isset($_GET['admindeactivate'])) {
+        $sql = "UPDATE users, stores SET users.user_active = 'No' WHERE user_id = '{$_GET['id']}'";
+
+    if (mysqli_query($conn,$sql)) {
+      header("Location:../instellingen.php");
+    }
+    }
+
     if (isset($_GET['storedeactivate'])) {
-        $sql = "UPDATE stores SET store_active = 'No' WHERE store_id = '{$_GET['id']}'";
+        $sql = "UPDATE stores SET store_active = 'No', store_show='No' WHERE store_id = '{$_GET['id']}'";
 
     if (mysqli_query($conn,$sql)) {
       header("Location:../winkels.php");

@@ -7,14 +7,35 @@
       $owner = $_POST['owner_id'];
       $name = $_POST['name'];
       $categoryid = $_POST['category_id'];
+      // print_r($file);
+      $fileName = $_FILES['img']['name'];
+      $fileTmp = $_FILES['img']['tmp_name'];
+      $fileSize = $_FILES['img']['size'];
+      $fileError = $_FILES['img']['error'];
+      $fileType = $_FILES['img']['type'];
 
-      $sql = "INSERT INTO stores(owner_id,store_name,category_id) VALUES ('$owner','$name','$categoryid')";
+      $fileExt = explode('.', $fileName);
+      $fileActualExt = strtolower(end($fileExt));
 
-      $result = $conn->query($sql);
+      $allowed = array('jpg', 'jpeg', 'png');
 
-     header("Location: winkels.php");
+      if (in_array($fileActualExt, $allowed)) {
+        if ($fileError === 0) {
+          if ($fileSize < 1000000) {
+              $fileNameNew = rand(100,400).".".$fileActualExt;
+              $fileDestention = '../img/cat/'.$fileNameNew;
 
+              move_uploaded_file($fileTmp, $fileDestention);
+
+              $sql = "INSERT INTO stores(owner_id,store_name, store_img_path, category_id) VALUES ('$owner','$name','$fileDestention','$categoryid')";
+
+              $result = $conn->query($sql);
+
+              header("Location: winkels.php");
+            }
+        }
     }
+}
  ?>
 <!DOCTYPE html>
 <html>
@@ -54,7 +75,7 @@
               <li>
                 <a href="" data-toggle="dropdown"><i class="fa fa-gears"></i></a>
                 <ul class="dropdown-menu">
-                    <li><a class="" href="">Instellingen</a></li>
+                    <li> <button type="button" onclick="location.href='instellingen.php';" name="button" style="background-color:transparent; border: 0px;">Instellingen</button> </li>
                     <li> <button type="button" onclick="logout();" name="button" style="background-color:transparent; border: 0px;">Uitloggen</button> </li>
                 </ul>
               </li>
@@ -107,7 +128,7 @@
             <ul class="treeview-menu">
                 <li><a href="cat_content.php"><i class="fa fa-circle-o"></i>Categorieën</a></li>
                 <li><a href="pwv.php"><i class="fa fa-circle-o"></i>Populaire Winkels Vandaag</a></li>
-                <li><a href=""><i class="fa fa-circle-o"></i>Deals</a></li>
+                <li><a href="deals.php"><i class="fa fa-circle-o"></i>Deals</a></li>
             </ul>
           </li>
 
@@ -135,7 +156,7 @@
         </div>
         <div class="row">
             <?php
-            $sql_query = "SELECT store_id,user_name, store_name, cat_name, user_active FROM stores INNER JOIN users ON stores.owner_id = users.user_id INNER JOIN category ON stores.category_id = category.category_id WHERE users.user_active ='Yes' AND stores.store_active ='Yes'";
+            $sql_query = "SELECT store_id,user_name, store_name, cat_name, user_active FROM stores INNER JOIN users ON stores.owner_id = users.user_id INNER JOIN category ON stores.category_id = category.category_id WHERE users.user_active ='Yes' AND stores.store_active ='Yes' ";
             $result1 = $conn->query($sql_query);
 
                 while ($row = mysqli_fetch_assoc($result1)) {
@@ -202,7 +223,7 @@
                   <h2 class="modal-title">Winkel Toevoegen</h2>
               </div>
               <div class="modal-body">
-                  <form class="" method="post">
+                  <form class="" method="post" enctype="multipart/form-data">
                       <div class="row">
                           <div class="col-md-6">
                               <div class="form-group">
@@ -233,7 +254,11 @@
                           </div>
                       </div>
                       <div class="row">
-                          <div class="col-md-12">
+                          <div class="col-md-6">
+                              <label>Winkel Logo</label>
+                              <input type="file" name="img" class="form-control-file">
+                          </div>
+                          <div class="col-md-6">
                               <div class="form-group">
                                 <label >Category</label>
                                 <select class="form-control" name="category_id">

@@ -41,7 +41,7 @@
               <li>
                 <a href="" data-toggle="dropdown"><i class="fa fa-gears"></i></a>
                 <ul class="dropdown-menu">
-                    <li><a class="" href="">Instellingen</a></li>
+                    <li> <button type="button" onclick="location.href='instellingen.php';" name="button" style="background-color:transparent; border: 0px;">Instellingen</button> </li>
                     <li> <button type="button" onclick="logout();" name="button" style="background-color:transparent; border: 0px;">Uitloggen</button> </li>
                 </ul>
               </li>
@@ -94,7 +94,7 @@
             <ul class="treeview-menu">
                 <li><a href="cat_content.php"><i class="fa fa-circle-o"></i>Categorieën</a></li>
                 <li class="active"><a href="pwv.php"><i class="fa fa-circle-o"></i>Populaire Winkels Vandaag</a></li>
-                <li><a href=""><i class="fa fa-circle-o"></i>Deals</a></li>
+                <li><a href="deals.php"><i class="fa fa-circle-o"></i>Deals</a></li>
             </ul>
           </li>
 
@@ -113,14 +113,6 @@
 
     <!-- Main content -->
     <section class="content">
-        <div class="row">
-          <div class="col-lg-2 col-xs-3">
-            <div class="box-nb">
-                <button type="button" name="button" class="add btn btn-danger" data-toggle="modal" data-target="#addUser"><i class="fa fa-plus"></i></button>
-            </div>
-          </div>
-        </div>
-        <br>
         <div class="row">
             <div class="col-xs-12">
               <div class="box">
