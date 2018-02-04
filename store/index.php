@@ -77,7 +77,7 @@ include '../config.php';
 			<div class="wrap-slick2">
 				<div class="slick2">
 					<?php
-		            $sql_query = "SELECT * FROM category WHERE cat_show='Yes'";
+		            $sql_query = "SELECT * FROM category WHERE cat_show='Yes' ORDER BY cat_name ASC";
 		            $result = $conn->query($sql_query);
 
 		                while ($row = mysqli_fetch_assoc($result)) {
@@ -117,7 +117,7 @@ include '../config.php';
                 <div class="container">
                     <div class="row">
                         <?php
-    		            $sql_query = "SELECT * FROM stores WHERE store_show='Yes'";
+    		            $sql_query = "SELECT * FROM stores WHERE store_show='Yes' ORDER BY store_name ASC";
     		            $result = $conn->query($sql_query);
 
     		                while ($row = mysqli_fetch_assoc($result)) {

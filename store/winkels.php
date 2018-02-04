@@ -71,7 +71,7 @@ include '../config.php';
             <div class="container">
                 <div class="row ">
 					<?php
-					$sql_query = "SELECT * FROM stores WHERE store_active='Yes'";
+					$sql_query = "SELECT * FROM stores WHERE store_active='Yes' ORDER BY store_name ASC";
 					$result = $conn->query($sql_query);
 
 						while ($row = mysqli_fetch_assoc($result)) {

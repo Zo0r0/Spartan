@@ -56,7 +56,7 @@ session_start();
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">NAVIGATIE</li>
 
-          <li><a href="index.php"><i class="active ion ion-clipboard"></i> <span>Dashboard</span></a></li>
+          <li class="active"><a href="index.php"><i class="ion ion-clipboard"></i> <span>Dashboard</span></a></li>
 
           <li class="treeview">
             <a href="">
@@ -80,7 +80,7 @@ session_start();
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href=""><i class="fa fa-circle-o"></i>Beheren</a></li>
+              <li><a href="kleuren.php"><i class="fa fa-circle-o"></i>Kleuren</a></li>
             </ul>
           </li>
 
