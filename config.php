@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username	= "root";
 $password	= "";
-$database	= "spartan_db";
+$database	= "spartan";
 
 $conn = new mysqli($servername, $username, $password, $database);
 

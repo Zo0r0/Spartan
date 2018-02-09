@@ -27,7 +27,20 @@ include '../config.php';
 </head>
 
 <body class="animsition">
-
+					<?php
+					if(isset($_GET['cat'])){
+						$cat_id=$_GET['cat'];
+					};
+					
+		            $sql_query = "SELECT * FROM category WHERE category_id=$cat_id";
+		            $result = $conn->query($sql_query);
+					if ($result) {
+						while ($row = mysqli_fetch_assoc($result)) {
+		                    $cat_name =$row['cat_name'];
+							$img_path=$row['img_path'];
+						}
+					}
+		            ?>
 	<header class="header1">
 		<div class="container-menu-header">
 
@@ -64,52 +77,11 @@ include '../config.php';
 		</div>
 
 	</header>
-
-	<section>
-		<div class="container">
-			<div class="sec-title p-b-60">
-				<br>
-				<h3 class="m-text5 t-center">
-					Categorieën
-				</h3>
-			</div>
-
-			<div class="wrap-slick2">
-				<div class="slick2">
-					<?php
-		            $sql_query = "SELECT * FROM category WHERE cat_show='Yes' ORDER BY cat_name ASC";
-		            $result = $conn->query($sql_query);
-
-		                while ($row = mysqli_fetch_assoc($result)) {
-		                    $cat_id = $row['category_id'];
-		                    $cat_name =$row['cat_name'];
-							$img_path=$row['img_path'];
-		            ?>
-					<div id="<?php echo $cat_id; ?>" class="item-slick2 p-l-15 p-r-15">
-						<div class="block2">
-							<div class="block2-img wrap-pic-w of-hidden pos-relative">
-								<img src="<?php echo $img_path; ?>" alt="<?php echo $cat_name; ?>">
-
-								<div class="block1-wrapbtn w-size2">
-									<a href="page_dynamic.php?cat=<?php echo $cat_id; ?>" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-										<?php echo $cat_name; ?>
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				<?php } ?>
-				</div>
-			</div>
-		</div>
-	</section>
-
-
 	<section class="instagram p-t-40">
 		<div class="sec-title p-l-15 p-r-15">
 			<br>
 			<h3 class="m-text5 t-center">
-				Populaire Winkels Vandaag
+				<?php echo $cat_name; ?>
 			</h3>
 		</div>
         <div class="container p-t-50">
@@ -117,7 +89,7 @@ include '../config.php';
                 <div class="container">
                     <div class="row">
                         <?php
-    		            $sql_query = "SELECT * FROM stores WHERE store_show='Yes' ORDER BY store_name ASC";
+    		            $sql_query = "SELECT * FROM stores WHERE category_id=$cat_id ORDER BY store_name ASC";
     		            $result = $conn->query($sql_query);
 
     		                while ($row = mysqli_fetch_assoc($result)) {
@@ -132,12 +104,6 @@ include '../config.php';
                                 <a class="block3-img dis-block hov-img-zoom">
                                     <img src="<?php echo $img_path; ?>">
                                 </a>
-
-                                <div class="block3-txt p-t-14 ">
-                                    <p class="s-text8 p-t-16 ">
-                                        Duis ut velit gravida nibh bibendum commodo. Sus-pendisse pellentesque mattis augue id euismod. Inter-dum et malesuada fames
-                                    </p>
-                                </div>
                             </div>
                         </div>
                         	<?php } ?>
@@ -145,94 +111,6 @@ include '../config.php';
                 </div>
             </section>
         </div>
-	</section>
-
-	<!-- Banner -->
-	<section class="banner bgwhite p-t-40 p-b-40">
-		<div class="container">
-			<h3 class="m-text5 t-center">
-				Deals
-			</h3>
-			<br>
-			<div class="row">
-				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="../img/banner-02.jpg" alt="IMG-BENNER">
-
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="pagina" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Dresses
-							</a>
-						</div>
-					</div>
-
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="../img/banner-05.jpg" alt="IMG-BENNER">
-
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Sunglasses
-							</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="../img/banner-03.jpg" alt="IMG-BENNER">
-
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Watches
-							</a>
-						</div>
-					</div>
-
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="../img/banner-07.jpg" alt="IMG-BENNER">
-
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Footerwear
-							</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="../img/banner-04.jpg" alt="IMG-BENNER">
-
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Bags
-							</a>
-						</div>
-					</div>
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="../img/banner-05.jpg" alt="IMG-BENNER">
-
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Other
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 	</section>
 
 	<!-- Footer -->
