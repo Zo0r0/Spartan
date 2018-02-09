@@ -1,5 +1,18 @@
 <?php
 include '../config.php';
+
+    if(isset($_GET['cat'])){
+        $cat_id=$_GET['cat'];
+    };
+
+    $sql_query = "SELECT * FROM category WHERE category_id=$cat_id";
+    $result = $conn->query($sql_query);
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $cat_name =$row['cat_name'];
+            $img_path=$row['img_path'];
+        }
+    }
  ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -26,21 +39,7 @@ include '../config.php';
 	<link rel="stylesheet" type="text/css" href="../css/storeMain.css">
 </head>
 
-<body class="animsition">
-					<?php
-					if(isset($_GET['cat'])){
-						$cat_id=$_GET['cat'];
-					};
-					
-		            $sql_query = "SELECT * FROM category WHERE category_id=$cat_id";
-		            $result = $conn->query($sql_query);
-					if ($result) {
-						while ($row = mysqli_fetch_assoc($result)) {
-		                    $cat_name =$row['cat_name'];
-							$img_path=$row['img_path'];
-						}
-					}
-		            ?>
+<body class="animaition">
 	<header class="header1">
 		<div class="container-menu-header">
 
@@ -87,27 +86,33 @@ include '../config.php';
         <div class="container p-t-50">
     		<section class="blog bgwhite populair_winkel">
                 <div class="container">
-                    <div class="row">
-                        <?php
-    		            $sql_query = "SELECT * FROM stores WHERE category_id=$cat_id ORDER BY store_name ASC";
-    		            $result = $conn->query($sql_query);
+                    <div class="row ">
+    					<?php
+    					$sql_query = "SELECT * FROM stores WHERE category_id=$cat_id ORDER BY store_name ASC";
+    					$result = $conn->query($sql_query);
 
-    		                while ($row = mysqli_fetch_assoc($result)) {
-    		                    $store_id = $row['store_id'];
-    		                    $store_name =$row['store_name'];
+    						while ($row = mysqli_fetch_assoc($result)) {
+    							$store_id = $row['store_id'];
+    							$store_name =$row['store_name'];
     							$img_path=$row['store_img_path'];
-    		            ?>
-                        <div id="<?php echo $store_id; ?>" class="col-sm-10 col-md-3 p-b-30 m-l-r-auto ">
-                            <h3 class="webstore_header"><?php echo $store_name; ?></h3>
-                            <!-- Block3 -->
-                            <div class="block3 ">
-                                <a class="block3-img dis-block hov-img-zoom">
-                                    <img src="<?php echo $img_path; ?>">
-                                </a>
-                            </div>
-                        </div>
-                        	<?php } ?>
-                    </div>
+    					?>
+    					<div id="<?php echo $store_id; ?>" class="col-sm-10 col-md-3 p-b-30 m-l-r-auto ">
+    						<h3 class="webstore_header"><?php echo $store_name; ?></h3>
+    						<!-- Block3 -->
+    						<div class="block3 ">
+    							<a class="block3-img p-t-10 p-b-10 dis-block hov-img-zoom">
+    								<img src="<?php echo $img_path; ?>">
+    							</a>
+
+    							<div class="block3-txt p-t-14 ">
+    								<p class="s-text8 p-t-16 ">
+    									Duis ut velit gravida nibh bibendum commodo. Sus-pendisse pellentesque mattis augue id euismod. Inter-dum et malesuada fames
+    								</p>
+    							</div>
+    						</div>
+    					</div>
+    						<?php } ?>
+    				</div>
                 </div>
             </section>
         </div>

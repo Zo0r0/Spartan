@@ -154,76 +154,100 @@ include '../config.php';
 				Deals
 			</h3>
 			<br>
-<<<<<<< HEAD
             <div class="row">
                 <div class="col-md-8">
-                    <!-- block1 -->
-                    <div class="block1 hov-img-zoom pos-relative m-b-30">
-                        <img src="" alt="IMG-BENNER">
-=======
-			<div class="row">
-				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="../img/banner-02.jpg" alt="IMG-BENNER">
+                    <?php
+                    $sql_query = "SELECT * FROM deals WHERE experation_stamp >= CURDATE() AND deal_block = 'Block 1'";
+                    $result = $conn->query($sql_query);
 
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="pagina" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Dresses
-							</a>
-						</div>
-					</div>
->>>>>>> c37c5a3adb8ed45ac550834532d90ad3aa64c720
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $deal_id = $row['deal_id'];
+                            $deal_btn = $row['deal_btn'];
+                            $deal_img_path =$row['deal_img_path'];
+                    ?>
+                    <!-- block1 -->
+                    <div id="<?php echo $deal_id; ?>" class="block1 hov-img-zoom pos-relative m-b-30">
+                        <img src="<?php echo $deal_img_path; ?>" alt="IMG-BENNER">
 
                         <div class="block1-wrapbtn w-size2">
                             <!-- Button -->
-                            <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-
+                            <a href="" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                             <?php echo $deal_btn; ?>
                             </a>
                         </div>
                     </div>
+                    <?php } ?>
                 </div>
                 <div class="col-md-4">
+                    <?php
+                    $sql_query = "SELECT * FROM deals WHERE experation_stamp >= CURDATE() AND deal_block = 'Block 2'";
+                    $result = $conn->query($sql_query);
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $deal_id = $row['deal_id'];
+                            $deal_btn = $row['deal_btn'];
+                            $deal_img_path =$row['deal_img_path'];
+                    ?>
                     <!-- block1 -->
-                    <div class="block1 hov-img-zoom pos-relative m-b-30">
-                        <img src="" alt="IMG-BENNER">
+                    <div id="<?php echo $deal_id; ?>" class="block1 hov-img-zoom pos-relative m-b-30">
+                        <img src="<?php echo $deal_img_path; ?>" alt="IMG-BENNER">
 
                         <div class="block1-wrapbtn w-size2">
                             <!-- Button -->
-                            <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-
+                            <a href="" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                             <?php echo $deal_btn; ?>
                             </a>
                         </div>
                     </div>
+                    <?php } ?>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
+                    <?php
+                    $sql_query = "SELECT * FROM deals WHERE experation_stamp >= CURDATE() AND deal_block = 'Block 3'";
+                    $result = $conn->query($sql_query);
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $deal_id = $row['deal_id'];
+                            $deal_btn = $row['deal_btn'];
+                            $deal_img_path =$row['deal_img_path'];
+                    ?>
                     <!-- block1 -->
-                    <div class="block1 hov-img-zoom pos-relative m-b-30">
-                        <img src="" alt="IMG-BENNER">
+                    <div id="<?php echo $deal_id; ?>" class="block1 hov-img-zoom pos-relative m-b-30">
+                        <img src="<?php echo $deal_img_path; ?>" alt="IMG-BENNER">
 
                         <div class="block1-wrapbtn w-size2">
                             <!-- Button -->
-                            <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-
+                            <a href="" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                             <?php echo $deal_btn; ?>
                             </a>
                         </div>
                     </div>
+                    <?php } ?>
                 </div>
                 <div class="col-md-6">
+                    <?php
+                    $sql_query = "SELECT * FROM deals WHERE experation_stamp >= CURDATE() AND deal_block = 'Block 4'";
+                    $result = $conn->query($sql_query);
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $deal_id = $row['deal_id'];
+                            $deal_btn = $row['deal_btn'];
+                            $deal_img_path =$row['deal_img_path'];
+                    ?>
                     <!-- block1 -->
-                    <div class="block1 hov-img-zoom pos-relative m-b-30">
-                        <img src="" alt="IMG-BENNER">
+                    <div id="<?php echo $deal_id; ?>" class="block1 hov-img-zoom pos-relative m-b-30">
+                        <img src="<?php echo $deal_img_path; ?>" alt="IMG-BENNER">
 
                         <div class="block1-wrapbtn w-size2">
                             <!-- Button -->
-                            <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-
+                            <a href="" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                             <?php echo $deal_btn; ?>
                             </a>
                         </div>
                     </div>
+                    <?php } ?>
                 </div>
             </div>
 
@@ -237,32 +261,22 @@ include '../config.php';
 				<h4 class="s-text12 p-b-30">
 					Categories
 				</h4>
+                <?php
+                $sql_query = "SELECT * FROM category ORDER BY cat_name ASC";
+                $result = $conn->query($sql_query);
 
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $cat_id = $row['category_id'];
+                        $cat_name =$row['cat_name'];
+                ?>
 				<ul>
 					<li class="p-b-9">
-						<a href="#" class="s-text7">
-
-						</a>
-					</li>
-
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-
-						</a>
-					</li>
-
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-
-						</a>
-					</li>
-
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-
+						<a id="<?php echo $cat_id; ?>" href="page_dynamic.php?cat=<?php echo $cat_id; ?>" class="s-text7">
+                            <?php echo $cat_name; ?>
 						</a>
 					</li>
 				</ul>
+                <?php } ?>
 			</div>
 
 			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">

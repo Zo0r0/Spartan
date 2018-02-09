@@ -4,7 +4,8 @@
 
     if (isset($_POST['block1'])){
 
-      $discription = $_POST['deal_dis1'];
+      $discription = $_POST['deal_name1'];
+       $btn = $_POST['deal_btn1'];
       $exp_stamp = $_POST['exp_stamp1'];
       // print_r($file);
       $fileName = $_FILES['img1']['name'];
@@ -26,7 +27,7 @@
 
               move_uploaded_file($fileTmp, $fileDestention);
 
-              $sql = "INSERT INTO deals(deal_discription ,deal_img_path ,deal_block, experation_stamp) VALUES ('$discription','$fileDestention','Block 1','$exp_stamp')";
+              $sql = "INSERT INTO deals(deal_name,deal_btn,deal_img_path ,deal_block, experation_stamp) VALUES ('$discription','$btn','$fileDestention','Block 1','$exp_stamp')";
 
               $result = $conn->query($sql);
 
@@ -38,7 +39,8 @@
 
 if (isset($_POST['block2'])){
 
-  $discription = $_POST['deal_dis2'];
+  $discription = $_POST['deal_name2'];
+   $btn= $_POST['deal_btn2'];
   $exp_stamp = $_POST['exp_stamp2'];
   // print_r($file);
   $fileName = $_FILES['img2']['name'];
@@ -60,7 +62,7 @@ if (isset($_POST['block2'])){
 
           move_uploaded_file($fileTmp, $fileDestention);
 
-          $sql = "INSERT INTO deals(deal_discription ,deal_img_path ,deal_block, experation_stamp) VALUES ('$discription','$fileDestention','Block 2','$exp_stamp')";
+          $sql = "INSERT INTO deals(deal_name,deal_btn,deal_img_path ,deal_block, experation_stamp) VALUES ('$discription','$btn','$fileDestention','Block 2','$exp_stamp')";
 
           $result = $conn->query($sql);
 
@@ -69,10 +71,10 @@ if (isset($_POST['block2'])){
     }
 }
 }
-
 if (isset($_POST['block3'])){
 
-  $discription = $_POST['deal_dis3'];
+  $discription = $_POST['deal_name3'];
+   $btn = $_POST['deal_btn3'];
   $exp_stamp = $_POST['exp_stamp3'];
   // print_r($file);
   $fileName = $_FILES['img3']['name'];
@@ -94,7 +96,7 @@ if (isset($_POST['block3'])){
 
           move_uploaded_file($fileTmp, $fileDestention);
 
-          $sql = "INSERT INTO deals(deal_discription ,deal_img_path ,deal_block, experation_stamp) VALUES ('$discription','$fileDestention','Block 3','$exp_stamp')";
+          $sql = "INSERT INTO deals(deal_name,deal_btn,deal_img_path ,deal_block, experation_stamp) VALUES ('$discription','$btn','$fileDestention','Block 3','$exp_stamp')";
 
           $result = $conn->query($sql);
 
@@ -103,10 +105,10 @@ if (isset($_POST['block3'])){
     }
 }
 }
-
 if (isset($_POST['block4'])){
 
-  $discription = $_POST['deal_dis4'];
+  $discription = $_POST['deal_name4'];
+   $btn = $_POST['deal_btn4'];
   $exp_stamp = $_POST['exp_stamp4'];
   // print_r($file);
   $fileName = $_FILES['img4']['name'];
@@ -128,7 +130,7 @@ if (isset($_POST['block4'])){
 
           move_uploaded_file($fileTmp, $fileDestention);
 
-          $sql = "INSERT INTO deals(deal_discription ,deal_img_path ,deal_block, experation_stamp) VALUES ('$discription','$fileDestention','Block 4','$exp_stamp')";
+          $sql = "INSERT INTO deals(deal_name,deal_btn,deal_img_path ,deal_block, experation_stamp) VALUES ('$discription','$btn','$fileDestention','Block 4','$exp_stamp')";
 
           $result = $conn->query($sql);
 
@@ -137,6 +139,7 @@ if (isset($_POST['block4'])){
     }
 }
 }
+
  ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -260,8 +263,17 @@ if (isset($_POST['block4'])){
                              <div class="row">
                                  <div class="col-md-12">
                                      <div class="form-group" style="width: 50%;">
-                                       <label >Beschrijving van deze deal</label>
-                                       <input type="text" class="form-control" name="deal_dis1"  placeholder="">
+                                       <label >Naam van de Deal</label>
+                                       <input type="text" class="form-control" name="deal_name1"  placeholder="">
+
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="row">
+                                 <div class="col-md-12">
+                                     <div class="form-group" style="width: 50%;">
+                                       <label >Knop Text</label>
+                                       <input type="text" class="form-control" name="deal_btn1"  placeholder="">
 
                                      </div>
                                  </div>
@@ -287,6 +299,58 @@ if (isset($_POST['block4'])){
                 </center>
             </div>
             <div class="col-md-6">
+                <div class="row">
+                    <?php
+                    $sql_query = "SELECT * FROM deals WHERE experation_stamp >= CURDATE() AND deal_block = 'Block 1' ORDER BY deals.deal_id ASC";
+                    $result = $conn->query($sql_query);
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $deal_id = $row['deal_id'];
+                            $deal_name = $row['deal_name'];
+                            $deal_exp =$row['experation_stamp'];
+                    ?>
+                    <div class="col-xs-4">
+                        <div value="<?php echo $deal_id; ?>" class="deal_frame">
+                            <div class="deal_content">
+                                <center>
+                                    <div class="col-md-12">
+                                        <h3><?php echo $deal_name; ?></h3>
+                                        <p>Vervaldatum: <?php echo $deal_exp; ?></p>
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
+                </div>
+                <div class="row">
+                    <?php
+                    $sql_query = "SELECT * FROM deals WHERE experation_stamp <= CURDATE() AND deal_block = 'Block 1' ORDER BY deals.deal_id ASC";
+                    $result = $conn->query($sql_query);
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $deal_id = $row['deal_id'];
+                            $deal_name = $row['deal_name'];
+                            $deal_exp =$row['experation_stamp'];
+                    ?>
+                    <div class="col-xs-4">
+                        <div value="<?php echo $deal_id; ?>" class="deal_frame_deactive">
+                            <div class="deal_content">
+                                <center>
+                                    <div class="col-md-12">
+                                        <h3><?php echo $deal_name; ?></h3>
+                                        <p>Vervaldatum: <?php echo $deal_exp; ?></p>
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top:40px;">
+            <div class="col-md-6">
                 <center>
                     <div class="block1">
                         <h4>Block 2</h4> <br>
@@ -296,8 +360,17 @@ if (isset($_POST['block4'])){
                              <div class="row">
                                  <div class="col-md-12">
                                      <div class="form-group" style="width: 50%;">
-                                       <label >Beschrijving van deze deal</label>
-                                       <input type="text" class="form-control" name="deal_dis2"  placeholder="">
+                                       <label >Naam van de Deal</label>
+                                       <input type="text" class="form-control" name="deal_name2"  placeholder="">
+
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="row">
+                                 <div class="col-md-12">
+                                     <div class="form-group" style="width: 50%;">
+                                       <label >Knop Text</label>
+                                       <input type="text" class="form-control" name="deal_btn2"  placeholder="">
 
                                      </div>
                                  </div>
@@ -322,6 +395,56 @@ if (isset($_POST['block4'])){
                     </div>
                 </center>
             </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <?php
+                    $sql_query = "SELECT * FROM deals WHERE experation_stamp >= CURDATE() AND deal_block = 'Block 2' ORDER BY deals.deal_id ASC";
+                    $result = $conn->query($sql_query);
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $deal_id = $row['deal_id'];
+                            $deal_name = $row['deal_name'];
+                            $deal_exp =$row['experation_stamp'];
+                    ?>
+                    <div class="col-xs-4">
+                        <div value="<?php echo $deal_id; ?>" class="deal_frame">
+                            <div class="deal_content">
+                                <center>
+                                    <div class="col-md-12">
+                                        <h3><?php echo $deal_name; ?></h3>
+                                        <p>Vervaldatum: <?php echo $deal_exp; ?></p>
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
+                </div>
+                <div class="row">
+                    <?php
+                    $sql_query = "SELECT * FROM deals WHERE experation_stamp <= CURDATE() AND deal_block = 'Block 2' ORDER BY deals.deal_id ASC";
+                    $result = $conn->query($sql_query);
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $deal_id = $row['deal_id'];
+                            $deal_name = $row['deal_name'];
+                            $deal_exp =$row['experation_stamp'];
+                    ?>
+                    <div class="col-xs-4">
+                        <div value="<?php echo $deal_id; ?>" class="deal_frame_deactive">
+                            <div class="deal_content">
+                                <center>
+                                    <div class="col-md-12">
+                                        <h3><?php echo $deal_name; ?></h3>
+                                        <p>Vervaldatum: <?php echo $deal_exp; ?></p>
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
+                </div>
+            </div>
         </div>
         <div class="row" style="margin-top:40px;">
             <div class="col-md-6">
@@ -334,8 +457,17 @@ if (isset($_POST['block4'])){
                              <div class="row">
                                  <div class="col-md-12">
                                      <div class="form-group" style="width: 50%;">
-                                       <label >Beschrijving van deze deal</label>
-                                       <input type="text" class="form-control" name="deal_dis3"  placeholder="">
+                                       <label >Naam van de Deal</label>
+                                       <input type="text" class="form-control" name="deal_name3"  placeholder="">
+
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="row">
+                                 <div class="col-md-12">
+                                     <div class="form-group" style="width: 50%;">
+                                       <label >Knop Text</label>
+                                       <input type="text" class="form-control" name="deal_btn3"  placeholder="">
 
                                      </div>
                                  </div>
@@ -361,6 +493,58 @@ if (isset($_POST['block4'])){
                 </center>
             </div>
             <div class="col-md-6">
+                <div class="row">
+                    <?php
+                    $sql_query = "SELECT * FROM deals WHERE experation_stamp >= CURDATE() AND deal_block = 'Block 3' ORDER BY deals.deal_id ASC";
+                    $result = $conn->query($sql_query);
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $deal_id = $row['deal_id'];
+                            $deal_name = $row['deal_name'];
+                            $deal_exp =$row['experation_stamp'];
+                    ?>
+                    <div class="col-xs-4">
+                        <div value="<?php echo $deal_id; ?>" class="deal_frame">
+                            <div class="deal_content">
+                                <center>
+                                    <div class="col-md-12">
+                                        <h3><?php echo $deal_name; ?></h3>
+                                        <p>Vervaldatum: <?php echo $deal_exp; ?></p>
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
+                </div>
+                <div class="row">
+                    <?php
+                    $sql_query = "SELECT * FROM deals WHERE experation_stamp <= CURDATE() AND deal_block = 'Block 3' ORDER BY deals.deal_id ASC";
+                    $result = $conn->query($sql_query);
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $deal_id = $row['deal_id'];
+                            $deal_name = $row['deal_name'];
+                            $deal_exp =$row['experation_stamp'];
+                    ?>
+                    <div class="col-xs-4">
+                        <div value="<?php echo $deal_id; ?>" class="deal_frame_deactive">
+                            <div class="deal_content">
+                                <center>
+                                    <div class="col-md-12">
+                                        <h3><?php echo $deal_name; ?></h3>
+                                        <p>Vervaldatum: <?php echo $deal_exp; ?></p>
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top:40px;">
+            <div class="col-md-6">
                 <center>
                     <div class="block1">
                         <h4>Block 4</h4> <br>
@@ -370,8 +554,17 @@ if (isset($_POST['block4'])){
                              <div class="row">
                                  <div class="col-md-12">
                                      <div class="form-group" style="width: 50%;">
-                                       <label >Beschrijving van deze deal</label>
-                                       <input type="text" class="form-control" name="deal_dis4" placeholder="">
+                                       <label >Naam van de Deal</label>
+                                       <input type="text" class="form-control" name="deal_name4"  placeholder="">
+
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="row">
+                                 <div class="col-md-12">
+                                     <div class="form-group" style="width: 50%;">
+                                       <label >Knop Text</label>
+                                       <input type="text" class="form-control" name="deal_btn4"  placeholder="">
 
                                      </div>
                                  </div>
@@ -395,6 +588,56 @@ if (isset($_POST['block4'])){
                          </form>
                     </div>
                 </center>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <?php
+                    $sql_query = "SELECT * FROM deals WHERE experation_stamp >= CURDATE() AND deal_block = 'Block 4' ORDER BY deals.deal_id ASC";
+                    $result = $conn->query($sql_query);
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $deal_id = $row['deal_id'];
+                            $deal_name = $row['deal_name'];
+                            $deal_exp =$row['experation_stamp'];
+                    ?>
+                    <div class="col-xs-4">
+                        <div value="<?php echo $deal_id; ?>" class="deal_frame">
+                            <div class="deal_content">
+                                <center>
+                                    <div class="col-md-12">
+                                        <h3><?php echo $deal_name; ?></h3>
+                                        <p>Vervaldatum: <?php echo $deal_exp; ?></p>
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
+                </div>
+                <div class="row">
+                    <?php
+                    $sql_query = "SELECT * FROM deals WHERE experation_stamp <= CURDATE() AND deal_block = 'Block 4' ORDER BY deals.deal_id ASC";
+                    $result = $conn->query($sql_query);
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $deal_id = $row['deal_id'];
+                            $deal_name = $row['deal_name'];
+                            $deal_exp =$row['experation_stamp'];
+                    ?>
+                    <div class="col-xs-4">
+                        <div value="<?php echo $deal_id; ?>" class="deal_frame_deactive">
+                            <div class="deal_content">
+                                <center>
+                                    <div class="col-md-12">
+                                        <h3><?php echo $deal_name; ?></h3>
+                                        <p>Vervaldatum: <?php echo $deal_exp; ?></p>
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
+                </div>
             </div>
         </div>
     </section>

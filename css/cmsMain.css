@@ -5777,3 +5777,38 @@ div.cat_content{
     margin: 5px;
 
 }
+
+div.deal_frame{
+    position: relative;
+    border-radius: 3px;
+    background: #ffffff;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    height: 100px;
+    cursor: pointer;
+}
+
+div.deal_frame:hover{
+    position: relative;
+    border-radius: 3px;
+    background: #ffffff;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    height: 100px;
+    cursor: pointer;
+    box-shadow:0px 0px 5px 6px #e9e9e9;
+}
+
+div.deal_content{
+    
+}
+div.deal_frame_deactive{
+    position: relative;
+    border-radius: 3px;
+    background: #ffffff;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    height: 100px;
+    cursor: pointer;
+    box-shadow: inset 10px 10px 300px 84px rgba(150,148,150,1);
+}
