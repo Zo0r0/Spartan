@@ -154,84 +154,63 @@ include '../config.php';
 				Deals
 			</h3>
 			<br>
-			<div class="row">
-				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="../img/banner-02.jpg" alt="IMG-BENNER">
+            <div class="row">
+                <div class="col-md-8">
+                    <!-- block1 -->
+                    <div class="block1 hov-img-zoom pos-relative m-b-30">
+                        <img src="" alt="IMG-BENNER">
 
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Dresses
-							</a>
-						</div>
-					</div>
+                        <div class="block1-wrapbtn w-size2">
+                            <!-- Button -->
+                            <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
 
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="../img/banner-05.jpg" alt="IMG-BENNER">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <!-- block1 -->
+                    <div class="block1 hov-img-zoom pos-relative m-b-30">
+                        <img src="" alt="IMG-BENNER">
 
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Sunglasses
-							</a>
-						</div>
-					</div>
-				</div>
+                        <div class="block1-wrapbtn w-size2">
+                            <!-- Button -->
+                            <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
 
-				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="../img/banner-03.jpg" alt="IMG-BENNER">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- block1 -->
+                    <div class="block1 hov-img-zoom pos-relative m-b-30">
+                        <img src="" alt="IMG-BENNER">
 
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Watches
-							</a>
-						</div>
-					</div>
+                        <div class="block1-wrapbtn w-size2">
+                            <!-- Button -->
+                            <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
 
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="../img/banner-07.jpg" alt="IMG-BENNER">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!-- block1 -->
+                    <div class="block1 hov-img-zoom pos-relative m-b-30">
+                        <img src="" alt="IMG-BENNER">
 
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Footerwear
-							</a>
-						</div>
-					</div>
-				</div>
+                        <div class="block1-wrapbtn w-size2">
+                            <!-- Button -->
+                            <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
 
-				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="../img/banner-04.jpg" alt="IMG-BENNER">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Bags
-							</a>
-						</div>
-					</div>
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="../img/banner-05.jpg" alt="IMG-BENNER">
-
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Other
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 	</section>
 

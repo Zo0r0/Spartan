@@ -31,13 +31,9 @@
               $result = $conn->query($sql);
 
              header("Location: cat.php");
-          }
-      }
-  }
-
-
-
-
+                }
+            }
+        }
 
     }
 
@@ -204,10 +200,10 @@
                           <div class="col-md-6">
                               <div class="form-group">
                                 <label >Category</label>
-                                <input type="text" class="form-control" name="cat_name"  placeholder="">
+                                <input type="text" class="form-control" name="cat_name"  placeholder="" autocomplete="off" required>
                               </div>
                               <div class="form-group">
-                                <label >Category Image</label>
+                                <label >Category Afbeelding</label>
                                 <input type="file" class="form-control" name="img"  placeholder="">
                               </div>
                           </div>

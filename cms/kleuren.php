@@ -72,7 +72,7 @@
             </ul>
           </li>
 
-          <li class="treeview">
+          <li class="treeview active">
             <a href="">
               <i class="ion ion-crop"></i> <span>Lay-out</span>
               <span class="pull-right-container">

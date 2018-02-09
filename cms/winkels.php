@@ -23,7 +23,7 @@
         if ($fileError === 0) {
           if ($fileSize < 1000000) {
               $fileNameNew = rand(100,400).".".$fileActualExt;
-              $fileDestention = '../img/cat/'.$fileNameNew;
+              $fileDestention = '../img/stores/'.$fileNameNew;
 
               move_uploaded_file($fileTmp, $fileDestention);
 
@@ -249,7 +249,7 @@
                           <div class="col-md-6">
                               <div class="form-group">
                                 <label >Naam Winkel</label>
-                                <input type="text" class="form-control" name="name"  placeholder="Enter u winkel naam">
+                                <input type="text" class="form-control" name="name"  placeholder="Enter u winkel naam" autocomplete="off" required>
                               </div>
                           </div>
                       </div>
@@ -261,7 +261,7 @@
                           <div class="col-md-6">
                               <div class="form-group">
                                 <label >Category</label>
-                                <select class="form-control" name="category_id">
+                                <select class="form-control" multiple="multiple" name="category_id">
                                     <?php
                                         $sql2_query = "SELECT * FROM category";
 
@@ -289,6 +289,8 @@
   </div>
 
 
+
+
   <script src="../js/jquery.min.js"></script>
   <script src="../js/jquery-ui.js"></script>
   <script src="../js/bootstrap.js"></script>
@@ -297,6 +299,5 @@
   <script src="../js/fastclick.js"></script>
   <script src="../js/cmsMain.js"></script>
   <script type="text/javascript" src="../vendor/sweetalert2/sweetalert2.js"></script>
-
 </body>
 </html>

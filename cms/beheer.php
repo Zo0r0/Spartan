@@ -1,22 +1,15 @@
 <?php
     include '../config.php';
     session_start();
-
     if (isset($_POST['submit'])){
-
       $name = $_POST['name'];
       $surname = $_POST['surname'];
       $username = $_POST['username'];
       $password = $_POST['password'];
-
       $sql = "INSERT INTO users(user_name,username,password) VALUES ('$name $surname','$username','$password')";
-
       $result = $conn->query($sql);
-
      header("Location: beheer.php");
-
     }
-
  ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -155,8 +148,7 @@
                         <?php
                         $sql_query = "SELECT * FROM users WHERE accesslevel = '0' AND user_active = 'Yes'";
                         $result = $conn->query($sql_query);
-
-                            while ($row = mysqli_fetch_assoc($result)) {
+                         while ($row = mysqli_fetch_assoc($result)) {
                                 $id =$row['user_id'];
                                 $name = $row['user_name'];
                                 $username= $row['username'];
@@ -169,7 +161,15 @@
                             <td><?php echo $password; ?></td>
                             <td>
                                 <button type="button" name="view" title="Bezichtigen"  onclick="location.href='api/klantwinkels.php?id=<?php echo $id;?>'" style="color:orange ; margin-right: 20px; background-color:transparent; border: 0px;"> <i class="fa fa-book"></i></button>
-                                <button type="button" name="edit" title="Bewerken" onclick="" style="color: blue; margin-right: 20px; background-color:transparent; border: 0px;"><i class="fa fa-pencil"></i></button>
+
+                                <button type="button" name="edit" title="Bewerken"
+                                        data-toggle="modal"
+                                        data-target="#editUser"
+                                        data-id="<?php echo $row['user_id']; ?>"
+                                        style="color: blue; margin-right: 20px; background-color:transparent; border: 0px;">
+                                        <i class="fa fa-pencil"></i>
+                                </button>
+
                                 <button type="button" name="delete" title="Deactiveren"  onclick="userdeactivate('<?php echo $id;?>')" style="color: red; background-color:transparent; border: 0px;"> <i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
@@ -199,7 +199,6 @@
                         <?php
                         $sql_query = "SELECT * FROM users WHERE accesslevel = '0' AND user_active = 'No'";
                         $result = $conn->query($sql_query);
-
                             while ($row = mysqli_fetch_assoc($result)) {
                                 $id =$row['user_id'];
                                 $name = $row['user_name'];
@@ -280,7 +279,26 @@
       </div>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="crossorigin="anonymous"></script>
+
+
+    <!-- Edit -->
+  <div class="modal fade"  id="editUser">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h2 class="modal-title">Beheerder Gegevens Wijzigen</h2>
+              </div>
+
+                <div class="user_info">
+
+                </div>
+
+          </div>
+      </div>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
   <script src="../js/jquery-ui.js"></script>
   <script src="../js/bootstrap.js"></script>
   <script src="../js/jquery.slimscroll.min.js"></script>
@@ -297,6 +315,35 @@
           "info":     false
       });
   } );
+
+
+
+    $('#editUser').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget) // Button that triggered the modal
+          var recipient = button.data('id') // Extract info from data-* attributes
+          var modal = $(this);
+          var dataString = 'id=' + recipient;
+
+            $.ajax({
+                type: "GET",
+                url: "api/edit/editUser.php",
+                data: dataString,
+                cache: false,
+                success: function (data) {
+                    console.log(data);
+                    modal.find('.user_info').html(data);
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+    })
+
+
+
+
+
+
   </script>
 </body>
 </html>
