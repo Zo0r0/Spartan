@@ -207,7 +207,7 @@
 	<script type="text/javascript" src="../vendor/countdowntime/countdowntime.js"></script>
 	<script type="text/javascript" src="../vendor/lightbox2/js/lightbox.min.js"></script>
 	<script type="text/javascript" src="../vendor/sweetalert/sweetalert.min.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkTP6za6NbWe6jrxUtLCea5ANy9kDZz6A"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCc4k6mdZYLJ_zBXyXGhiOG32rinB_QZfc"></script>
 	<script src="js/map-custom.js"></script>
 	<script src="../js/storeMain.js"></script>
 </body>
