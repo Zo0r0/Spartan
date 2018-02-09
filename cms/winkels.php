@@ -108,18 +108,6 @@
 
           <li class="treeview">
             <a href="">
-              <i class="ion ion-crop"></i> <span>Lay-out</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href=""><i class="fa fa-circle-o"></i>Beheren</a></li>
-            </ul>
-          </li>
-
-          <li class="treeview">
-            <a href="">
               <i class="fa fa-comments"></i> <span>Content</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>

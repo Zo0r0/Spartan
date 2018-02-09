@@ -82,18 +82,6 @@
 
           <li class="treeview">
             <a href="">
-              <i class="ion ion-crop"></i> <span>Lay-out</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href=""><i class="fa fa-circle-o"></i>Beheren</a></li>
-            </ul>
-          </li>
-
-          <li class="treeview">
-            <a href="">
               <i class="fa fa-comments"></i> <span>Content</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
@@ -162,12 +150,7 @@
                             <td>
                                 <button type="button" name="view" title="Bezichtigen"  onclick="location.href='api/klantwinkels.php?id=<?php echo $id;?>'" style="color:orange ; margin-right: 20px; background-color:transparent; border: 0px;"> <i class="fa fa-book"></i></button>
 
-                                <button type="button" name="edit" title="Bewerken"
-                                        data-toggle="modal"
-                                        data-target="#editUser"
-                                        data-id="<?php echo $row['user_id']; ?>"
-                                        style="color: blue; margin-right: 20px; background-color:transparent; border: 0px;">
-                                        <i class="fa fa-pencil"></i>
+                                <button type="button" name="edit" title="Bewerken" data-toggle="modal" data-target="#editUser" data-id="<?php echo $id; ?>" style="color: blue; margin-right: 20px; background-color:transparent; border: 0px;"><i class="fa fa-pencil"></i>
                                 </button>
 
                                 <button type="button" name="delete" title="Deactiveren"  onclick="userdeactivate('<?php echo $id;?>')" style="color: red; background-color:transparent; border: 0px;"> <i class="fa fa-trash"></i></button>
@@ -245,13 +228,13 @@
                           <div class="col-md-6">
                               <div class="form-group">
                                 <label >Voornaam</label>
-                                <input type="text" class="form-control" name="name"  placeholder="Enter naam">
+                                <input type="text" class="form-control" name="name"  placeholder="Enter naam" autocomplete="off">
                               </div>
                           </div>
                           <div class="col-md-6">
                               <div class="form-group">
                                 <label >Achternaam</label>
-                                <input type="text" class="form-control" name="surname"  placeholder="Enter achternaam">
+                                <input type="text" class="form-control" name="surname"  placeholder="Enter achternaam" autocomplete="off">
                               </div>
                           </div>
                       </div>
@@ -259,13 +242,13 @@
                           <div class="col-md-6">
                               <div class="form-group">
                                 <label >Usernaam</label>
-                                <input type="text" class="form-control" name="username"  placeholder="Enter usernaam">
+                                <input type="text" class="form-control" name="username"  placeholder="Enter usernaam" autocomplete="off">
                               </div>
                           </div>
                           <div class="col-md-6">
                               <div class="form-group">
                                 <label >Wachtwoord</label>
-                                <input type="password" class="form-control" name="password"  placeholder="Enter wachtwoord">
+                                <input type="password" class="form-control" name="password"  placeholder="Enter wachtwoord" autocomplete="off">
                               </div>
                           </div>
                       </div>
@@ -286,7 +269,7 @@
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
-                  <h2 class="modal-title">Beheerder Gegevens Wijzigen</h2>
+                  <h2 class="modal-title">Gegevens Wijzigen</h2>
               </div>
 
                 <div class="user_info">
@@ -338,12 +321,6 @@
                 }
             });
     })
-
-
-
-
-
-
   </script>
 </body>
 </html>

@@ -56,47 +56,7 @@
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">NAVIGATIE</li>
 
-          <li><a href="index.php"><i class="ion ion-clipboard"></i> <span>Dashboard</span></a></li>
-
-          <li class="treeview ">
-            <a href="">
-              <i class="fa fa-shopping-cart active"></i> <span>Webstores</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="beheer.php"><i class="fa fa-circle-o "></i>Beheerders</a></li>
-              <li><a href="winkels.php"><i class="fa fa-circle-o"></i>Winkels</a></li>
-              <li><a href="cat.php"><i class="fa fa-circle-o"></i>Categorieën</a></li>
-            </ul>
-          </li>
-
-          <li class="treeview active">
-            <a href="">
-              <i class="ion ion-crop"></i> <span>Lay-out</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li class="active"><a href=""><i class="fa fa-circle-o"></i>Kleuren</a></li>
-            </ul>
-          </li>
-
-          <li class="treeview active">
-            <a href="">
-              <i class="fa fa-comments"></i> <span>Content</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-                <li><a href="cat_content.php"><i class="fa fa-circle-o"></i>Categorieën</a></li>
-                <li><a href="pwv.php"><i class="fa fa-circle-o"></i>Populaire Winkels Vandaag</a></li>
-                <li><a href="deals.php"><i class="fa fa-circle-o"></i>Deals</a></li>
-            </ul>
-          </li>
+          <li class="active"><a href="index.php"><i class="fa fa-user"></i> <span>SPARTAN Beheerders</span></a></li>
 
         </ul>
     </section>
