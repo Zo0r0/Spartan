@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2018 at 11:41 AM
+-- Generation Time: Feb 11, 2018 at 05:29 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -61,11 +61,23 @@ INSERT INTO `category` (`category_id`, `cat_name`, `img_path`, `cat_show`) VALUE
 
 CREATE TABLE `deals` (
   `deal_id` int(40) NOT NULL,
-  `deal_discription` varchar(250) DEFAULT NULL,
+  `deal_name` varchar(250) NOT NULL,
+  `deal_btn` varchar(40) DEFAULT NULL,
   `deal_img_path` varchar(250) NOT NULL,
-  `deal_img_type` set('Type1','Type2','Type3') NOT NULL,
-  `deal_active` set('Yes','No') NOT NULL DEFAULT 'No'
+  `deal_block` set('Block 1','Block 2','Block 3','Block 4') NOT NULL,
+  `experation_stamp` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `deals`
+--
+
+INSERT INTO `deals` (`deal_id`, `deal_name`, `deal_btn`, `deal_img_path`, `deal_block`, `experation_stamp`) VALUES
+(5, 'KlerenSale', 'Kortingcode', '../img/deals/338.png', 'Block 1', '2018-02-14'),
+(6, 'IntAd', 'Shop Nu', '../img/deals/364.png', 'Block 2', '2018-02-17'),
+(7, 'Test', '', '../img/deals/291.png', 'Block 1', '2018-02-08'),
+(8, 'KampeerAd', 'Shop Nu', '../img/deals/233.png', 'Block 3', '2018-02-16'),
+(9, 'SpeelgoedKorting', 'Shop Nu', '../img/deals/135.png', 'Block 4', '2018-02-21');
 
 -- --------------------------------------------------------
 
@@ -108,7 +120,8 @@ INSERT INTO `logfile` (`attempt_id`, `attempt`, `username`, `timestamp`, `succes
 (28, 'login', 'zjadi', '2018-02-04 13:19:09', 'Yes'),
 (29, 'login', 'zjadi', '2018-02-06 20:58:21', 'Yes'),
 (30, 'login', 'ztjadi', '2018-02-07 10:14:21', 'No'),
-(31, 'login', 'zjadi', '2018-02-07 10:19:46', 'Yes');
+(31, 'login', 'zjadi', '2018-02-07 10:19:46', 'Yes'),
+(32, 'login', 'zjadi', '2018-02-09 11:00:11', 'Yes');
 
 -- --------------------------------------------------------
 
@@ -148,8 +161,8 @@ INSERT INTO `stores` (`store_id`, `owner_id`, `store_name`, `store_img_path`, `c
 CREATE TABLE `users` (
   `user_id` int(4) NOT NULL,
   `user_name` varchar(250) NOT NULL,
-  `username` varchar(8) NOT NULL,
-  `password` varchar(8) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
   `accesslevel` int(1) DEFAULT '0',
   `user_active` set('Yes','No') NOT NULL DEFAULT 'Yes'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -159,7 +172,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_name`, `username`, `password`, `accesslevel`, `user_active`) VALUES
-(2, 'Mike  Cobra', 'Mcobra', '123456', 0, 'Yes'),
+(2, 'Mike  Cobra', 'mcobra', '123456', 0, 'Yes'),
 (5, 'Elia Bakker', 'ebak', '1254863', 0, 'Yes'),
 (6, 'Baas', 'admin', '0123456', 1, 'No'),
 (7, 'Edward Mission', 'emission', '0258963', 0, 'Yes'),
@@ -217,12 +230,12 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `deals`
 --
 ALTER TABLE `deals`
-  MODIFY `deal_id` int(40) NOT NULL AUTO_INCREMENT;
+  MODIFY `deal_id` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `logfile`
 --
 ALTER TABLE `logfile`
-  MODIFY `attempt_id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `attempt_id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT for table `stores`
 --
@@ -241,8 +254,8 @@ ALTER TABLE `users`
 -- Constraints for table `stores`
 --
 ALTER TABLE `stores`
-  ADD CONSTRAINT `stores_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `stores_ibfk_2` FOREIGN KEY (`owner_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `stores_ibfk_2` FOREIGN KEY (`owner_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `stores_ibfk_3` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
