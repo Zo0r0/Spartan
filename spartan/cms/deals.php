@@ -2,6 +2,8 @@
     include '../config.php';
     session_start();
 
+    include 'cookies/navbar_cookie.php';
+
     if (isset($_POST['block1'])){
 
       $discription = $_POST['deal_name1'];
@@ -158,7 +160,7 @@ if (isset($_POST['block4'])){
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.csss">
 </head>
 
-<body class="hold-transition skin-red sidebar-mini">
+<body class="hold-transition skin-<?php echo $_COOKIE['color']; ?> sidebar-mini">
 <div class="wrapper">
   <header class="main-header">
     <a href="" class="logo">

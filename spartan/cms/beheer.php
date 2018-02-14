@@ -1,6 +1,11 @@
 <?php
     include '../config.php';
     session_start();
+
+    include 'cookies/navbar_cookie.php';
+    include 'cookies/btn-color_cookie.php';
+
+
     if (isset($_POST['submit'])){
       $name = $_POST['name'];
       $surname = $_POST['surname'];
@@ -27,7 +32,7 @@
   <link rel="stylesheet" href="../css/_all-skins.min.css">
 </head>
 
-<body class="hold-transition skin-red sidebar-mini">
+<body class="hold-transition skin-<?php echo $_COOKIE['color']; ?> sidebar-mini">
 <div class="wrapper">
   <header class="main-header">
     <a href="" class="logo">
@@ -112,7 +117,7 @@
         <div class="row">
           <div class="col-lg-2 col-xs-3">
             <div class="box-nb">
-                <button type="button" name="button" class="add btn btn-danger" data-toggle="modal" data-target="#addUser"><i class="fa fa-plus"></i></button>
+                <button type="button" name="button" class="add btn btn-<?php echo $_COOKIE['btn-color']; ?>" data-toggle="modal" data-target="#addUser"><i class="fa fa-plus fa-2x"></i></button>
             </div>
           </div>
         </div>
@@ -143,10 +148,14 @@
                                 $password = $row['password'];
                         ?>
                         <tr>
+                            <?php
+                              $salt_f = '!#@%';
+                              $salt_b = '!^#$';
+                            ?>
                             <td><?php echo $id; ?></td>
                             <td><?php echo $name; ?></td>
                             <td><?php echo $username; ?></td>
-                            <td><?php echo $password; ?></td>
+                            <td><?php echo $salt_f . $password . $salt_b; ?></td>
                             <td>
                                 <button type="button" name="view" title="Bezichtigen"  onclick="location.href='api/klantwinkels.php?id=<?php echo $id;?>'" style="color:orange ; margin-right: 20px; background-color:transparent; border: 0px;"> <i class="fa fa-book"></i></button>
 
@@ -220,7 +229,7 @@
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
-                  <h2 class="modal-title">Gebruiker Toevoegen</h2>
+                  <h2 class="modal-title">Webstore Beheerder Toevoegen</h2>
               </div>
               <div class="modal-body">
                   <form class="" method="post">
@@ -228,13 +237,13 @@
                           <div class="col-md-6">
                               <div class="form-group">
                                 <label >Voornaam</label>
-                                <input type="text" class="form-control" name="name"  placeholder="Enter naam" autocomplete="off">
+                                <input type="text" class="form-control" name="name"  placeholder="Enter naam" autocomplete="off" required>
                               </div>
                           </div>
                           <div class="col-md-6">
                               <div class="form-group">
                                 <label >Achternaam</label>
-                                <input type="text" class="form-control" name="surname"  placeholder="Enter achternaam" autocomplete="off">
+                                <input type="text" class="form-control" name="surname"  placeholder="Enter achternaam" autocomplete="off" required>
                               </div>
                           </div>
                       </div>
@@ -242,13 +251,13 @@
                           <div class="col-md-6">
                               <div class="form-group">
                                 <label >Usernaam</label>
-                                <input type="text" class="form-control" name="username"  placeholder="Enter usernaam" autocomplete="off">
+                                <input type="text" class="form-control" name="username"  placeholder="Enter usernaam" autocomplete="off" required>
                               </div>
                           </div>
                           <div class="col-md-6">
                               <div class="form-group">
                                 <label >Wachtwoord</label>
-                                <input type="password" class="form-control" name="password"  placeholder="Enter wachtwoord" autocomplete="off">
+                                <input type="password" class="form-control" name="password"  placeholder="Enter wachtwoord" autocomplete="off" required>
                               </div>
                           </div>
                       </div>
@@ -269,7 +278,7 @@
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
-                  <h2 class="modal-title">Gegevens Wijzigen</h2>
+                  <h2 class="modal-title">Logingegevens Wijzigen</h2>
               </div>
 
                 <div class="user_info">

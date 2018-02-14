@@ -2,6 +2,9 @@
 include '../config.php';
 session_start();
 
+include 'cookies/navbar_cookie.php';
+include 'cookies/btn-color_cookie.php';
+
 if (isset($_POST['submit'])){
 
   $name = $_POST['name'];
@@ -32,7 +35,7 @@ if (isset($_POST['submit'])){
     <link rel="stylesheet" href="../css/cmsMain.css">
     <link rel="stylesheet" href="../css/_all-skins.min.css">
   </head>
-  <body class="hold-transition skin-blue sidebar-mini">
+  <body class="hold-transition skin-<?php echo $_COOKIE['color']; ?> sidebar-mini">
     <div class="wrapper">
       <header class="main-header">
         <a href="" class="logo">
@@ -69,16 +72,25 @@ if (isset($_POST['submit'])){
             <ul class="sidebar-menu" data-widget="tree">
               <li class="header">NAVIGATIE</li>
 
-              <li class="active"><a href="index.php"><i class="fa fa-user"></i> <span>SPARTAN Beheerders</span></a></li>
+              <li class="active"><a href="instellingen.php"><i class="fa fa-group"></i> <span>SPARTAN Beheerders</span></a></li>
+
+            </ul>  
+            <ul class="sidebar-menu" data-widget="tree">
+   
+
+              <li><a href="layout.php"><i class="fa fa-adjust"></i> <span>Thema Aanpassingen</span></a></li>
 
             </ul>
         </section>
+  
+
+          
       </aside>
         <div class="content-wrapper">
         <section class="content-header">
           <h1>
-            Instellingen
-            <small>Beheerder's paneel</small>
+           Spartan Beheerder Instellingen
+            <small>Beheerders paneel</small>
           </h1>
         </section>
 
@@ -87,7 +99,7 @@ if (isset($_POST['submit'])){
             <div class="row">
               <div class="col-lg-2 col-xs-3">
                 <div class="box-nb">
-                    <button type="button" name="button" class="add btn btn-primary" data-toggle="modal" data-target="#addAdmin"><i class="fa fa-plus"></i></button>
+                    <button type="button" name="button" class="add btn btn-<?php echo $_COOKIE['btn-color']; ?>" data-toggle="modal" data-target="#addAdmin"><i class="fa fa-plus fa-2x"></i></button>
                 </div>
               </div>
             </div>
@@ -120,12 +132,18 @@ if (isset($_POST['submit'])){
                                     $password = $row['password'];
                             ?>
                             <tr>
-                                <td><?php echo $id; ?></td>
-                                <td><?php echo $name; ?></td>
-                                <td><?php echo $username; ?></td>
-                                <td><?php echo $password; ?></td>
-                                <td>
-                                    <button type="button" name="edit" title="Bewerken" onclick="" style="color: blue; margin-right: 20px; background-color:transparent; border: 0px;"><i class="fa fa-pencil"></i></button>
+                              <?php
+                                $salt_f = '!#@%';
+                                $salt_b = '!^#$';
+                              ?>
+                              <td><?php echo $id; ?></td>
+                              <td><?php echo $name; ?></td>
+                              <td><?php echo $username; ?></td>
+                              <td><?php echo $salt_f . $password . $salt_b; ?></td>
+                              <td>
+
+                                 <button type="button" name="edit" title="Bewerken" data-toggle="modal" data-target="#editAdmins" data-id="<?php echo $id; ?>" style="color: blue; margin-right: 20px; background-color:transparent; border: 0px;"><i class="fa fa-pencil"></i>
+                                </button>
                                     <button type="button" name="delete" title="Verwijderen"  onclick="admindeactivate('<?php echo $id;?>')" style="color: red; background-color:transparent; border: 0px;"> <i class="fa fa-trash"></i></button>
                                 </td>
                             </tr>
@@ -202,13 +220,13 @@ if (isset($_POST['submit'])){
                               <div class="col-md-6">
                                   <div class="form-group">
                                     <label >Voornaam</label>
-                                    <input type="text" class="form-control" name="name"  placeholder="Enter naam">
+                                    <input type="text" class="form-control" name="name"  placeholder="Enter naam" required>
                                   </div>
                               </div>
                               <div class="col-md-6">
                                   <div class="form-group">
                                     <label >Achternaam</label>
-                                    <input type="text" class="form-control" name="surname"  placeholder="Enter achternaam">
+                                    <input type="text" class="form-control" name="surname"  placeholder="Enter achternaam" required>
                                   </div>
                               </div>
                           </div>
@@ -216,13 +234,13 @@ if (isset($_POST['submit'])){
                               <div class="col-md-6">
                                   <div class="form-group">
                                     <label >Gebruikersnaam</label>
-                                    <input type="text" class="form-control" name="username"  placeholder="Enter usernaam">
+                                    <input type="text" class="form-control" name="username"  placeholder="Enter usernaam" required>
                                   </div>
                               </div>
                               <div class="col-md-6">
                                   <div class="form-group">
                                     <label >Wachtwoord</label>
-                                    <input type="password" class="form-control" name="password"  placeholder="Enter wachtwoord">
+                                    <input type="password" class="form-control" name="password"  placeholder="Enter wachtwoord" required>
                                   </div>
                               </div>
                           </div>
@@ -236,6 +254,25 @@ if (isset($_POST['submit'])){
           </div>
       </div>
 
+
+
+    <!-- Edit -->
+  <div class="modal fade"  id="editAdmins">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h2 class="modal-title">Logingegevens Wijzigen</h2>
+              </div>
+
+                <div class="admin_info">
+
+                </div>
+
+          </div>
+      </div>
+  </div>
+
+
       <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="crossorigin="anonymous"></script>
       <script src="../js/jquery-ui.js"></script>
       <script src="../js/bootstrap.js"></script>
@@ -243,6 +280,38 @@ if (isset($_POST['submit'])){
       <script src="../js/fastclick.js"></script>
       <script src="../js/cmsMain.js"></script>
       <script type="text/javascript" src="../vendor/sweetalert2/sweetalert2.js"></script>
+      <script type="text/javascript">
+        $(document).ready(function() {
+            $('#users, #users_inactive').DataTable({
+                "paging":   true,
+                "pagingType": "numbers",
+                "ordering": false,
+                "info":     false
+            });
+        } );
 
+
+
+        $('#editAdmins').on('show.bs.modal', function (event) {
+              var button = $(event.relatedTarget) // Button that triggered the modal
+              var recipient = button.data('id') // Extract info from data-* attributes
+              var modal = $(this);
+              var dataString = 'id=' + recipient;
+
+                $.ajax({
+                    type: "GET",
+                    url: "api/edit/editAdmins.php",
+                    data: dataString,
+                    cache: false,
+                    success: function (data) {
+                        console.log(data);
+                        modal.find('.admin_info').html(data);
+                    },
+                    error: function(err) {
+                        console.log(err);
+                    }
+                });
+        })
+  </script>
   </body>
 </html>

@@ -1,5 +1,12 @@
 <?php
 include '../config.php';
+
+$search_term = "";
+
+if (isset($_POST['search_btn'])) {
+	$search_term = $_POST['search_term'];
+}
+
  ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -24,8 +31,14 @@ include '../config.php';
 	<link rel="stylesheet" type="text/css" href="../vendor/lightbox2/css/lightbox.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/util.css">
 	<link rel="stylesheet" type="text/css" href="../css/storeMain.css">
-</head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+</head>
+<style>
+	.search{
+		margin-left: 180px;
+	}
+</style>
 <body class="animsition">
 
 	<header class="header1">
@@ -33,7 +46,7 @@ include '../config.php';
 
 
 			<div class="wrap_header">
-				<a href="index.html" class="logo">
+				<a href="index.php" class="logo">
 					<img src="../img/sparta.png" alt="IMG-LOGO">
 				</a>
 
@@ -51,7 +64,23 @@ include '../config.php';
 							<li>
 								<a href="contact.php">Over ons</a>
 							</li>
+								
+
+
+
+								<span class="search">
+								<form class="navbar-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" role="search" method="POST">
+						        <div class="input-group">
+						            <input type="text" class="form-control" placeholder="Search" name="search_term">
+						            <div class="input-group-btn">
+						            <button class="btn btn-default" type="submit" name="search_btn"><i class="glyphicon glyphicon-search"></i></button>
+						            </div>
+						        </div>
+						        </form>
+								</span>
 						</ul>
+
+					
 					</nav>
 				</div>
 
@@ -77,7 +106,7 @@ include '../config.php';
 			<div class="wrap-slick2">
 				<div class="slick2">
 					<?php
-		            $sql_query = "SELECT * FROM category WHERE cat_show='Yes' ORDER BY cat_name ASC";
+		            $sql_query = "SELECT * FROM category WHERE cat_show='Yes' AND cat_name LIKE '%$search_term%' ORDER BY cat_name ASC";
 		            $result = $conn->query($sql_query);
 
 		                while ($row = mysqli_fetch_assoc($result)) {
@@ -117,7 +146,7 @@ include '../config.php';
                 <div class="container">
                     <div class="row">
                         <?php
-    		            $sql_query = "SELECT * FROM stores WHERE store_show='Yes' ORDER BY store_name ASC";
+    		            $sql_query = "SELECT * FROM stores WHERE store_show='Yes' AND store_name LIKE '%$search_term%' ORDER BY store_name ASC";
     		            $result = $conn->query($sql_query);
 
     		                while ($row = mysqli_fetch_assoc($result)) {
@@ -157,7 +186,7 @@ include '../config.php';
             <div class="row">
                 <div class="col-md-8">
                     <?php
-                    $sql_query = "SELECT * FROM deals WHERE experation_stamp >= CURDATE() AND deal_block = 'Block 1'";
+                    $sql_query = "SELECT * FROM deals WHERE experation_stamp >= CURDATE() AND deal_block = 'Block 1' AND deal_name LIKE '%$search_term%'";
                     $result = $conn->query($sql_query);
 
                         while ($row = mysqli_fetch_assoc($result)) {
@@ -180,7 +209,7 @@ include '../config.php';
                 </div>
                 <div class="col-md-4">
                     <?php
-                    $sql_query = "SELECT * FROM deals WHERE experation_stamp >= CURDATE() AND deal_block = 'Block 2'";
+                    $sql_query = "SELECT * FROM deals WHERE experation_stamp >= CURDATE() AND deal_block = 'Block 2'  AND deal_name LIKE '%$search_term%' ";
                     $result = $conn->query($sql_query);
 
                         while ($row = mysqli_fetch_assoc($result)) {
@@ -205,7 +234,7 @@ include '../config.php';
             <div class="row">
                 <div class="col-md-6">
                     <?php
-                    $sql_query = "SELECT * FROM deals WHERE experation_stamp >= CURDATE() AND deal_block = 'Block 3'";
+                    $sql_query = "SELECT * FROM deals WHERE experation_stamp >= CURDATE() AND deal_block = 'Block 3'  AND deal_name LIKE '%$search_term%' ";
                     $result = $conn->query($sql_query);
 
                         while ($row = mysqli_fetch_assoc($result)) {
@@ -228,7 +257,7 @@ include '../config.php';
                 </div>
                 <div class="col-md-6">
                     <?php
-                    $sql_query = "SELECT * FROM deals WHERE experation_stamp >= CURDATE() AND deal_block = 'Block 4'";
+                    $sql_query = "SELECT * FROM deals WHERE experation_stamp >= CURDATE() AND deal_block = 'Block 4'  AND deal_name LIKE '%$search_term%' ";
                     $result = $conn->query($sql_query);
 
                         while ($row = mysqli_fetch_assoc($result)) {

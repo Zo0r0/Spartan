@@ -1,24 +1,18 @@
 <?php
 include '../config.php';
 
-    if(isset($_GET['cat'])){
-        $cat_id=$_GET['cat'];
-    };
+$search_term = "";
 
-    $sql_query = "SELECT * FROM category WHERE category_id=$cat_id";
-    $result = $conn->query($sql_query);
-    if ($result) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            $cat_name =$row['cat_name'];
-            $img_path=$row['img_path'];
-        }
-    }
- ?>
+if (isset($_POST['search_btn'])) {
+	$search_term = $_POST['search_term'];
+}
+
+?>
 <!DOCTYPE html>
 <html lang="nl">
 
 <head>
-	<title>Home</title>
+	<title>Alle Winkels</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -37,32 +31,59 @@ include '../config.php';
 	<link rel="stylesheet" type="text/css" href="../vendor/lightbox2/css/lightbox.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/util.css">
 	<link rel="stylesheet" type="text/css" href="../css/storeMain.css">
+    <link rel="stylesheet" type="text/css" href="../css/my-css.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
+<style>
+	.search{
+		margin-left: 180px;
+	}
 
-<body class="animaition">
+
+	.btn-fix {
+    height: 30px;
+    position: absolute;
+    right: 0;
+    top: 0px;
+    border-radius: 1px;
+}
+</style>
+<body class="animsition">
+
 	<header class="header1">
 		<div class="container-menu-header">
 
 
 			<div class="wrap_header">
-				<a href="index.html" class="logo">
+				<a href="index.php" class="logo">
 					<img src="../img/sparta.png" alt="IMG-LOGO">
 				</a>
 
 				<div class="wrap_menu">
 					<nav class="menu">
 						<ul class="main_menu">
-							<li class="active">
+							<li >
 								<a href="index.php">Home</a>
 							</li>
 
-							<li>
+							<li class="active">
 								<a href="winkels.php">Alle Winkels</a>
 							</li>
 
 							<li>
 								<a href="contact.php">Over ons</a>
 							</li>
+
+								<span class="search">
+								<form class="navbar-form" action="<?php echo $_SERVER['PHP_SELF']; ?>"  role="search" method="POST">
+						        <div class="input-group">
+						            <input type="text" class="form-control" placeholder="Search" name="search_term">
+						            <div class="input-group-btn">
+						            <button class="btn btn-default btn-fix" type="submit" name="search_btn"><i class="glyphicon glyphicon-search"></i></button>
+						            </div>
+						        </div>
+						        </form>
+								</span>
 						</ul>
 					</nav>
 				</div>
@@ -76,109 +97,40 @@ include '../config.php';
 		</div>
 
 	</header>
-	<section class="instagram p-t-40">
-		<div class="sec-title p-l-15 p-r-15">
-			<br>
-			<h3 class="m-text5 t-center">
-				<?php echo $cat_name; ?>
-			</h3>
-		</div>
-        <div class="container p-t-50">
-    		<section class="blog bgwhite populair_winkel">
-                <div class="container">
-                    <div class="row ">
-    					<?php
-    					$sql_query = "SELECT * FROM stores WHERE category_id=$cat_id ORDER BY store_name ASC";
-    					$result = $conn->query($sql_query);
-
-    						while ($row = mysqli_fetch_assoc($result)) {
-    							$store_id = $row['store_id'];
-    							$store_name =$row['store_name'];
-    							$img_path=$row['store_img_path'];
-    					?>
-    					<div id="<?php echo $store_id; ?>" class="col-sm-10 col-md-3 p-b-30 m-l-r-auto ">
-    						<h3 class="webstore_header"><?php echo $store_name; ?></h3>
-    						<!-- Block3 -->
-    						<div class="block3 ">
-    							<a class="block3-img p-t-10 p-b-10 dis-block hov-img-zoom">
-    								<img src="<?php echo $img_path; ?>">
-    							</a>
-
-    							<div class="block3-txt p-t-14 ">
-    								<p class="s-text8 p-t-16 ">
-    									Duis ut velit gravida nibh bibendum commodo. Sus-pendisse pellentesque mattis augue id euismod. Inter-dum et malesuada fames
-    								</p>
-    							</div>
-    						</div>
-    					</div>
-    						<?php } ?>
-    				</div>
-                </div>
-            </section>
-        </div>
 	</section>
+	<div class="container">
+		<section class="blog bgwhite p-t-94 populair_winkel">
+            <div class="container">
+                <div class="row ">
+					<?php
+					$sql_query = "SELECT * FROM stores WHERE store_active='Yes' AND store_name LIKE '%$search_term%' ORDER BY store_name ASC";
+					$result = $conn->query($sql_query);
 
-	<!-- Footer -->
-	<footer class="bg6 p-t-45 p-b-43 p-l-45 p-r-45">
-		<div class="flex-w p-b-90">
-			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
-				<h4 class="s-text12 p-b-30">
-					Categories
-				</h4>
+						while ($row = mysqli_fetch_assoc($result)) {
+							$store_id = $row['store_id'];
+							$store_name =$row['store_name'];
+							$img_path=$row['store_img_path'];
+					?>
+					<div id="<?php echo $store_id; ?>" class="col-sm-10 col-md-3 p-b-30 m-l-r-auto ">
+						<h3 class="webstore_header"><?php echo $store_name; ?></h3>
+						<!-- Block3 -->
+						<div class="block3 ">
+							<a class="block3-img p-t-10 p-b-10 dis-block hov-img-zoom">
+								<img src="<?php echo $img_path; ?>">
+							</a>
 
-				<ul>
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-
-						</a>
-					</li>
-
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-
-						</a>
-					</li>
-
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-
-						</a>
-					</li>
-
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-
-						</a>
-					</li>
-				</ul>
-			</div>
-
-			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
-				<h4 class="s-text12 p-b-30">
-					Links
-				</h4>
-
-				<ul>
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Home
-						</a>
-					</li>
-
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Alle Winkels
-						</a>
-					</li>
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Over ons
-						</a>
-					</li>
-
-				</ul>
-			</div>
-		</div>
+							<div class="block3-txt p-t-14 ">
+								<p class="s-text8 p-t-16 ">
+									Duis ut velit gravida nibh bibendum commodo. Sus-pendisse pellentesque mattis augue id euismod. Inter-dum et malesuada fames
+								</p>
+							</div>
+						</div>
+					</div>
+						<?php } ?>
+				</div>
+            </div>
+        </section>
+	</div>
 
 		<div class="t-center p-l-15 p-r-15">
 			<div class="t-center s-text8 p-t-20">

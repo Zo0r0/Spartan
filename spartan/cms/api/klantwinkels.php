@@ -2,6 +2,10 @@
     include '../../config.php';
     session_start();
 
+
+    include '../cookies/navbar_cookie.php';
+    include '../cookies/btn-color_cookie.php';
+
     $sql_query1 = "SELECT user_id, user_name, user_active, store_id,store_name, cat_name, store_active FROM stores INNER JOIN users ON stores.owner_id = users.user_id INNER JOIN category ON stores.category_id = category.category_id WHERE users.user_id ='{$_GET['id']}'";
     $result1 = $conn->query($sql_query1);
 
@@ -30,7 +34,7 @@
   <link rel="stylesheet" href="../../css/_all-skins.min.css">
 </head>
 
-<body class="hold-transition skin-red sidebar-mini">
+<body class="hold-transition skin-<?php echo $_COOKIE['color']; ?> sidebar-mini">
 <div class="wrapper">
   <header class="main-header">
     <a href="" class="logo">
@@ -153,8 +157,10 @@
                             <td><?php echo $category; ?></td>
                             <td><?php echo $store_active; ?></td>
                             <td>
-                                <button type="button" name="edit" title="Bewerken" onclick="" style="color: blue; margin-right: 20px; background-color:transparent; border: 0px;"><i class="fa fa-pencil"></i></button>
-                                <button type="button" name="delete" title="Verwijderen"  onclick="storedeactivate('<?php echo $id;?>')" style="color: red; background-color:transparent; border: 0px;"> <i class="fa fa-trash"></i></button>
+                                <button type="button" name="edit" title="Bewerken" data-toggle="modal" data-target="#editStores" data-id="<?php echo $store_id; ?>" style="color: blue; margin-right: 20px; background-color:transparent; border: 0px;"><i class="fa fa-pencil"></i>
+                                </button>
+
+                                <button type="button" name="delete" title="Verwijderen"  onclick="storedeactivate('<?php echo $store_id;?>')" style="color: red; background-color:transparent; border: 0px;"> <i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                         <?php } ?>
@@ -173,6 +179,23 @@
     </div>
   </footer>
 
+      <!-- Edit -->
+  <div class="modal fade"  id="editStores">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h2 class="modal-title">Webstore Gegevens Wijzigen</h2>
+              </div>
+
+                <div class="store_info">
+
+                </div>
+
+          </div>
+      </div>
+  </div>
+
+
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="crossorigin="anonymous"></script>
   <script src="../../js/jquery-ui.js"></script>
   <script src="../../js/bootstrap.js"></script>
@@ -180,5 +203,29 @@
   <script src="../../js/fastclick.js"></script>
   <script src="../../js/cmsMain.js"></script>
   <script type="text/javascript" src="../../vendor/sweetalert2/sweetalert2.js"></script>
+  <script type="text/javascript">
+  
+
+    $('#editStores').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget) // Button that triggered the modal
+          var recipient = button.data('id') // Extract info from data-* attributes
+          var modal = $(this);
+          var dataString = 'id=' + recipient;
+
+            $.ajax({
+                type: "GET",
+                url: "edit/editWinkels.php",
+                data: dataString,
+                cache: false,
+                success: function (data) {
+                    console.log(data);
+                    modal.find('store_info').html(data);
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+    })
+  </script>
 </body>
 </html>

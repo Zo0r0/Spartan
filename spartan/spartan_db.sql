@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- version 4.1.14
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 11, 2018 at 05:29 PM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- Machine: 127.0.0.1
+-- Gegenereerd op: 14 feb 2018 om 04:32
+-- Serverversie: 5.6.17
+-- PHP-versie: 5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,27 +14,28 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- Database: `spartan_db`
+-- Databank: `spartan_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Tabelstructuur voor tabel `category`
 --
 
-CREATE TABLE `category` (
-  `category_id` int(4) NOT NULL,
+CREATE TABLE IF NOT EXISTS `category` (
+  `category_id` int(4) NOT NULL AUTO_INCREMENT,
   `cat_name` varchar(250) NOT NULL,
   `img_path` varchar(250) NOT NULL,
-  `cat_show` set('Yes','No') NOT NULL DEFAULT 'No'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `cat_show` set('Yes','No') NOT NULL DEFAULT 'No',
+  PRIMARY KEY (`category_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
 
 --
--- Dumping data for table `category`
+-- Gegevens worden geëxporteerd voor tabel `category`
 --
 
 INSERT INTO `category` (`category_id`, `cat_name`, `img_path`, `cat_show`) VALUES
@@ -56,20 +57,21 @@ INSERT INTO `category` (`category_id`, `cat_name`, `img_path`, `cat_show`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `deals`
+-- Tabelstructuur voor tabel `deals`
 --
 
-CREATE TABLE `deals` (
-  `deal_id` int(40) NOT NULL,
+CREATE TABLE IF NOT EXISTS `deals` (
+  `deal_id` int(40) NOT NULL AUTO_INCREMENT,
   `deal_name` varchar(250) NOT NULL,
   `deal_btn` varchar(40) DEFAULT NULL,
   `deal_img_path` varchar(250) NOT NULL,
   `deal_block` set('Block 1','Block 2','Block 3','Block 4') NOT NULL,
-  `experation_stamp` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `experation_stamp` date NOT NULL,
+  PRIMARY KEY (`deal_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
--- Dumping data for table `deals`
+-- Gegevens worden geëxporteerd voor tabel `deals`
 --
 
 INSERT INTO `deals` (`deal_id`, `deal_name`, `deal_btn`, `deal_img_path`, `deal_block`, `experation_stamp`) VALUES
@@ -82,65 +84,47 @@ INSERT INTO `deals` (`deal_id`, `deal_name`, `deal_btn`, `deal_img_path`, `deal_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `logfile`
+-- Tabelstructuur voor tabel `logfile`
 --
 
-CREATE TABLE `logfile` (
-  `attempt_id` int(250) NOT NULL,
+CREATE TABLE IF NOT EXISTS `logfile` (
+  `attempt_id` int(250) NOT NULL AUTO_INCREMENT,
   `attempt` set('login','logout') NOT NULL,
   `username` varchar(40) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `success` set('Yes','No') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+  `success` set('Yes','No') NOT NULL,
+  PRIMARY KEY (`attempt_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `logfile`
+-- Gegevens worden geëxporteerd voor tabel `logfile`
 --
 
 INSERT INTO `logfile` (`attempt_id`, `attempt`, `username`, `timestamp`, `success`) VALUES
-(9, 'login', 'admin', '2018-01-31 11:20:42', 'Yes'),
-(10, 'logout', 'admin', '2018-01-31 11:20:53', 'Yes'),
-(11, 'login', 'admin', '2018-01-31 11:21:25', 'Yes'),
-(12, 'login', 'admin', '2018-01-31 20:44:15', 'Yes'),
-(13, 'logout', 'admin', '2018-01-31 21:33:58', 'Yes'),
-(14, 'login', 'admin', '2018-02-03 15:20:38', 'No'),
-(15, 'login', 'admin', '2018-02-03 15:20:44', 'Yes'),
-(16, 'login', 'admin', '2018-02-03 15:57:22', 'Yes'),
-(17, 'logout', 'admin', '2018-02-03 18:53:22', 'Yes'),
-(18, 'login', 'zjadi', '2018-02-03 18:53:35', 'No'),
-(19, 'login', 'zjadi', '2018-02-03 18:53:41', 'Yes'),
-(20, 'logout', 'zjadi', '2018-02-03 19:36:38', 'Yes'),
-(21, 'login', 'zjadi', '2018-02-04 12:56:54', 'Yes'),
-(22, 'logout', 'zjadi', '2018-02-04 13:06:11', 'Yes'),
-(23, 'login', 'baas', '2018-02-04 13:12:27', 'No'),
-(24, 'login', 'baas', '2018-02-04 13:13:27', 'No'),
-(25, 'login', 'baas', '2018-02-04 13:13:41', 'No'),
-(26, 'login', 'baas', '2018-02-04 13:13:56', 'No'),
-(27, 'login', 'ssd', '2018-02-04 13:15:11', 'No'),
-(28, 'login', 'zjadi', '2018-02-04 13:19:09', 'Yes'),
-(29, 'login', 'zjadi', '2018-02-06 20:58:21', 'Yes'),
-(30, 'login', 'ztjadi', '2018-02-07 10:14:21', 'No'),
-(31, 'login', 'zjadi', '2018-02-07 10:19:46', 'Yes'),
-(32, 'login', 'zjadi', '2018-02-09 11:00:11', 'Yes');
+(1, 'logout', 'brocolli', '2018-02-14 03:18:22', 'Yes'),
+(2, 'login', 'brocolli', '2018-02-14 03:22:40', 'Yes');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `stores`
+-- Tabelstructuur voor tabel `stores`
 --
 
-CREATE TABLE `stores` (
-  `store_id` int(4) NOT NULL,
+CREATE TABLE IF NOT EXISTS `stores` (
+  `store_id` int(4) NOT NULL AUTO_INCREMENT,
   `owner_id` int(4) NOT NULL,
   `store_name` varchar(250) NOT NULL,
   `store_img_path` varchar(250) NOT NULL,
   `category_id` int(4) NOT NULL,
   `store_active` set('Yes','No') NOT NULL DEFAULT 'Yes',
-  `store_show` set('Yes','No') NOT NULL DEFAULT 'No'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `store_show` set('Yes','No') NOT NULL DEFAULT 'No',
+  PRIMARY KEY (`store_id`),
+  KEY `owner_id` (`owner_id`),
+  KEY `category_id` (`category_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
 
 --
--- Dumping data for table `stores`
+-- Gegevens worden geëxporteerd voor tabel `stores`
 --
 
 INSERT INTO `stores` (`store_id`, `owner_id`, `store_name`, `store_img_path`, `category_id`, `store_active`, `store_show`) VALUES
@@ -150,25 +134,26 @@ INSERT INTO `stores` (`store_id`, `owner_id`, `store_name`, `store_img_path`, `c
 (17, 10, 'Luna', '../img/stores/276.png', 19, 'Yes', 'Yes'),
 (18, 9, 'Diamonds', '../img/stores/199.png', 20, 'Yes', 'No'),
 (19, 5, 'Dusk till Dawn', '../img/stores/109.png', 30, 'No', 'No'),
-(20, 8, 'Colors', '../img/stores/266.png', 17, 'Yes', 'No');
+(20, 8, 'Colors', '../img/stores/266.png', 17, 'No', 'No');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Tabelstructuur voor tabel `users`
 --
 
-CREATE TABLE `users` (
-  `user_id` int(4) NOT NULL,
+CREATE TABLE IF NOT EXISTS `users` (
+  `user_id` int(4) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(250) NOT NULL,
   `username` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
   `accesslevel` int(1) DEFAULT '0',
-  `user_active` set('Yes','No') NOT NULL DEFAULT 'Yes'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `user_active` set('Yes','No') NOT NULL DEFAULT 'Yes',
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
--- Dumping data for table `users`
+-- Gegevens worden geëxporteerd voor tabel `users`
 --
 
 INSERT INTO `users` (`user_id`, `user_name`, `username`, `password`, `accesslevel`, `user_active`) VALUES
@@ -179,79 +164,16 @@ INSERT INTO `users` (`user_id`, `user_name`, `username`, `password`, `accessleve
 (8, 'Jessica Rabbit', 'jrabbit', '789456', 0, 'Yes'),
 (9, 'Mo Albert', 'malber', '4567895', 0, 'Yes'),
 (10, 'Samantha Hust', 'shust', '78995565', 0, 'Yes'),
-(11, 'Zoe Jadi', 'zjadi', '12345678', 1, 'Yes');
+(11, 'Zoe Jadi', 'zjadi', '12345678', 1, 'Yes'),
+(12, 'Rishwi Fattoe', 'brocolli', '!@#', 1, 'Yes'),
+(14, 'Johnny Depp', 'John', 'query', 1, 'Yes');
 
 --
--- Indexes for dumped tables
---
-
---
--- Indexes for table `category`
---
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`category_id`);
-
---
--- Indexes for table `deals`
---
-ALTER TABLE `deals`
-  ADD PRIMARY KEY (`deal_id`);
-
---
--- Indexes for table `logfile`
---
-ALTER TABLE `logfile`
-  ADD PRIMARY KEY (`attempt_id`);
-
---
--- Indexes for table `stores`
---
-ALTER TABLE `stores`
-  ADD PRIMARY KEY (`store_id`),
-  ADD KEY `owner_id` (`owner_id`),
-  ADD KEY `category_id` (`category_id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
-
---
--- AUTO_INCREMENT for dumped tables
+-- Beperkingen voor geëxporteerde tabellen
 --
 
 --
--- AUTO_INCREMENT for table `category`
---
-ALTER TABLE `category`
-  MODIFY `category_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
---
--- AUTO_INCREMENT for table `deals`
---
-ALTER TABLE `deals`
-  MODIFY `deal_id` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
---
--- AUTO_INCREMENT for table `logfile`
---
-ALTER TABLE `logfile`
-  MODIFY `attempt_id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
---
--- AUTO_INCREMENT for table `stores`
---
-ALTER TABLE `stores`
-  MODIFY `store_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `user_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `stores`
+-- Beperkingen voor tabel `stores`
 --
 ALTER TABLE `stores`
   ADD CONSTRAINT `stores_ibfk_2` FOREIGN KEY (`owner_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,

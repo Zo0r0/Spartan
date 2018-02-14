@@ -2,6 +2,9 @@
     include '../config.php';
     session_start();
 
+    include 'cookies/navbar_cookie.php';
+    include 'cookies/btn-color_cookie.php';
+
     if (isset($_POST['submit']) ){
 
       $cat_name = $_POST['cat_name'];
@@ -53,7 +56,7 @@
   <link rel="stylesheet" href="../css/_all-skins.min.css">
 </head>
 
-<body class="hold-transition skin-red sidebar-mini">
+<body class="hold-transition skin-<?php echo $_COOKIE['color']; ?> sidebar-mini">
 <div class="wrapper">
   <header class="main-header">
     <a href="" class="logo">
@@ -138,7 +141,7 @@
         <div class="row">
           <div class="col-lg-2 col-xs-3">
             <div class="box-nb">
-                <button type="button" name="button" class="add btn btn-primary" data-toggle="modal" data-target="#addCat"><i class="fa fa-plus"></i></button>
+                <button type="button" name="button" class="add btn btn-<?php echo $_COOKIE['btn-color']; ?>"" data-toggle="modal" data-target="#addCat"><i class="fa fa-plus fa-2x"></i></button>
             </div>
           </div>
         </div>

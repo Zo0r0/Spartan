@@ -2,6 +2,9 @@
 include '../config.php';
 session_start();
 
+include 'cookies/navbar_cookie.php';
+
+
  ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -19,7 +22,7 @@ session_start();
   <link rel="stylesheet" href="../css/_all-skins.min.css">
 </head>
 
-<body class="hold-transition skin-red sidebar-mini">
+<body class="hold-transition skin-<?php echo $_COOKIE['color']; ?> sidebar-mini">
 <div class="wrapper">
   <header class="main-header">
     <a href="" class="logo">
@@ -114,7 +117,7 @@ session_start();
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-4 col-xs-6">
+      <!--     <div class="col-lg-4 col-xs-6">
             <div class="small-box bg-green">
               <div class="inner">
                 <h3>Lay-out</h3>
@@ -125,7 +128,7 @@ session_start();
               <a href="" class="small-box-footer">Gaan <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
-          <!-- ./col -->
+          <!-- ./col --> 
           <div class="col-lg-4 col-xs-6">
             <div class="small-box bg-yellow">
               <div class="inner">
@@ -140,7 +143,7 @@ session_start();
           <!-- ./col -->
         </div>
         <div class="row">
-            <div class="col-lg-4 col-xs-6">
+            <div class="col-lg-12 col-xs-6">
                 <div class="box">
                   <div class="box-body">
                       <h3>Log</h3>

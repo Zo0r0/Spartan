@@ -73,19 +73,19 @@
 
 				<form class="login100-form validate-form" method="POST">
 					<span class="login100-form-title">
-						Member Login
+						Beheerders | Login
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate="Valid username is required">
-						<input class="input100" type="text" id="username" name="username" placeholder="Username" autocomplete="off" required>
+					<div class="wrap-input100 validate-input" data-validate="Gebruikersnaam is vereist">
+						<input class="input100" type="text" id="username" name="username" placeholder="Username" autocomplete="off" >
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user-o" aria-hidden="true"></i>
 						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" id="password" name="password" placeholder="Password" autocomplete="off" required	>
+					<div class="wrap-input100 validate-input" data-validate="Wachtwoord is vereist">
+						<input class="input100" type="password" id="password" name="password" placeholder="Password" autocomplete="off" 	>
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>

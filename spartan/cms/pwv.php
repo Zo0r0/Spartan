@@ -2,6 +2,8 @@
     include '../config.php';
     session_start();
 
+    include 'cookies/navbar_cookie.php';
+
  ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -19,7 +21,7 @@
   <link rel="stylesheet" href="../css/_all-skins.min.css">
 </head>
 
-<body class="hold-transition skin-red sidebar-mini">
+<body class="hold-transition skin-<?php echo $_COOKIE['color']; ?> sidebar-mini">
 <div class="wrapper">
   <header class="main-header">
     <a href="" class="logo">

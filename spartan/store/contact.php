@@ -20,8 +20,13 @@
 	<link rel="stylesheet" type="text/css" href="../vendor/lightbox2/css/lightbox.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/util.css">
 	<link rel="stylesheet" type="text/css" href="../css/storeMain.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
-
+<style>
+	.search{
+		margin-left: 180px;
+	}
+</style>
 <body class="animsition">
 
 	<header class="header1">
@@ -45,6 +50,17 @@
 							<li class="active">
 								<a href="contact.php">Over Ons</a>
 							</li>
+
+								<span class="search">
+								<form class="navbar-form" role="search" method="POST">
+						        <div class="input-group">
+						            <input type="text" class="form-control" placeholder="Search" name="search-term">
+						            <div class="input-group-btn">
+						            <button class="btn btn-default" type="submit" name="search"><i class="glyphicon glyphicon-search"></i></button>
+						            </div>
+						        </div>
+						        </form>
+								</span>
 						</ul>
 					</nav>
 				</div>
@@ -105,10 +121,19 @@
 	<section class="bgwhite p-t-66 p-b-60">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6 p-b-30">
+			<!-- 	<div class="col-md-6 p-b-30">
 					<div class="p-r-20 p-r-0-lg">
 						<div class="contact-map size21" id="google_map" data-map-x="40.614439" data-map-y="-73.926781" data-pin="../img/logo.png" data-scrollwhell="0" data-draggable="1"></div>
 					</div>
+				</div> -->
+
+
+
+			
+
+				<div class="col-md-6 p-b-30">
+					<br><br>
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.32237418646!2d-55.21613178568894!3d5.8100670957899165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8d09cb6f9a6a3001%3A0xc2bcaf8bcf35a812!2sNatin-Jaggernath+Lachmonstraat!5e0!3m2!1snl!2s!4v1518573917112" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
 				</div>
 
 				<div class="col-md-6 p-b-30">
@@ -147,7 +172,7 @@
 	<!-- Footer -->
 	<footer class="bg6 p-t-45 p-b-43 p-l-45 p-r-45">
 		<div class="flex-w p-b-90">
-			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
+		<!-- 	<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
 				<h4 class="s-text12 p-b-30">
 					Example
 				</h4>
@@ -160,7 +185,7 @@
 					</li>
 				</ul>
 			</div>
-
+ -->
 			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
 				<h4 class="s-text12 p-b-30">
 					Pages
