@@ -2,9 +2,6 @@
     include '../config.php';
     session_start();
 
-    include 'cookies/navbar_cookie.php';
-    include 'cookies/btn-color_cookie.php';
-
     if (isset($_POST['submit'])){
 
       $owner = $_POST['owner_id'];
@@ -56,7 +53,7 @@
   <link rel="stylesheet" href="../css/_all-skins.min.css">
 </head>
 
-<body class="hold-transition skin-<?php echo $_COOKIE['color']; ?>  sidebar-mini">
+<body class="hold-transition skin-red sidebar-mini">
 <div class="wrapper">
   <header class="main-header">
     <a href="" class="logo">
@@ -141,13 +138,13 @@
         <div class="row">
           <div class="col-lg-2 col-xs-3">
             <div class="box-nb">
-                <button type="button" name="button" class="add btn btn-<?php echo $_COOKIE['btn-color']; ?>"" data-toggle="modal" data-target="#addStore"><i class="fa fa-plus fa-2x"></i></button>
+                <button type="button" name="button" class="add btn btn-danger" data-toggle="modal" data-target="#addStore"><i class="fa fa-plus"></i></button>
             </div>
           </div>
         </div>
         <div class="row">
             <?php
-            $sql_query = "SELECT store_id,user_name, store_name, cat_name, user_active FROM stores INNER JOIN users ON stores.owner_id = users.user_id INNER JOIN category ON stores.category_id = category.category_id WHERE users.user_active ='Yes' AND stores.store_active ='Yes' ";
+            $sql_query = "SELECT store_id,user_name, store_name, cat_name, user_active FROM stores INNER JOIN users ON stores.owner_id = users.user_id INNER JOIN category ON stores.category_id = category.category_id WHERE users.user_active ='Yes' AND stores.store_active ='Yes' ORDER BY store_name ASC ";
             $result1 = $conn->query($sql_query);
 
                 while ($row = mysqli_fetch_assoc($result1)) {
@@ -172,7 +169,7 @@
         </div>
         <div class="row">
             <?php
-            $sql_query = "SELECT store_id,user_name, store_name, cat_name, user_active FROM stores INNER JOIN users ON stores.owner_id = users.user_id INNER JOIN category ON stores.category_id = category.category_id WHERE users.user_active ='Yes' AND stores.store_active ='No'";
+            $sql_query = "SELECT store_id,user_name, store_name, cat_name, user_active FROM stores INNER JOIN users ON stores.owner_id = users.user_id INNER JOIN category ON stores.category_id = category.category_id WHERE users.user_active ='Yes' AND stores.store_active ='No' ORDER BY store_name ASC";
             $result1 = $conn->query($sql_query);
 
                 while ($row = mysqli_fetch_assoc($result1)) {
@@ -252,7 +249,7 @@
                           <div class="col-md-6">
                               <div class="form-group">
                                 <label >Category</label>
-                                <select class="form-control" multiple="multiple" name="category_id">
+                                <select class="form-control" name="category_id">
                                     <?php
                                         $sql2_query = "SELECT * FROM category";
 

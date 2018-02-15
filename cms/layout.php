@@ -3,29 +3,13 @@ include '../config.php';
 session_start();
 include 'cookies/navbar_cookie.php';
 include 'cookies/btn-color_cookie.php';
-
-if (isset($_POST['submit'])){
-
-  $name = $_POST['name'];
-  $surname = $_POST['surname'];
-  $username = $_POST['username'];
-  $password = $_POST['password'];
-
-  $sql = "INSERT INTO users(user_name,username,password,accesslevel) VALUES ('$name $surname','$username','$password','1')";
-
-  $result = $conn->query($sql);
-
- header("Location: instellingen.php");
-
-}
-
  ?>
 
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title>SpartanCMS | Instellingen</title>
+    <title>SpartanCMS | Thema</title>
     <link rel="stylesheet" href="../vendor/sweetalert2/sweetalert2.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -73,17 +57,17 @@ if (isset($_POST['submit'])){
 
               <li><a href="instellingen.php"><i class="fa fa-group"></i> <span>SPARTAN Beheerders</span></a></li>
 
-            </ul>  
+            </ul>
             <ul class="sidebar-menu" data-widget="tree">
-   
+
 
               <li class="active"><a href="layout.php"><i class="fa fa-adjust"></i> <span>Thema Aanpassingen</span></a></li>
 
             </ul>
         </section>
-  
 
-          
+
+
       </aside>
         <div class="content-wrapper">
         <section class="content-header">
@@ -95,7 +79,7 @@ if (isset($_POST['submit'])){
 
         <!-- Main content -->
         <section class="content">
-      
+
           <section>
           <div class="sec-title p-b-60">
             <br>
@@ -103,10 +87,10 @@ if (isset($_POST['submit'])){
                  <center><span>
             <p>Navigatiebalk kleur aanpassen:</p>
 
-            <a href="?color=green"><img src="../images/green.jpg"  width="50" height="50"></a>
-            <a href="?color=red"><img src="../images/red.jpg"  width="50" height="50"></a>
-            <a href="?color=yellow"><img src="../images/yellow.jpg"  width="50" height="50"></a>
-            <a href="?color=blue"><img src="../images/blue.jpg"  width="50" height="50"></a>
+            <a href="?color=green"><img src="../img/colors/green.jpg"  width="50" height="50"></a>
+            <a href="?color=red"><img src="../img/colors/red.jpg"  width="50" height="50"></a>
+            <a href="?color=yellow"><img src="../img/colors/yellow.jpg"  width="50" height="50"></a>
+            <a href="?color=blue"><img src="../img/colors/blue.jpg"  width="50" height="50"></a>
 
             </span></center>
             </h3>
@@ -121,16 +105,16 @@ if (isset($_POST['submit'])){
                  <center><span>
             <p>Knoppen kleur aanpassen:</p>
 
-            <a href="?btn-color=success"><img src="../images/green.jpg"  width="50" height="50"></a>
-            <a href="?btn-color=danger"><img src="../images/red.jpg"  width="50" height="50"></a>
-            <a href="?btn-color=warning"><img src="../images/yellow.jpg"  width="50" height="50"></a>
-            <a href="?btn-color=info"><img src="../images/blue.jpg"  width="50" height="50"></a>
+            <a href="?btn-color=success"><img src="../img/colors/green.jpg"  width="50" height="50"></a>
+            <a href="?btn-color=danger"><img src="../img/colors/red.jpg"  width="50" height="50"></a>
+            <a href="?btn-color=warning"><img src="../img/colors/yellow.jpg"  width="50" height="50"></a>
+            <a href="?btn-color=info"><img src="../img/colors/blue.jpg"  width="50" height="50"></a>
 
             </span></center>
             </h3>
           </div>
          </section>
-        
+
         <!-- /.Content -->
       </div>
 
@@ -151,6 +135,6 @@ if (isset($_POST['submit'])){
       <script src="../js/fastclick.js"></script>
       <script src="../js/cmsMain.js"></script>
       <script type="text/javascript" src="../vendor/sweetalert2/sweetalert2.js"></script>
-  
+
   </body>
 </html>

@@ -121,20 +121,34 @@
 	<section class="bgwhite p-t-66 p-b-60">
 		<div class="container">
 			<div class="row">
-			<!-- 	<div class="col-md-6 p-b-30">
-					<div class="p-r-20 p-r-0-lg">
-						<div class="contact-map size21" id="google_map" data-map-x="40.614439" data-map-y="-73.926781" data-pin="../img/logo.png" data-scrollwhell="0" data-draggable="1"></div>
-					</div>
-				</div> -->
-
-
-
-			
-
 				<div class="col-md-6 p-b-30">
+					<div id="map">
+
+					</div>
+					<script>
+					 function initMap() {
+						 var uluru = {lat: 5.810174, lng: -55.196695};
+ 						var map = new google.maps.Map(document.getElementById('map'), {
+ 						  zoom: 16,
+ 						  center: uluru,
+ 						  disableDefaultUI: true,
+ 						  streetViewControl: false
+ 						});
+ 						var marker = new google.maps.Marker({
+ 						  position: uluru,
+ 						  map: map
+ 						});
+					 }
+				   </script>
+				   <script async defer
+				   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUrZ8_muI7RKFIUux--_ZG3G1FXk2FAI8&callback=initMap">
+				   </script>
+				</div>
+
+				<!-- <div class="col-md-6 p-b-30">
 					<br><br>
 					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.32237418646!2d-55.21613178568894!3d5.8100670957899165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8d09cb6f9a6a3001%3A0xc2bcaf8bcf35a812!2sNatin-Jaggernath+Lachmonstraat!5e0!3m2!1snl!2s!4v1518573917112" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
-				</div>
+				</div> -->
 
 				<div class="col-md-6 p-b-30">
 					<form class="leave-comment">
@@ -172,20 +186,6 @@
 	<!-- Footer -->
 	<footer class="bg6 p-t-45 p-b-43 p-l-45 p-r-45">
 		<div class="flex-w p-b-90">
-		<!-- 	<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
-				<h4 class="s-text12 p-b-30">
-					Example
-				</h4>
-
-				<ul>
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-						Example
-						</a>
-					</li>
-				</ul>
-			</div>
- -->
 			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
 				<h4 class="s-text12 p-b-30">
 					Pages
@@ -232,8 +232,6 @@
 	<script type="text/javascript" src="../vendor/countdowntime/countdowntime.js"></script>
 	<script type="text/javascript" src="../vendor/lightbox2/js/lightbox.min.js"></script>
 	<script type="text/javascript" src="../vendor/sweetalert/sweetalert.min.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCc4k6mdZYLJ_zBXyXGhiOG32rinB_QZfc"></script>
-	<script src="js/map-custom.js"></script>
 	<script src="../js/storeMain.js"></script>
 </body>
 

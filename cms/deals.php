@@ -2,12 +2,11 @@
     include '../config.php';
     session_start();
 
-    include 'cookies/navbar_cookie.php';
-
     if (isset($_POST['block1'])){
 
       $discription = $_POST['deal_name1'];
        $btn = $_POST['deal_btn1'];
+       $start_stamp = $_POST['start_stamp1'];
       $exp_stamp = $_POST['exp_stamp1'];
       // print_r($file);
       $fileName = $_FILES['img1']['name'];
@@ -29,7 +28,7 @@
 
               move_uploaded_file($fileTmp, $fileDestention);
 
-              $sql = "INSERT INTO deals(deal_name,deal_btn,deal_img_path ,deal_block, experation_stamp) VALUES ('$discription','$btn','$fileDestention','Block 1','$exp_stamp')";
+              $sql = "INSERT INTO deals(deal_name,deal_btn,deal_img_path ,deal_block,start_stamp, experation_stamp) VALUES ('$discription','$btn','$fileDestention','Block 1','$start_stamp','$exp_stamp')";
 
               $result = $conn->query($sql);
 
@@ -43,6 +42,7 @@ if (isset($_POST['block2'])){
 
   $discription = $_POST['deal_name2'];
    $btn= $_POST['deal_btn2'];
+   $start_stamp = $_POST['start_stamp2'];
   $exp_stamp = $_POST['exp_stamp2'];
   // print_r($file);
   $fileName = $_FILES['img2']['name'];
@@ -64,7 +64,7 @@ if (isset($_POST['block2'])){
 
           move_uploaded_file($fileTmp, $fileDestention);
 
-          $sql = "INSERT INTO deals(deal_name,deal_btn,deal_img_path ,deal_block, experation_stamp) VALUES ('$discription','$btn','$fileDestention','Block 2','$exp_stamp')";
+          $sql = "INSERT INTO deals(deal_name,deal_btn,deal_img_path ,deal_block,start_stamp, experation_stamp) VALUES ('$discription','$btn','$fileDestention','Block 2','$start_stamp','$exp_stamp')";
 
           $result = $conn->query($sql);
 
@@ -77,6 +77,7 @@ if (isset($_POST['block3'])){
 
   $discription = $_POST['deal_name3'];
    $btn = $_POST['deal_btn3'];
+   $start_stamp = $_POST['start_stamp3'];
   $exp_stamp = $_POST['exp_stamp3'];
   // print_r($file);
   $fileName = $_FILES['img3']['name'];
@@ -98,7 +99,7 @@ if (isset($_POST['block3'])){
 
           move_uploaded_file($fileTmp, $fileDestention);
 
-          $sql = "INSERT INTO deals(deal_name,deal_btn,deal_img_path ,deal_block, experation_stamp) VALUES ('$discription','$btn','$fileDestention','Block 3','$exp_stamp')";
+          $sql = "INSERT INTO deals(deal_name,deal_btn,deal_img_path ,deal_block,start_stamp, experation_stamp) VALUES ('$discription','$btn','$fileDestention','Block 3','$start_stamp','$exp_stamp')";
 
           $result = $conn->query($sql);
 
@@ -111,6 +112,7 @@ if (isset($_POST['block4'])){
 
   $discription = $_POST['deal_name4'];
    $btn = $_POST['deal_btn4'];
+   $start_stamp = $_POST['start_stamp4'];
   $exp_stamp = $_POST['exp_stamp4'];
   // print_r($file);
   $fileName = $_FILES['img4']['name'];
@@ -132,7 +134,7 @@ if (isset($_POST['block4'])){
 
           move_uploaded_file($fileTmp, $fileDestention);
 
-          $sql = "INSERT INTO deals(deal_name,deal_btn,deal_img_path ,deal_block, experation_stamp) VALUES ('$discription','$btn','$fileDestention','Block 4','$exp_stamp')";
+          $sql = "INSERT INTO deals(deal_name,deal_btn,deal_img_path ,deal_block,start_stamp, experation_stamp) VALUES ('$discription','$btn','$fileDestention','Block 4','$start_stamp','$exp_stamp')";
 
           $result = $conn->query($sql);
 
@@ -160,7 +162,7 @@ if (isset($_POST['block4'])){
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.csss">
 </head>
 
-<body class="hold-transition skin-<?php echo $_COOKIE['color']; ?> sidebar-mini">
+<body class="hold-transition skin-red sidebar-mini">
 <div class="wrapper">
   <header class="main-header">
     <a href="" class="logo">
@@ -269,9 +271,16 @@ if (isset($_POST['block4'])){
                                  </div>
                              </div>
                              <div class="row">
-                                 <div class="col-md-12">
-                                     <div class="form-group" style="width: 50%;">
-                                       <label >Deal Experation</label>
+                                 <div class="col-md-6">
+                                     <div class="form-group" style="width: 100%;">
+                                       <label>Start Datum</label>
+                                       <input type="text" data-provide="datepicker" class="form-control" name="start_stamp1" id="start_stamp"  placeholder="">
+
+                                     </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                     <div class="form-group" style="width: 100%;">
+                                       <label >Experation Datum</label>
                                        <input type="text" data-provide="datepicker" class="form-control" name="exp_stamp1" id="exp_stamp"  placeholder="">
 
                                      </div>
@@ -297,6 +306,7 @@ if (isset($_POST['block4'])){
                         while ($row = mysqli_fetch_assoc($result)) {
                             $deal_id = $row['deal_id'];
                             $deal_name = $row['deal_name'];
+                            $deal_str = $row['start_stamp'];
                             $deal_exp =$row['experation_stamp'];
                     ?>
                     <div class="col-xs-4">
@@ -304,7 +314,8 @@ if (isset($_POST['block4'])){
                             <div class="deal_content">
                                 <center>
                                     <div class="col-md-12">
-                                        <h3><?php echo $deal_name; ?></h3>
+                                        <h4><?php echo $deal_name; ?></h4>
+                                        <p>Startdatum: <?php echo $deal_str; ?></p>
                                         <p>Vervaldatum: <?php echo $deal_exp; ?></p>
                                     </div>
                                 </center>
@@ -321,6 +332,7 @@ if (isset($_POST['block4'])){
                         while ($row = mysqli_fetch_assoc($result)) {
                             $deal_id = $row['deal_id'];
                             $deal_name = $row['deal_name'];
+                            $deal_str = $row['start_stamp'];
                             $deal_exp =$row['experation_stamp'];
                     ?>
                     <div class="col-xs-4">
@@ -328,7 +340,8 @@ if (isset($_POST['block4'])){
                             <div class="deal_content">
                                 <center>
                                     <div class="col-md-12">
-                                        <h3><?php echo $deal_name; ?></h3>
+                                        <h4><?php echo $deal_name; ?></h4>
+                                        <p>Startdatum: <?php echo $deal_str; ?></p>
                                         <p>Vervaldatum: <?php echo $deal_exp; ?></p>
                                     </div>
                                 </center>
@@ -368,7 +381,16 @@ if (isset($_POST['block4'])){
                              <div class="row">
                                  <div class="col-md-12">
                                      <div class="form-group" style="width: 50%;">
-                                       <label >Deal Experation</label>
+                                       <label>Start Datum</label>
+                                       <input type="text" data-provide="datepicker" class="form-control" name="start_stamp2" id="start_stamp"  placeholder="">
+
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="row">
+                                 <div class="col-md-12">
+                                     <div class="form-group" style="width: 50%;">
+                                       <label >Experation Datum</label>
                                        <input type="text" data-provide="datepicker" class="form-control" name="exp_stamp2" id="exp_stamp"  placeholder="">
 
                                      </div>
@@ -394,6 +416,7 @@ if (isset($_POST['block4'])){
                         while ($row = mysqli_fetch_assoc($result)) {
                             $deal_id = $row['deal_id'];
                             $deal_name = $row['deal_name'];
+                            $deal_str = $row['start_stamp'];
                             $deal_exp =$row['experation_stamp'];
                     ?>
                     <div class="col-xs-4">
@@ -401,7 +424,8 @@ if (isset($_POST['block4'])){
                             <div class="deal_content">
                                 <center>
                                     <div class="col-md-12">
-                                        <h3><?php echo $deal_name; ?></h3>
+                                        <h4><?php echo $deal_name; ?></h4>
+                                        <p>Startdatum: <?php echo $deal_str; ?></p>
                                         <p>Vervaldatum: <?php echo $deal_exp; ?></p>
                                     </div>
                                 </center>
@@ -418,6 +442,7 @@ if (isset($_POST['block4'])){
                         while ($row = mysqli_fetch_assoc($result)) {
                             $deal_id = $row['deal_id'];
                             $deal_name = $row['deal_name'];
+                            $deal_str = $row['start_stamp'];
                             $deal_exp =$row['experation_stamp'];
                     ?>
                     <div class="col-xs-4">
@@ -425,7 +450,8 @@ if (isset($_POST['block4'])){
                             <div class="deal_content">
                                 <center>
                                     <div class="col-md-12">
-                                        <h3><?php echo $deal_name; ?></h3>
+                                        <h4><?php echo $deal_name; ?></h4>
+                                        <p>Startdatum: <?php echo $deal_str; ?></p>
                                         <p>Vervaldatum: <?php echo $deal_exp; ?></p>
                                     </div>
                                 </center>
@@ -465,7 +491,15 @@ if (isset($_POST['block4'])){
                              <div class="row">
                                  <div class="col-md-12">
                                      <div class="form-group" style="width: 50%;">
-                                       <label >Deal Experation</label>
+                                       <label>Start Datum</label>
+                                       <input type="text" data-provide="datepicker" class="form-control" name="start_stamp3" id="start_stamp"  placeholder="">
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="row">
+                                 <div class="col-md-12">
+                                     <div class="form-group" style="width: 50%;">
+                                       <label >Experation Datum</label>
                                        <input type="text" data-provide="datepicker" class="form-control" name="exp_stamp3" id="exp_stamp"  placeholder="">
 
                                      </div>
@@ -491,6 +525,7 @@ if (isset($_POST['block4'])){
                         while ($row = mysqli_fetch_assoc($result)) {
                             $deal_id = $row['deal_id'];
                             $deal_name = $row['deal_name'];
+                            $deal_str = $row['start_stamp'];
                             $deal_exp =$row['experation_stamp'];
                     ?>
                     <div class="col-xs-4">
@@ -498,7 +533,8 @@ if (isset($_POST['block4'])){
                             <div class="deal_content">
                                 <center>
                                     <div class="col-md-12">
-                                        <h3><?php echo $deal_name; ?></h3>
+                                        <h4><?php echo $deal_name; ?></h4>
+                                        <p>Startdatum: <?php echo $deal_str; ?></p>
                                         <p>Vervaldatum: <?php echo $deal_exp; ?></p>
                                     </div>
                                 </center>
@@ -515,6 +551,7 @@ if (isset($_POST['block4'])){
                         while ($row = mysqli_fetch_assoc($result)) {
                             $deal_id = $row['deal_id'];
                             $deal_name = $row['deal_name'];
+                            $deal_str = $row['start_stamp'];
                             $deal_exp =$row['experation_stamp'];
                     ?>
                     <div class="col-xs-4">
@@ -522,7 +559,8 @@ if (isset($_POST['block4'])){
                             <div class="deal_content">
                                 <center>
                                     <div class="col-md-12">
-                                        <h3><?php echo $deal_name; ?></h3>
+                                        <h4><?php echo $deal_name; ?></h4>
+                                        <p>Startdatum: <?php echo $deal_str; ?></p>
                                         <p>Vervaldatum: <?php echo $deal_exp; ?></p>
                                     </div>
                                 </center>
@@ -562,7 +600,16 @@ if (isset($_POST['block4'])){
                              <div class="row">
                                  <div class="col-md-12">
                                      <div class="form-group" style="width: 50%;">
-                                       <label >Deal Experation</label>
+                                       <label>Start Datum</label>
+                                       <input type="text" data-provide="datepicker" class="form-control" name="start_stamp4" id="start_stamp"  placeholder="">
+
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="row">
+                                 <div class="col-md-12">
+                                     <div class="form-group" style="width: 50%;">
+                                       <label >Experation Datum</label>
                                        <input type="text" data-provide="datepicker" class="form-control" name="exp_stamp4" id="exp_stamp"  placeholder="">
 
                                      </div>
@@ -588,6 +635,7 @@ if (isset($_POST['block4'])){
                         while ($row = mysqli_fetch_assoc($result)) {
                             $deal_id = $row['deal_id'];
                             $deal_name = $row['deal_name'];
+                            $deal_str = $row['start_stamp'];
                             $deal_exp =$row['experation_stamp'];
                     ?>
                     <div class="col-xs-4">
@@ -595,7 +643,8 @@ if (isset($_POST['block4'])){
                             <div class="deal_content">
                                 <center>
                                     <div class="col-md-12">
-                                        <h3><?php echo $deal_name; ?></h3>
+                                        <h4><?php echo $deal_name; ?></h4>
+                                        <p>Startdatum: <?php echo $deal_str; ?></p>
                                         <p>Vervaldatum: <?php echo $deal_exp; ?></p>
                                     </div>
                                 </center>
@@ -612,6 +661,7 @@ if (isset($_POST['block4'])){
                         while ($row = mysqli_fetch_assoc($result)) {
                             $deal_id = $row['deal_id'];
                             $deal_name = $row['deal_name'];
+                            $deal_str = $row['start_stamp'];
                             $deal_exp =$row['experation_stamp'];
                     ?>
                     <div class="col-xs-4">
@@ -619,7 +669,8 @@ if (isset($_POST['block4'])){
                             <div class="deal_content">
                                 <center>
                                     <div class="col-md-12">
-                                        <h3><?php echo $deal_name; ?></h3>
+                                        <h4><?php echo $deal_name; ?></h4>
+                                        <p>Startdatum: <?php echo $deal_str; ?></p>
                                         <p>Vervaldatum: <?php echo $deal_exp; ?></p>
                                     </div>
                                 </center>
@@ -650,9 +701,18 @@ if (isset($_POST['block4'])){
   <script type="text/javascript" src="../vendor/dataTables/datatables.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
     <script type="text/javascript">
+
         $('input#exp_stamp').datepicker({
             format: "yyyy/mm/dd",
+            language: 'nl',
+            clearBtn: true,
+            multidate: false
+        });
+
+        $('input#start_stamp').datepicker({
+            format: "yyyy/mm/dd",
             language: "nl",
+            clearBtn: true,
             multidate: false
         });
     </script>
