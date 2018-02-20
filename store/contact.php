@@ -75,7 +75,7 @@
 	</header>
 
 	<section>
-		<div class="sec-title p-b-60">
+		<div class="sec-title p-b-40">
 			<br>
 			<br>
 			<h3 class="m-text5 t-center">
@@ -87,70 +87,43 @@
 	<section class="bgwhite p-b-38">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-6">
+					<p class="p-l-150 p-r-500 p-t-70">
+						Spartan Mall is een online mall waaraan verschillende winkels verbonden zijn. Op deze mall komen er exclusieve kortingen en deals.
+						Spartan is ontworpen door OpenBox en is gelaunched op 21 Februari 2018.
+					</p>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<div class="hov-img-zoom">
 						<img style="padding: 20px;" src="../img/logo.png" alt="IMG-ABOUT">
 					</div>
-				</div>
-				<div class="col-md-4">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12 p-b-30">
-					<p class="p-b-30">
-						Phasellus egestas nisi nisi, lobortis ultricies risus semper nec. Vestibulum pharetra ac ante ut pellentesque. Curabitur fringilla dolor quis lorem accumsan, vitae molestie urna dapibus. Pellentesque porta est ac neque bibendum viverra. Vivamus lobortis
-						magna ut interdum laoreet. Donec gravida lorem elit, quis condimentum ex semper sit amet. Fusce eget ligula magna. Aliquam aliquam imperdiet sodales. Ut fringilla turpis in vehicula vehicula. Pellentesque congue ac orci ut gravida. Aliquam erat
-						volutpat. Donec iaculis lectus a arcu facilisis, eu sodales lectus sagittis. Etiam pellentesque, magna vel dictum rutrum, neque justo eleifend elit, vel tincidunt erat arcu ut sem. Sed rutrum, turpis ut commodo efficitur, quam velit convallis ipsum,
-						et maximus enim ligula ac ligula. Vivamus tristique vulputate ultricies. Sed vitae ultrices orci.
-					</p>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<section>
-		<div class="sec-title p-b-60">
+		<div class="sec-title p-b-20">
 			<br>
 			<h3 class="m-text5 t-center">
 			 Contact Ons
 			</h3>
 		</div>
 	</section>
-	<section class="bgwhite p-t-66 p-b-60">
+	<section class="bgwhite p-t-20 p-b-60">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 p-b-30">
-					<div id="map">
-
-					</div>
-					<script>
-					 function initMap() {
-						 var uluru = {lat: 5.810174, lng: -55.196695};
- 						var map = new google.maps.Map(document.getElementById('map'), {
- 						  zoom: 16,
- 						  center: uluru,
- 						  disableDefaultUI: true,
- 						  streetViewControl: false
- 						});
- 						var marker = new google.maps.Marker({
- 						  position: uluru,
- 						  map: map
- 						});
-					 }
-				   </script>
-				   <script async defer
-				   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUrZ8_muI7RKFIUux--_ZG3G1FXk2FAI8&callback=initMap">
-				   </script>
-				</div>
-
-				<!-- <div class="col-md-6 p-b-30">
 					<br><br>
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.32237418646!2d-55.21613178568894!3d5.8100670957899165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8d09cb6f9a6a3001%3A0xc2bcaf8bcf35a812!2sNatin-Jaggernath+Lachmonstraat!5e0!3m2!1snl!2s!4v1518573917112" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
-				</div> -->
-
-				<div class="col-md-6 p-b-30">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.32237418646!2d-55.21613178568894!3d5.8100670957899165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8d09cb6f9a6a3001%3A0xc2bcaf8bcf35a812!2sNatin-Jaggernath+Lachmonstraat!5e0!3m2!1snl!2s!4v1518573917112" width="100%" height="500px" frameborder="0" style="border:0" allowfullscreen></iframe>
+				</div>
+				<div class="col-md-3 p-t-250">
+					<p> <i class="fa "></i></p>
+					<p> <i class="fa "></i>(597) 4855798</p>
+					<p> <i class="fa "></i>info@spartan.com</p>
+					<p> <i class="fa "></i></p>
+				</div>
+				<div class="col-md-3 p-b-30">
 					<form class="leave-comment">
 						<h4 class="m-text26 p-b-36 p-t-15">
 						Stuur een bericht

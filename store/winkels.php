@@ -121,7 +121,9 @@ if (isset($_POST['search_btn'])) {
 
 							<div class="block3-txt p-t-14 ">
 								<p class="s-text8 p-t-16 ">
-									Duis ut velit gravida nibh bibendum commodo. Sus-pendisse pellentesque mattis augue id euismod. Inter-dum et malesuada fames
+									<a href="" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+										Shop By <?php echo $store_name; ?>
+									</a>
 								</p>
 							</div>
 						</div>
